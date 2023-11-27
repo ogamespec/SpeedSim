@@ -86,7 +86,7 @@ void InitMainDialog()
         bReportInCB = true;
         LoadTechs(g_CurSaveData, true, true);
     }
-    g_oldEditProc = (WNDPROC)SetWindowLongPtr(GetDlgItem(g_hwndDlg, IDC_OWN_POS), GWLP_WNDPROC, (LONG)EditProc);
+    g_oldEditProc = (WNDPROC)SetWindowLongPtr(GetDlgItem(g_hwndDlg, IDC_OWN_POS), GWLP_WNDPROC, (LONG_PTR)EditProc);
     {
         TCHAR tmp[128];
         sim.GetVersion(tmp);

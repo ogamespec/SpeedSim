@@ -70,7 +70,7 @@ bool CSkinClass::Free()
         }
         // set back subclasses
         if(it->second.oldWndProc)
-            SetWindowLongPtr(it->second.wnd, GWLP_WNDPROC, (LONG)it->second.oldWndProc);
+            SetWindowLongPtr(it->second.wnd, GWLP_WNDPROC, (LONG_PTR)it->second.oldWndProc);
         // set back to normal style
         if(it->second.wnd != m_BGWnd)
             SetWindowLongPtr(it->second.wnd, GWL_STYLE, (LONG)it->second.OldStyle);
@@ -127,7 +127,7 @@ bool CSkinClass::AddWindow(HWND wnd, WNDTYPE type)
 
 	if(type == WT_BG)
 	{
-		oldWndProc = (WNDPROC)SetWindowLongPtr(wnd, GWLP_WNDPROC, (long)SubClassProc);
+		oldWndProc = (WNDPROC)SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)SubClassProc);
 	}
 	if(type == WT_BTN)
 	{
@@ -142,7 +142,7 @@ bool CSkinClass::AddWindow(HWND wnd, WNDTYPE type)
 		w.BkColor = 0;
 		w.BkMode = TRANSPARENT;
 		w.TextColor = RGB(255, 255, 255);
-		oldWndProc = (WNDPROC)SetWindowLongPtr(wnd, GWLP_WNDPROC, (long)GroupBoxSubClassProc);
+		oldWndProc = (WNDPROC)SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)GroupBoxSubClassProc);
 	}
 	if(type == WT_CHKBOX || type == WT_RADIOBTN)
 	{
@@ -154,14 +154,14 @@ bool CSkinClass::AddWindow(HWND wnd, WNDTYPE type)
 	if(type == WT_EDIT)
 	{
         //DeactivateTheme(wnd, true);
-		oldWndProc = (WNDPROC)SetWindowLongPtr(wnd, GWLP_WNDPROC, (long)EditSubClassProc);
+		oldWndProc = (WNDPROC)SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)EditSubClassProc);
 		w.BkColor = 0;
 		w.BkMode = TRANSPARENT;
 		w.TextColor = RGB(0, 0, 0);
 	}
 	if(type == WT_LABEL)
 	{
-		oldWndProc = (WNDPROC)SetWindowLongPtr(wnd, GWLP_WNDPROC, (long)LabelSubClassProc);
+		oldWndProc = (WNDPROC)SetWindowLongPtr(wnd, GWLP_WNDPROC, (LONG_PTR)LabelSubClassProc);
         w.BkColor = 0;
 		w.BkMode = TRANSPARENT;
 		w.TextColor = RGB(0, 0, 0);
