@@ -1,5 +1,7 @@
 # SpeedSim
 
+![demo](/demo.png)
+
 Исходники взяты отсюда: https://sourceforge.net/projects/speedsim/
 
 Исходная ванильная версия SpeedSim_v0.9.8.1b_src.
