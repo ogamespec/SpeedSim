@@ -1,0 +1,7 @@
+.vs
+Debug
+Release
+Win32
+x64
+*.vcxproj.user
+*.aps

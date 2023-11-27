@@ -2,11 +2,6 @@
 // Microsoft Visual C++ generated include file.
 // Used by res.rc
 //
-#ifndef VC8
-#define IDR_MYMANIFEST                  1
-#else	 
-#define IDR_MYMANIFEST                  9999
-#endif
 #define IDD_DIALOG                      101
 #define IDI_ICON                        102
 #define IDD_INPUTBOX                    103
@@ -360,6 +355,7 @@
 #define ID_SHOW_HIST                    40051
 #define IDM_SHOW_ESPHIST                40053
 #define ID_EDIT_ESP                     40054
+#define IDC_STATIC                      -1
 
 // Next default values for new objects
 // 
