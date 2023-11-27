@@ -1,0 +1,731 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUT DIALOGEX 0, 0, 249, 169
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About SpeedSim"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,193,151,50,14
+    LTEXT           "Homepage",IDC_STATIC,7,7,36,8
+    LTEXT           "IRC",IDC_STATIC,7,21,13,8
+    LTEXT           "Developers",IDC_STATIC,18,37,37,8
+    LTEXT           "Maximilian Matthé (RainOfPain)\nNicolas Höft (TheButcher)",IDC_STATIC,21,48,57,34
+    LTEXT           "Special thx/greetz to",IDC_STATIC,110,37,66,8
+    CONTROL         "http://www.speedsim.net",IDC_WEBSITE,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,55,7,107,8
+    LTEXT           "irc://irc.ogamenet.net/speedsim",IDC_IRC,55,20,107,8
+    ICON            IDI_ICON,IDC_STATIC,208,5,20,20
+    CONTROL         138,IDC_SUPPORT,"Static",SS_BITMAP | SS_NOTIFY | SS_SUNKEN,46,99,60,21
+    LTEXT           "Support Us:",IDC_STATIC,6,99,38,8
+    LTEXT           "Copyright © 2004-2008 Nicolas Höft && Maximilian Matthé",IDC_STATIC,5,127,204,8
+    LTEXT           "This software is released under the terms of the GNU General Public License.",IDC_STATIC,5,138,182,17
+    LTEXT           "Spirit\nInthuul Sansiss (Icons)\nIhateyou (IRC-Idler ;) )\neXcezZ (PopUp-BG)\nJaDS\nMic2003\nAll Skin Creators && Translators",IDC_STATIC,114,48,99,58
+    LTEXT           "Build ",IDC_BUILD,5,156,109,8
+END
+
+IDD_BALANCE DIALOGEX 0, 0, 262, 110
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_BALANCE_OUT,7,7,248,78,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",IDC_BAL_OK,106,89,50,14
+END
+
+IDD_DIALOG DIALOGEX 125, 10, 533, 410
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "SpeedSim"
+MENU IDR_MENU
+CLASS "SPEEDSIM_CLASS"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Raidliste",IDC_GB_RAIDLIST,131,4,106,19
+    PUSHBUTTON      "<-",IDC_PREV_FL,79,7,12,12,BS_CENTER | BS_VCENTER
+    EDITTEXT        IDC_FLEET_ID,95,7,13,12,ES_NUMBER
+    PUSHBUTTON      "->",IDC_NEXT_FL,112,7,12,12,BS_CENTER | BS_VCENTER
+    PUSHBUTTON      "<-",IDC_NEXT_TARGET,174,12,14,9
+    PUSHBUTTON      "-",IDC_REMOVETARGETINFO,188,12,13,9
+    PUSHBUTTON      "+",IDC_ADD_TARGETINFO,201,12,13,9
+    PUSHBUTTON      "->",IDC_PREV_TARGET,215,12,15,9
+    PUSHBUTTON      "X",IDC_RESET_ATT,74,27,14,11
+    PUSHBUTTON      "<-->",IDC_SWITCH_FLEET,133,27,25,10
+    PUSHBUTTON      "X",IDC_RESET_DEF,206,27,14,11
+    EDITTEXT        IDC_KT_A,88,38,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_GT_A,88,51,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_LJ_A,88,64,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SJ_A,88,77,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_KR_A,88,90,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SS_A,88,103,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_KOL_A,88,116,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_REC_A,88,129,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SPIO_A,88,142,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_BOMB_A,88,155,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_ZERR_A,88,181,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_TS_A,88,194,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_IC_A,88,207,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_KT_V,158,38,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_GT_V,158,51,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_LJ_V,158,64,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SJ_V,158,77,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_KR_V,158,90,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SS_V,158,103,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_KOL_V,158,116,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_REC_V,158,129,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SPIO_V,158,142,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_BOMB_V,158,155,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SOL_V,158,168,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_ZERR_V,158,181,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_TS_V,158,194,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_IC_V,158,207,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_RAK_V,159,248,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_LL_V,159,262,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SL_V,159,276,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_GA_V,159,290,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_IO_V,159,304,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_PLASMA_V,159,318,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_KS_V,159,332,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_GS_V,159,346,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    PUSHBUTTON      "Wellenstatus zurücksetzen",IDC_DELWAVESTATE,33,369,89,12
+    PUSHBUTTON      "Nächste Welle vorbereiten",IDC_LOAD_REM_DEF,127,369,96,12,WS_DISABLED
+    EDITTEXT        IDC_WAFF_A,334,26,20,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SCHILD_A,334,40,20,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_PANZ_A,334,54,20,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_WAFF_V,376,26,20,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_SCHILD_V,376,40,20,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_PANZ_V,376,54,20,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_VERBRENNUNG,488,26,19,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_IMPULS,488,40,19,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    EDITTEXT        IDC_HYPERRAUM,488,54,19,12,ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
+    CONTROL         "Skin verwenden",IDC_USE_SKIN,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | WS_TABSTOP,254,83,126,10
+    PUSHBUTTON      "Skin wechseln...",IDC_CHG_SKIN,386,83,79,12
+    CONTROL         "Sprachdatei verwenden",IDC_USE_LANG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,254,96,126,10
+    PUSHBUTTON      "Choose Language",IDC_CHG_LANG,386,96,79,12
+    CONTROL         "B/W-Case automatisch ausgeben",IDC_BW_CASE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,254,110,132,9
+    PUSHBUTTON      "B/W-Case zeigen",IDC_SHOW_BW,386,109,79,12
+    PUSHBUTTON      "Bilanz zeigen",IDC_BILANZ,386,122,79,12
+    CONTROL         "Rapid Fire",IDC_RAPID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,254,134,60,10
+    CONTROL         "Def ins TF (Uni 14, 15, 20, 25)",IDC_DEFTF,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,254,148,131,10
+    CONTROL         "Techs des Angreifers auf 0 setzen, wenn diese beim Verteidiger auch 0 sind.",IDC_CHECKTECHS,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,386,136,118,25
+    CONTROL         "Defense beim Flottentausch löschen",IDC_DEL_DEF_ON_SWITCH,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,254,162,131,10
+    CONTROL         "Zwischenablage überwachen",IDC_HOOK_CB,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,386,162,125,10
+    EDITTEXT        IDC_GEN_READ,245,187,105,12,ES_MULTILINE | ES_AUTOHSCROLL | WS_VSCROLL
+    PUSHBUTTON      "einlesen",IDC_READ_GEN,351,187,36,12
+    PUSHBUTTON      "löschen",IDC_DEL_GEN,389,187,36,12
+    COMBOBOX        IDC_SPEED,435,187,40,97,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_OWN_POS,257,211,50,78,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "X",IDC_DEL_COORD,244,211,12,12,BS_VCENTER
+    EDITTEXT        IDC_NUM_SIM,418,206,22,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    PUSHBUTTON      "Kampf simulieren",IDC_SIM,445,204,72,25,BS_NOTIFY
+    EDITTEXT        IDC_SCAN_END,317,236,127,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "M",IDC_IS_MOON,"Button",BS_AUTOCHECKBOX | BS_NOTIFY | WS_TABSTOP,445,235,18,10
+    PUSHBUTTON      "Bearbeiten...",IDC_EDIT_SPIO,466,234,50,12
+    EDITTEXT        IDC_END,317,248,195,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_TF,317,259,195,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_MOND,317,270,195,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_VERL_A,317,281,195,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_VERL_V,317,295,195,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    LTEXT           "",IDC_BEUT_TH,317,308,195,16,SS_NOTIFY
+    LTEXT           "",IDC_BEUT_PRAK,317,324,195,16,SS_NOTIFY
+    LTEXT           "",IDC_FLYCOST,317,343,195,8,SS_NOTIFY
+    EDITTEXT        IDC_FLUGZEIT,317,355,195,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    EDITTEXT        IDC_BEUT_GES,317,371,195,12,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    PUSHBUTTON      "Update-Check",IDC_UPDATE,7,390,80,14,BS_NOTIFY
+    PUSHBUTTON      "Kampfbericht",IDC_SHOW_KB,117,390,80,14
+    PUSHBUTTON      "Kampf in die Zwischenablage kopieren",IDC_CLIP_COPY,206,390,130,14
+    PUSHBUTTON      "PopUp zeigen / Minimieren",IDC_SHOWPOPUP,342,390,92,14
+    PUSHBUTTON      "Beenden",IDC_EXIT,438,390,80,14
+    LTEXT           "->",IDC_STATIC,119,40,8,8
+    GROUPBOX        "Flotte",IDC_GB_FLEET,7,21,231,204
+    CONTROL         "Kleiner Transporter",IDC_S1,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,13,38,72,8
+    CONTROL         "Großer Transporter",IDC_S2,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,52,72,8
+    CONTROL         "Leichter Jäger",IDC_S3,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,65,72,8
+    CONTROL         "Schwerer Jäger",IDC_S4,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,78,72,8
+    CONTROL         "Kreuzer",IDC_S5,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,90,72,8
+    CONTROL         "Schlachtschiff",IDC_S6,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,103,72,8
+    CONTROL         "Kolonieschiff",IDC_S7,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,116,72,8
+    CONTROL         "Recycler",IDC_S8,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,129,72,8
+    CONTROL         "Spionagesonde",IDC_S9,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,142,72,8
+    CONTROL         "Bomber",IDC_S10,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,155,72,8
+    CONTROL         "Solar Satellit",IDC_S11,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,168,72,8
+    CONTROL         "Zerstörer",IDC_S12,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,181,72,8
+    CONTROL         "Todesstern",IDC_S13,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,194,72,8
+    GROUPBOX        "Verteidigung",IDC_GB_DEF,7,228,231,157
+    CONTROL         "Raketenwerfer",IDC_D1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,248,89,8
+    CONTROL         "Leichtes Lasergeschütz",IDC_D2,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,262,89,8
+    CONTROL         "Schweres Lasergeschütz",IDC_D3,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,276,89,8
+    CONTROL         "Gaußkanone",IDC_D4,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,290,89,8
+    CONTROL         "Ionengeschütz",IDC_D5,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,304,89,8
+    CONTROL         "Plasmawerfer",IDC_D6,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,318,89,8
+    CONTROL         "Kleine Schildkuppel",IDC_D7,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,332,89,8
+    CONTROL         "Große Schildkuppel",IDC_D8,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,347,89,8
+    GROUPBOX        "Forschungen",IDC_GB_TECHS,244,4,275,68
+    CONTROL         "Waffentechnik",IDC_T1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,251,26,82,8
+    CONTROL         "Schildtechnik",IDC_T2,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,251,41,82,8
+    CONTROL         "Raumschiffpanzerung",IDC_T3,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,251,55,82,8
+    CTEXT           "Angreifer",IDC_ATT1,89,28,43,8
+    CTEXT           "Verteidiger",IDC_DEF1,161,28,43,8
+    LTEXT           "---",IDC_STATIC,98,168,8,8
+    CTEXT           "Angreifer",IDC_ATT2,81,238,54,8
+    CTEXT           "Verteidiger",IDC_DEF2,163,238,43,8
+    CTEXT           "Angreifer",IDC_ATT3,323,16,43,8
+    CTEXT           "Verteidiger",IDC_DEF3,367,16,43,8
+    LTEXT           "->",IDC_STATIC,119,53,8,8
+    LTEXT           "->",IDC_STATIC,119,65,8,8
+    LTEXT           "->",IDC_STATIC,119,79,8,8
+    LTEXT           "->",IDC_STATIC,119,105,8,8
+    LTEXT           "->",IDC_STATIC,119,92,8,8
+    LTEXT           "->",IDC_STATIC,119,118,8,8
+    LTEXT           "->",IDC_STATIC,119,131,8,8
+    LTEXT           "->",IDC_STATIC,119,144,8,8
+    LTEXT           "->",IDC_STATIC,119,157,8,8
+    LTEXT           "->",IDC_STATIC,119,183,8,8
+    LTEXT           "->",IDC_STATIC,119,196,8,8
+    LTEXT           "->",IDC_STATIC,189,170,8,8
+    LTEXT           "->",IDC_STATIC,189,40,8,8
+    LTEXT           "->",IDC_STATIC,189,53,8,8
+    LTEXT           "->",IDC_STATIC,189,66,8,8
+    LTEXT           "->",IDC_STATIC,189,79,8,8
+    LTEXT           "->",IDC_STATIC,189,105,8,8
+    LTEXT           "->",IDC_STATIC,189,92,8,8
+    LTEXT           "->",IDC_STATIC,189,118,8,8
+    LTEXT           "->",IDC_STATIC,189,131,8,8
+    LTEXT           "->",IDC_STATIC,189,144,8,8
+    LTEXT           "->",IDC_STATIC,189,157,8,8
+    LTEXT           "->",IDC_STATIC,189,183,8,8
+    LTEXT           "->",IDC_STATIC,189,196,8,8
+    LTEXT           "->",IDC_S_ARROW,191,250,8,8
+    LTEXT           "->",IDC_STATIC,191,264,8,8
+    LTEXT           "->",IDC_STATIC,191,278,8,8
+    LTEXT           "->",IDC_STATIC,191,292,8,8
+    LTEXT           "->",IDC_STATIC,191,320,8,8
+    LTEXT           "->",IDC_STATIC,191,306,8,8
+    LTEXT           "->",IDC_STATIC,191,334,8,8
+    LTEXT           "->",IDC_STATIC,191,348,8,8
+    LTEXT           "---",IDC_S_NONE,103,248,8,8
+    LTEXT           "---",IDC_STATIC,103,263,8,8
+    LTEXT           "---",IDC_STATIC,103,276,8,8
+    LTEXT           "---",IDC_STATIC,103,304,8,8
+    LTEXT           "---",IDC_STATIC,103,290,8,8
+    LTEXT           "---",IDC_STATIC,103,318,8,8
+    LTEXT           "---",IDC_STATIC,103,347,8,8
+    LTEXT           "---",IDC_STATIC,103,332,8,8
+    GROUPBOX        "Kampfauswertung",IDC_GB_RES,244,228,275,157
+    CONTROL         "Scanbericht",IDC_S_SCAN,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,236,63,8
+    CONTROL         "Ausgang",IDC_S_END,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,248,63,8
+    CONTROL         "Trümmerfeld",IDC_S_TF,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,259,63,8
+    CONTROL         "Verluste Angreifer",IDC_S_LOSS_ATT,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,281,63,8
+    CONTROL         "Mondbildung",IDC_S_MOON,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,270,63,8
+    CONTROL         "Theoretische Beute",IDC_S_THBEUT,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,308,67,8
+    CONTROL         "Praktische Beute",IDC_S_PRAKBEUT,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,324,67,8
+    LTEXT           "",IDC_KT_A_E,125,40,30,8
+    LTEXT           "",IDC_KT_V_E,195,40,30,8
+    LTEXT           "",IDC_GT_A_E,125,53,30,8
+    LTEXT           "",IDC_GT_V_E,195,53,30,8
+    LTEXT           "",IDC_LJ_A_E,125,65,30,8
+    LTEXT           "",IDC_LJ_V_E,195,66,30,8
+    LTEXT           "",IDC_SJ_A_E,125,79,30,8
+    LTEXT           "",IDC_SJ_V_E,195,79,30,8
+    LTEXT           "",IDC_KR_A_E,125,92,30,8
+    LTEXT           "",IDC_KR_V_E,195,92,30,8
+    LTEXT           "",IDC_SS_A_E,125,105,30,8
+    LTEXT           "",IDC_SS_V_E,195,105,30,8
+    LTEXT           "",IDC_KOL_A_E,125,118,30,8
+    LTEXT           "",IDC_KOL_V_E,195,118,30,8
+    LTEXT           "",IDC_REC_A_E,125,131,30,8
+    LTEXT           "",IDC_REC_V_E,195,131,30,8
+    LTEXT           "",IDC_SPIO_A_E,125,144,30,8
+    LTEXT           "",IDC_SPIO_V_E,195,144,30,8
+    LTEXT           "",IDC_BOMB_A_E,125,157,30,8
+    LTEXT           "",IDC_BOMB_V_E,195,157,30,8
+    LTEXT           "",IDC_SOL_V_E,195,170,30,8
+    LTEXT           "",IDC_ZERR_V_E,195,183,30,8
+    LTEXT           "",IDC_ZERR_A_E,125,183,30,8
+    LTEXT           "",IDC_TS_A_E,125,196,30,8
+    LTEXT           "",IDC_TS_V_E,195,196,30,8
+    LTEXT           "",IDC_RAK_V_E,197,250,30,8
+    LTEXT           "",IDC_LL_V_E,197,264,30,8
+    LTEXT           "",IDC_SL_V_E,197,278,30,8
+    LTEXT           "",IDC_GA_V_E,197,292,30,8
+    LTEXT           "",IDC_IO_V_E,197,306,30,8
+    LTEXT           "",IDC_PLASMA_V_E,197,320,30,8
+    LTEXT           "",IDC_KS_V_E,197,334,30,8
+    LTEXT           "",IDC_GS_V_E,197,348,30,8
+    CONTROL         "Anzahl der Simulationsdurchläufe",IDC_S_NUMSIM,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,309,208,108,8
+    CONTROL         "Verluste Verteidiger",IDC_S_LOSSDEF,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,295,63,8
+    LTEXT           "Warte...",IDC_RUNNING_NUM,310,219,119,9
+    CONTROL         "Eigene Position",IDC_S_POS,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,244,202,60,8
+    CONTROL         "Treibstoffverbrauch",IDC_S_SPRIT,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,343,63,8
+    CONTROL         "Gesamtbeute",IDC_S_WELLBEUT,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,371,62,8
+    LTEXT           "Einlesefeld",IDC_S_GEN_READ,245,177,103,8
+    GROUPBOX        "Optionen",IDC_GB_OPT,244,73,275,103
+    LTEXT           "Verbrennungstriebw.",IDC_S_VERBR,409,28,78,8
+    LTEXT           "Impulstriebwerk",IDC_S_IMPULS,409,41,78,8
+    LTEXT           "Hyperraumantrieb",IDC_S_HYPER,409,55,78,8
+    LTEXT           "Flottengeschwindigkeit",IDC_S_FLEETSPEED,434,177,82,8
+    CONTROL         "Flugdauer",IDC_S_FLYTIME,"Static",SS_LEFTNOWORDWRAP | SS_NOTIFY | WS_GROUP,249,356,59,8
+    CTEXT           "Triebwerke",IDC_S_ENGINES,415,16,85,8
+    LTEXT           "AKS-Flottenslot",IDC_S_FLEETS,9,8,67,8
+    LTEXT           "",IDC_RAIDLISTINFO,137,13,26,8
+    CONTROL         "Schlachtkreuzer",IDC_S14,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,207,72,8
+    LTEXT           "->",IDC_STATIC,119,208,8,8
+    LTEXT           "->",IDC_STATIC,189,208,8,8
+    LTEXT           "",IDC_IC_A_E,125,208,30,8
+    LTEXT           "",IDC_IC_V_E,195,208,30,8
+END
+
+IDD_UPDATE DIALOGEX 0, 0, 293, 191
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Update-Check"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_UPD_OUT,7,6,279,153,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL
+    PUSHBUTTON      "Update-Check",IDC_START_UPD,6,162,81,14
+    PUSHBUTTON      "SpeedSim-Homepage",IDC_SPEED_HOME,104,162,95,14
+    DEFPUSHBUTTON   "Schließen",IDC_CLOSE,226,162,60,14
+    CONTROL         "Täglich auf Update prüfen",IDC_DAYLY_UPD,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,178,155,10
+END
+
+IDD_CHGSPIO DIALOGEX 0, 0, 186, 81
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Spiobericht"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_SPIOMET,52,14,40,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_SPIOKRIS,52,28,40,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_SPIODEUT,52,42,40,12,ES_AUTOHSCROLL | ES_NUMBER
+    EDITTEXT        IDC_SPIOPOS,105,15,40,12,ES_AUTOHSCROLL
+    CONTROL         "M",IDC_IS_MOON,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,147,16,22,10
+    EDITTEXT        IDC_SPIONAME,105,41,49,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Wellenstatus löschen",IDC_DELWAVESTATE,4,65,73,14
+    PUSHBUTTON      "Abbrechen",IDCANCEL,92,65,50,14
+    DEFPUSHBUTTON   "OK",IDOK,144,65,37,14
+    LTEXT           "Metall",IDC_METAL,10,16,35,8
+    GROUPBOX        "Ressoucen",IDC_RES,4,3,96,59
+    LTEXT           "Kristall",IDC_CRYSTAL,10,30,37,8
+    LTEXT           "Deuterium",IDC_DEUTERIUM,10,45,40,8
+    LTEXT           "Position",IDC_POSITION,105,6,60,8
+    CONTROL         "Name",IDC_S_NAME,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,105,32,74,8
+END
+
+IDD_OPTIONS DIALOGEX 0, 0, 247, 203
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION "Optionen"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDC_OPT_OK,193,184,50,14
+    CONTROL         "Tab1",IDC_OPT_TAB,"SysTabControl32",TCS_HOTTRACK | TCS_RAGGEDRIGHT,3,1,241,180
+    PUSHBUTTON      "Abbrechen",IDC_OPT_CANCEL,119,184,65,14
+END
+
+IDD_OPT_PAGE1 DIALOGEX 0, 0, 236, 152
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+EXSTYLE WS_EX_TRANSPARENT
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "SpeedSim mit Windows starten",IDC_AUTOSTART,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,6,222,10
+    CONTROL         "Beim Start minimieren",IDC_TRAY_ON_START,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,19,222,10
+    CONTROL         "Nur eine Instanz von SpeedSim erlauben",IDC_SINGLE_INST,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,34,222,10
+    CONTROL         "Beim Minimieren ins Systray verkleinern",IDC_SYSTRAY,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,48,222,10
+    CONTROL         "Popup, wenn etwas aus OGame eingelesen wurde",IDC_TRAY_POPUP,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,61,222,10
+    LTEXT           "(funktioniert nur, wenn Zwischenablage überwacht wird)",IDC_S_TRAY_POPUP,19,71,209,8
+    CONTROL         "Slider1",IDC_PERC_TRACKBAR,"msctls_trackbar32",TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,15,99,170,10
+    CONTROL         "Slider1",IDC_PERC_TRACKBAR2,"msctls_trackbar32",TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,15,128,170,10
+    LTEXT           "Transparenz für PopUp (nur Win2k/XP)",IDC_PERC_INFO,15,90,195,8
+    LTEXT           "",IDC_PERC_OUT,187,101,29,8
+    LTEXT           "Transparenz für SpeedSim (gesamt)",IDC_PERC_INFO2,15,116,186,8
+    LTEXT           "",IDC_PERC_OUT2,186,130,29,8
+    GROUPBOX        "Transparenz",IDC_OPT_TRANS,5,81,223,62
+END
+
+IDD_OPT_PAGE2 DIALOGEX 0, 0, 236, 163
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_DEF_REBUILD,133,15,15,12,ES_NUMBER
+    CONTROL         "Verteidigung kleiner 10 vollständig wieder aufbauen",IDC_REB_SMALLDEF,
+                    "Button",BS_AUTOCHECKBOX | BS_TOP | BS_MULTILINE | WS_TABSTOP,11,28,213,18
+    COMBOBOX        IDC_SHIPTYPE,114,102,111,83,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Schiffstyp zur Berechnung der theroretischen Beute:",IDC_S_PLUNDERTYPE,7,92,222,8
+    LTEXT           "Wiederaufbauwert der Verteidigung",IDC_S_DEF_REBUILD,11,17,118,8
+    LTEXT           "%",IDC_STATIC,149,17,8,8
+    LTEXT           "-fache Geschwindigkeit",IDC_S_SPEED_FACTOR,31,117,149,8
+    EDITTEXT        IDC_SPEED_FAC_IN,7,115,23,12,ES_NUMBER
+    CONTROL         "Spin3",IDC_SPIN_SP_FAC,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNLEFT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_HOTTRACK,12,101,7,14
+    GROUPBOX        "Nächste Welle",IDC_S_NEXTWAVE,3,5,226,83
+    CONTROL         "besten Fall",IDC_REB_BEST,"Button",BS_AUTORADIOBUTTON,51,77,104,10
+    CONTROL         "schlechtesten Fall",IDC_REB_WORST,"Button",BS_AUTORADIOBUTTON,51,67,104,10
+    CONTROL         "Durchschnitt",IDC_REB_AVG,"Button",BS_AUTORADIOBUTTON,51,58,104,10
+    LTEXT           "Verteidigung aufbauen basierend auf...",IDC_S_REBUILD,11,46,199,8
+    CONTROL         "Alte Schlachtschiffdaten verwenden",IDC_OLD_BS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,130,222,10
+    EDITTEXT        IDC_BIG_DF,7,142,15,12,ES_NUMBER
+    LTEXT           "% of structure points into Debris Field",IDC_BIG_DF_S,24,144,201,8
+END
+
+IDD_OPT_PAGE3 DIALOGEX 0, 0, 236, 152
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "Own RapidFire",IDC_OWNRF,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,20,118,10
+    PUSHBUTTON      "...",IDC_LOADRFDATA,129,19,15,11
+    CONTROL         "Read ship data from file",IDC_OWNSHIPDATA,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,40,118,10
+    PUSHBUTTON      "...",IDC_LOADSHIPDATA,129,40,15,11
+    LTEXT           "",IDC_S_LOADEDRF,102,61,129,8
+    LTEXT           "Loaded RF-File:",IDC_S_LOADED_RF,7,63,91,8
+    LTEXT           "",IDC_S_LOADEDSD,102,74,129,8
+    LTEXT           "Loaded SD-File:",IDC_S_LOADED_SD,7,74,91,8
+END
+
+IDD_CHOOSELANG DIALOGEX 0, 0, 163, 102
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Choose Language"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDC_LANGFILES,7,7,149,77,LBS_SORT | LBS_NOINTEGRALHEIGHT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Get language files!",IDC_GETLANG,7,88,75,12
+    DEFPUSHBUTTON   "OK",IDC_SET_LANG,106,88,50,12
+END
+
+IDD_INPUTBOX DIALOGEX 0, 0, 137, 46
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",ID_OK,82,29,50,14
+    EDITTEXT        IDC_EINGABE,5,15,127,12
+    LTEXT           "Static",IDC_TITLE,6,6,127,8
+END
+
+IDD_POPUP DIALOGEX 0, 0, 178, 86
+STYLE DS_SYSMODAL | DS_SETFONT | DS_SETFOREGROUND | DS_FIXEDSYS | WS_POPUP
+EXSTYLE WS_EX_TOOLWINDOW
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+END
+
+IDD_ESPIO_MANAG1 DIALOG  0, 0, 285, 151
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_CENTER | WS_CHILD | WS_DISABLED | WS_CAPTION | WS_SYSMENU
+CAPTION "Spionageberichte verwalten"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "List1",IDC_ESPIOAVAIL,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,10,18,120,105
+    CONTROL         "List1",IDC_ESPIONEXT,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_SORTASCENDING | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,155,18,120,105
+    PUSHBUTTON      "->",IDC_MOVERIGHT,133,36,20,14
+    PUSHBUTTON      "<-",IDC_MOVELEFT,133,83,20,14
+    PUSHBUTTON      "Alle",IDC_MOVEALL,133,53,20,14
+    GROUPBOX        "Spionageberichte auswählen",IDC_GB_CHOOSE_REP,4,0,275,130
+    LTEXT           "Vorhanden",IDC_STATIC,10,10,36,8
+    LTEXT           "Ausgewählt",IDC_STATIC,156,10,38,8
+    PUSHBUTTON      "Text aus Zwischenablage holen",IDC_GETTEXT,5,133,115,14
+    CONTROL         "vorhandene SB's nicht löschen",IDC_DONTDEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,124,135,128,10
+END
+
+IDD_ESPIO_MANAG2 DIALOG  0, 0, 270, 150
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Optionen zum Aussortieren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Maximalzahl der Spionageberichte",IDC_STATIC,5,10,130,8
+    GROUPBOX        "Folgende Faktoren einbeziehen",IDC_STATIC,5,30,195,70
+    CONTROL         "Flottenwert (TF Wert)",IDC_USE_FLEET,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,20,56,172,10
+    CONTROL         "Ressourcen",IDC_USE_RES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,20,45,175,10
+    CONTROL         "Verteidigung (wird von der Flotte abgezogen)",IDC_USE_DEF,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,20,68,175,10
+    PUSHBUTTON      "Als Standard verwenden",IDC_AS_STANDARD,157,122,100,14
+    EDITTEXT        IDC_MAX_ESPIO,136,10,25,12,ES_NUMBER
+    CONTROL         "Spin2",IDC_NUMSPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS | UDS_HOTTRACK,163,8,11,14
+END
+
+IDD_ESPIO_MANAG3 DIALOGEX 0, 0, 270, 150
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ergebnis"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "List1",IDC_ESPIO_RESULT,"SysListView32",LVS_REPORT | LVS_SORTDESCENDING | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,9,12,142,100
+    EDITTEXT        IDC_ESPIO_INFO,156,13,107,99,ES_MULTILINE | ES_READONLY | NOT WS_BORDER,WS_EX_STATICEDGE
+    PUSHBUTTON      "Aktuellen übernehmen",IDC_TO_SIM,180,117,78,14
+    PUSHBUTTON      "Alle in Raidliste",IDC_TO_RAIDLIST,109,117,64,14
+END
+
+IDD_ESP_REPORTS DIALOGEX 0, 0, 154, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_TOOLWINDOW | WS_EX_CONTROLPARENT
+CAPTION "Espionage Report History"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "List1",IDC_REPORT_LIST,"SysListView32",LVS_REPORT | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,4,5,146,112
+    PUSHBUTTON      "Del selected",IDC_DEL_CUR_REP,2,155,69,13
+    PUSHBUTTON      "Close",IDC_CLOSE_ESP_HIST,96,155,55,13
+    CONTROL         "Double-Click to load report",IDC_S_INFO_ESP,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,2,120,141,8
+    CONTROL         "Disable History",IDC_DISABLE_REP_HIST,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,2,130,131,10
+    CONTROL         "Save reports on exit",IDC_SAVE_REP,"Button",BS_AUTOCHECKBOX | BS_LEFT | BS_VCENTER | WS_TABSTOP,2,140,85,10
+    EDITTEXT        IDC_NUM_REP,139,139,14,12,ES_NUMBER
+    RTEXT           "No. Reports",IDC_NUM_REP_T,93,141,42,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_BALANCE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 255
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 103
+    END
+
+    IDD_OPTIONS, DIALOG
+    BEGIN
+        BOTTOMMARGIN, 196
+    END
+
+    IDD_ESP_REPORTS, DIALOG
+    BEGIN
+        RIGHTMARGIN, 153
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON                ICON                    "icons\\ThanosS_mit_ogameschrift.ico"
+IDI_ICON2               ICON                    "icons\\wasser_plani.ico"
+IDI_ICON1               ICON                    "icons\\Saturn2.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU MENU 
+BEGIN
+    POPUP "&Datei"
+    BEGIN
+        POPUP "Einstellungen speichern"
+        BEGIN
+            MENUITEM "(neu)",                       ID_DATEI_EINSTELLUNGENSPEICHERN_NEU
+        END
+        POPUP "Einstellungen laden"
+        BEGIN
+            MENUITEM "(keine)",                     ID_DATEI_EINSTELLUNGENLADEN_KEINE, GRAYED
+        END
+        POPUP "Einstellungen löschen"
+        BEGIN
+            MENUITEM "(keine)",                     ID_DATEI_EINSTELLUNGENLSCHEN_KEINE, GRAYED
+        END
+        MENUITEM "Technologien speichern",      ID_DATEI_TECHNOLOGIEENSPEICHERN
+        MENUITEM "Erweiterte Einstellungen\tF4", ID_DATEI_ERWITERTEEINSTELLUNGEN
+        MENUITEM "Spionageberichtsverlauf\tF2", IDM_SHOW_ESPHIST
+        MENUITEM SEPARATOR
+        MENUITEM "&Beenden",                    IDM_CLOSE
+    END
+    POPUP "&Flotten"
+    BEGIN
+        POPUP "&Speichern"
+        BEGIN
+            POPUP "Angreifende Flotte"
+            BEGIN
+                MENUITEM "(neu)",                       ID_FLOTTEN_SPEICHERN_ANGREIFER_NEU
+            END
+            POPUP "Verteidigende Flotte"
+            BEGIN
+                MENUITEM "(neu)",                       ID_FLOTTEN_SPEICHERN_VERTEIDIGER_NEU
+            END
+        END
+        POPUP "&Laden"
+        BEGIN
+            POPUP "In Angreifer"
+            BEGIN
+                MENUITEM "(keine)",                     ID_FLOTTEN_LADEN_ANGREIFER_1, GRAYED
+            END
+            POPUP "In Verteidiger"
+            BEGIN
+                MENUITEM "(keine)",                     ID_FLOTTEN_LADEN_VERTEIDIGER_1, GRAYED
+            END
+        END
+        POPUP "Löschen"
+        BEGIN
+            MENUITEM "(keine)",                     ID_FLOTTEN_LSCHEN_KEINE, GRAYED
+        END
+        MENUITEM "Alle Flotten zurücksetzen",   ID_FLOTTEN_ALLEFLOTTENSLOTSLEEREN
+    END
+    POPUP "&Language"
+    BEGIN
+        MENUITEM "Deutsch",                     ID_LANGUAGE_DEUTSCH
+    END
+    MENUITEM "IPM-Mode",                    IDM_IPMMODE
+    MENUITEM "&Info",                       IDM_ABOUT
+END
+
+IDR_TRAY_MENU MENU 
+BEGIN
+    POPUP "Tray"
+    BEGIN
+        MENUITEM "Wiederherstellen",            ID__WIEDERHERSTELLEN
+        MENUITEM SEPARATOR
+        MENUITEM "Info",                        ID_TRAY_INFO
+        MENUITEM "SpeedSim beenden",            ID__SPEEDSIMBEENDEN
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_ACCEL ACCELERATORS 
+BEGIN
+    "1",            ID_SLOT1,               VIRTKEY, CONTROL, NOINVERT
+    "2",            ID_SLOT2,               VIRTKEY, CONTROL, NOINVERT
+    "3",            ID_SLOT3,               VIRTKEY, CONTROL, NOINVERT
+    "4",            ID_SLOT4,               VIRTKEY, CONTROL, NOINVERT
+    "5",            ID_SLOT5,               VIRTKEY, CONTROL, NOINVERT
+    "E",            ID_EDIT_ESP,            VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_NEWINSTANCE,         VIRTKEY, CONTROL, NOINVERT
+    VK_ESCAPE,      ID_ESCAPE,              VIRTKEY, NOINVERT
+    VK_F2,          ID_SHOW_HIST,           VIRTKEY, NOINVERT
+    VK_F4,          ID_SHOWOPTS,            VIRTKEY, NOINVERT
+    VK_LEFT,        ID_PREVFLEET,           VIRTKEY, CONTROL, NOINVERT
+    VK_RETURN,      ID_ENTER,               VIRTKEY, NOINVERT
+    VK_RETURN,      ID_SHOWPOPUP,           VIRTKEY, CONTROL, NOINVERT
+    VK_RIGHT,       ID_NEXTFLEET,           VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_PROJ_SUPPORT        BITMAP                  "project-support.bmp"
+IDB_POPUPBG             BITMAP                  "PopUpBG.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,9,8,1
+ PRODUCTVERSION 0,9,8,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "Comments", "Licensed under the terms and conditions of the GNU GPL"
+            VALUE "CompanyName", "SpeedSim Developers"
+            VALUE "FileDescription", "SpeedSim - The OGame Combat Simulator"
+            VALUE "FileVersion", "0, 9, 8, 1"
+            VALUE "InternalName", "SpeedSim"
+            VALUE "LegalCopyright", "Copyright © 2004-2008 Nicolas Höft & Maximilian Matthé"
+            VALUE "OriginalFilename", "SpeedSim.exe"
+            VALUE "ProductName", "SpeedSim"
+            VALUE "ProductVersion", "0, 9, 8, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// RT_MANIFEST
+//
+
+IDR_MYMANIFEST          RT_MANIFEST             "SpeedSim.exe.manifest"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

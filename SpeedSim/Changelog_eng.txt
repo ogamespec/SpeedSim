@@ -1,0 +1,381 @@
+SpeedSim.exe:
+~~~~~~~~~~~~~~
+v0.9.8.1b
+	- fix: saving/loading/displaying ABMs in report history
+	- fix: fleets being saved/loaded incorrectly
+	- chg: for Vista compatibility: options and html reports are saved
+	       in %AppData%\SpeedSim now
+	- fix: small graphic bugs
+	
+v0.9.8.0b
+	- fix: wrong time zone in esp. history
+	- new: position & size of esp. history are being saved now
+	- new: using correct decimal point automatically
+	- new: it's possible to save the reports in history
+	- fix: possible memory leak
+	- new: Battlecruiser added to tool tip of theoretic plunder
+
+v0.9.7.0b
+	- fix: RF-Files could not be (un)loaded
+	- fix: Window not being redrawn sometimes
+	- fix: minor fixes for skinning
+	- new: Name/Coords of target planet will be scrolled to the right
+	- fix: (IPR-Sim) Buttons were at strange positions when higher DPI
+	  were used
+	- new: Espionage report histroy (show/hide with [F2])
+	- fix: fuel from previous attacks also used for wave losses now
+	- new: Display target info with [Ctrl]+E
+
+v0.9.6.1b
+	- fix: Battlecruisers result will be deleted now
+	- chg: Balance copyable
+	- chg: Changed position of button to delete positions
+	- chg: (IPR-Sim) Check-Boxes instead of Radiobuttons
+	- chg: many internal changes
+	- new: Option to change behaviour of wave attacks
+	- new: Cancel-button in extended options
+	- chg: added language name to language dialog
+	- chg: removed shield calculation option
+
+v0.9.6.0b
+	- fix: GDI-Leak when skinning is activated
+	- new: Battlecruiser
+	- new: Delete coordinates over a button
+	- fix: reset wave state working again
+	- fix: tab order
+
+v0.9.5.3b
+	- fix: Next Wave bug
+	- chg: if you read in an espionage report, ABMs will be removed
+	- new: now you can manually set the game speed
+	- new: set the name of the attacked planet
+	- fix: copy result to clipboard did not work with unicode
+	- fix: (IPR-Sim) Result of Missiles are taken over now
+	- chg: new installer icons (thx to EleCTro_GHeTTo!)
+	- fix: on first start profile question came before language
+	  selection
+
+v0.9.5.1b
+	- fix: (IPM-Sim) ABMs have been removed
+	- fix: (IPM-Sim) Techs are not being mixed up anymore
+	- fix: Cancelling with [Enter] possible again
+	- fix: Problem with e.g. kyrillic characters
+	- new: added LC_Ships_Res_Def & LC_Ships_Res_Att for skinning
+	- new: (IPM-Sim) Needed missiles under input field
+
+v0.9.5.0b
+	- chg: removed espionage probes from theoretical plunder
+	- fix: missing translations
+	- new: Interplanetary Missiles simulator
+	- chg: Transparency of PopUp is being saved now
+	- new: Transparency of SpeedSim window adjustable
+	- fix: (Skinning) problems with css files
+
+v0.9.4.4b
+	- fix: now CRs and BWC look good also with activated skin
+
+v0.9.4.3b
+	- fix: when switching the fleetslot the flying time changed
+	- fix: deactivating skins changed the font
+	- fix: the menu wasn't translated after first start
+	- fix: the monitoring of the clipboard was not ended correctly
+	  (thx to MrHiggins)
+	- fix: removed skinning problems if the background image 
+	  did not had the correct size
+	- fix: in some cases needed deuterium was not calculated
+	- chg: SpeedSim does not disappear anymore if you edit the 
+	  espionage report
+	- new: [Ctrl]+[Enter] opens the raid popup
+	- new: you can now set a transparent color for buttons
+      (set 'Button_TransColor' in section [Colors])
+	- new: recycler time added to flying time
+	- new: skinners can set their own css files for CRs and BWC file
+	  (therefore set the keys 'CSS_BWC' and 'CSS_CR' in [General])
+	- new: possibility to load own ship data and rf tables (extended
+	  options)
+
+v0.9.4.2b
+	- UnicoWS.dll not needed for unicode version anymore
+	- fix when changing profiles
+	- monitoring of clipboard did not worked in unicode version
+	- when switching language to german no restart is needed anymore
+	- now maximum, minimum and average number of needed recyclers are
+	  shown in the tooltip of debris information
+	- you can change skins now without restarting speedsim
+	- many other bugfixes
+	- Option for Uni50 in extended options (german ogame only)
+	
+v0.9.4.1b
+	- fixed various bugs with the raid list
+	- "64d" problem fixed (for WinE users)
+	- other minor fixes
+	
+v0.9.4.0b
+	- new: raid list: this is a new feature for easy planning
+		   more attacks
+		   -> add/delete over '+' / '-' in 'Raid List'
+		   -> switching over '->' or '<-' or in the popup with
+		      a right mouse button click
+	- transparency setable for the popup (Win2k/XP only)
+	- popup restores now automatically if you restore SpeedSim
+	- sorted the options dialog a bit better
+	- Ship technologies are now saved with the fleet
+	- moons are now detected in espionage reports and can be set
+	  (check 'M' in the battle result)
+	  in popup e.g.  [1:111:1M] if moon has been detected
+	- added espionage probe in ToolTip for theoretic plunder
+	- many bugfixes and minor changes
+
+v0.9.3.1b
+	- you can switch between old and new shield calculation
+	  (only change, if you know, what you do!)
+	- now the coordinates should be fully visible in all cases
+	- it is possible to choose the ship used for theoretic plunder
+	- now a tooltip shows up in the lines of the battle result the 
+	  text is cut
+	- minor fixes
+
+v0.9.3.0b
+	- corrected IRC address
+	- new popup which is in foreground that you wont forget how many ships
+	  you took :)
+	- languages now switchable over the menu
+	- added popup that contains information about your target and your 
+	  attacking fleet (thx to "eXcezZ" for background)
+	- reset wave state now also next to "Prepare for next wave"
+	- now possible to set an option that defense units less then 10
+	  will be rebuilted completely
+	- text in battle result wont blur anymore when no skin is turned on
+	  and you move the content
+	- new point on fleet menu "Reset All Fleets" to remove all fleets from
+	  ACS fleet slots
+	- you can switch between ACS fleet slots via [Ctrl]+[left]/[right]
+	- updated various skinning stuff
+
+v0.9.2.5b
+	- you can minimize SpeedSim now to the system tray
+	- SpeedSim can now popup automatically if a OGame text has been copied
+	  into the clipboard
+	- fix with rebuild factor of defense
+	- new options: autostart SpeedSim, minimize on start, allow only one
+	  instance
+	- technologies now extra over menu saveable
+	- completely rewrote save system, new file name: SpeedSim.cfg
+	- you can name options and fleets now
+	- first 5 options can be switched via [Ctrl]+[Num]
+	- new instace of SpeedSim via [Ctrl]+[N] startable
+	- show extended options via [F4]
+
+v0.9.2.1b
+	- skins work again
+	- rebuild rate of defense will be now constant after saving options
+
+v0.9.2.0b
+	- added menu where you can save now more then 1 fleet / options
+	- fixed smaller memory leaks in skinning system
+	- it was possible to add defense to ACS defenders
+	- 5-times faster speed (for german SpeedUni - affects only flying 
+	  time)
+	- its possible to add different positions for ACS attackers, to 
+	  get a correct fuel consumption
+	- created new dialog for choosing language
+	- added verifications for skin and language files
+	- total win now also in balance
+
+v0.9.1.1b
+	- problem with Win 9x/ME fixed
+
+v0.9.1.0b
+	- combat results are now sorted out when supervising the clipboard
+	- fix when switching fleets
+	- small alignment
+	- now technologies aren't loaded if you read in a combat report before starting SpeedSim
+	- fixed memory leak
+	- SpeedSim looks now a bit better with activated XP-Style
+	- internal changes to Unicode
+	- removed "Old RF values"
+	- smaller fixes
+	- reduced file size
+
+v0.9.0.1b
+	- added "Own RapidFire"
+	- fixed hang up when stopping simulations
+	
+v0.9.0.0b
+	- activated alliance combat system (currently only in some german universes)
+	- minor improvements
+
+v0.8.9.9b
+	- small cargo ship wont disappear anymore
+
+v0.8.9.8b
+	- additions for alliance combat system
+	- added new language strings
+	- lots of fixes
+
+v0.8.9.5b
+	- added possibility to change font for your skin
+	- balance now accessable over the message box again
+	- changed tab order
+	- adjusted some edit fields
+	- added dialog to edit scan reports
+	- if a language file is loaded now the english website will be 
+	  opened instead if the german
+
+v0.8.9.0b
+	- fixed Combobox
+	- Updater points to new server
+	- added some language strings
+	- fixed skinning bug with transparent buttons
+	- the speedsim homepage should open now in a new window
+
+
+SpeedKernel.dll
+~~~~~~~~~~~~~~~~
+v0.9.8.1b
+	- fix: reading in Anti-Ballistic-Missiles works again
+	- fix: wrong detection of esp. reports unter certain conditions
+	
+v0.9.8.0b
+	- fix: problem parsing some ships
+	- new: structure points going into DF can be set up
+
+v0.9.7.0b
+	- fix: reading problems
+
+v0.9.6.1b
+	- fix: reading problems with some CRs and own defense
+	- fix: shield calculation
+	- fix: shield, armour and weapon will rounded down now
+
+v0.9.6.0b
+	- fix: rounding when getting resources
+	- new: implemented Battlecruiser
+	- chg: updated RF to OGame version 0.75
+
+v0.9.5.3b
+	- chg: internal stuff
+	- fix: problems with the raid list and fleet swapping
+	- chg: better unicode support
+	- fix: CR's and the B/W-Case are now in UTF-8, so Firefox should
+	  be able to read them now
+	- new: [BaseSpeed] & [Capacity] available in .sd file
+
+v0.9.5.1b
+	- fix: (IPM-Sim) strange Numbers at result
+	- fix: Ships could have been deleted under certain conditions
+	- new: deuterium cost for recyclers
+
+v0.9.5.0b
+	- fix: Changing the coordinates for defender could delete the defenders
+	  fleet
+	- fix: [AltShips] haven't been read in from language files
+	- chg: Espionage probes changed OGame 0.74b data
+	- fix: endless loop when reading in certain strings
+	- new: implemented Interplanetary Missiles simulator
+	- fix: (error) when cancelling simulation
+
+v0.9.4.4b
+	- fix: alternative ship names haven't been read in in espionage reports
+
+v0.9.4.3b
+	- fix: output problem if the numbers are to big
+	- chg: improved compatibility for other compilers
+	- chg: improved reading of ini files
+	- chg: implemented Kelder's formula for theoretic plunder
+	- new: HTML files now with a new look (design by Mic2003)
+
+v0.9.4.2b
+	- detection of coordinates improved
+	- small speed improvement in combats with high rapid fire
+	- fixed CR reading
+	
+v0.9.4.1b
+	- "64d" problem fixed
+	- fixed very rare hang up in plunder calculation
+
+v0.9.4.0b
+	- reduced memory usage
+	- moon detection in espionage reports
+	- implemented changed fuel calculation
+	- improved reading in combat reports
+	- in theoretical plunder the needed number of ships is now
+	  calculated correctly
+	- fixed wave attacks
+
+v0.9.3.1b
+	- corrected RF of death stars against sol. sats/esp. probes
+	- added change of speed of bomber and small cargo when you reach
+	  a specific engine level (OGame 0.69c)
+	- "Rebuild defense if it's less then 10" works correctly now
+
+v0.9.3.0b
+	- fixed very small RF bug
+	- small change in reading in own fleets
+	- digits after decimal point are now shown only if needed in combat
+	  report tables
+	- internal changes
+
+v0.9.2.5b
+	- foreign characters can be outputtet correctly in combat reports
+	  if a codepage is specified
+	- minor improvements in reading in routines
+	- fixed rounding in combat reports
+
+v0.9.2.1b
+	- fixed bug with reading in esp. reports
+	- changed shield calculation back to old version
+	- minor fixes
+
+v0.9.2.0b
+	- battle result is shown now also when battle is aborted
+	- its possible to read in the technologies from research menu in OGame
+	- improved reading in combat reports
+	- rebuild rate for defense is now adjustable
+	- changed fuel calculation to OGame v0.68 algorithm (switchable)
+
+v0.9.1.1b
+	- fixed bug with the techs in alliance combat system
+	- fixed bug in reading out language strings
+
+v0.9.1.0b
+	- improved reading in combat reports
+	- changed rebuilding for defense to 80%
+	- internal changes to Unicode
+
+v0.9.0.1b
+	- "preparing next wave" fixed
+	- added functionality to read rapidfire values from a file
+	
+v0.9.0.0b
+	- reading functions improved; cause less errors
+	- techs from combat reports will be ccalculated from the table if they aren't given
+
+v0.8.9.9b
+	- fixed balance bug
+	- bug with more simulations fixed (for more than 1000)
+	- corrected table in combat reports
+
+v0.8.9.8b
+	- changes for OGame v0.65 (check "v0.60-RF" for old RapidFire & shield system)
+	- improved reading routines
+	- changes for alliance combat system
+	- many fixes
+
+v0.8.9.5b
+	- added RapidFire option for buggy ogame version
+	- reading in battle reports works again
+	- edited kernel's structure
+	- added various functions
+
+v0.8.9.2b
+	- fixed shield bug (thx to Nepenthes)
+
+v0.8.9.1b
+	- fixed RF of RIPs versus fleet
+
+v0.8.9.0b
+	- DLL now much smaller
+	- changed kernel structure
+	- bug with cancelling a fight fixed
+	- small bug fixes

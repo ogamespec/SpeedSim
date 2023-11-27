@@ -1,0 +1,15 @@
+List of Hotkeys available in SpeedSim
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Key				|	Function
+-------------------------------------------
+[Esc]               Exit / Minimize (if minimizing to Systray active)
+[Enter]             Simulate
+[Ctrl] + [Enter]    Show raid popup and minimize
+[Ctrl] + [Right]    Next ACS-Fleetslot
+[Ctrl] + [Left]     Previous ACS-Fleetslot
+[Ctrl] + 1 (to 5)   Load 1. (to 5.) options slot
+[Ctrl] + N          Start a new instance of SpeedSim
+[Ctrl] + E          Edit the current target info (position, coord, resources)
+[F2]                Show / Hide report history
+[F4]                Show extended options

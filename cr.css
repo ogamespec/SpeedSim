@@ -1,0 +1,100 @@
+/*Grundformatierung des Body*/
+/*Mainbody*/
+body
+{
+  text-align           : center;
+  font-weight          : bold;
+  color                : #FF5F00;
+  margin-top           : 0px;
+  margin-left          : 0px;
+  background-color     : #000000;
+  background-attachment: fixed;
+  background-position  : center top;
+  background-repeat    : no-repeat;
+  SCROLLBAR-BASE-COLOR      : #00003F;
+  SCROLLBAR-ARROW-COLOR     : #FF5F00;
+  scrollbar-track-color     : #000000;
+  scrollbar-face-color      : #00003F;
+  scrollbar-highlight-color : #0060FF;
+  scrollbar-3dlight-color   : #0060FF;
+  scrollbar-darkshadow-color: #00003F;
+  scrollbar-shadow-color    : #00003F;
+  font-size            : 11px;
+  font-family          : Tahoma;
+}
+
+/*Ergebnis des Kampfes*/
+/*result of the battle*/
+p
+{
+  text-align           : center;
+}
+
+/*Grundformatierung der Rahmentabelle und Spalten*/
+/*format of the bordertable*/
+table, table td, table td table
+{
+  text-align           : center;
+  font-size            : 11px;
+  font-weight          : bold;
+  font-family          : Tahoma;
+  color                : #FF5F00;
+  background-color     : transparent;
+  border               : 0px #0060FF ridge;
+}
+
+/*Formatierung der Spalten mit Textinhalt*/
+/*formate of the cells with content*/
+table td table td
+{
+  text-align           : center;
+  font-size            : 11px;
+  font-weight          : normal;
+  font-family          : Tahoma;
+  color                : #FF5F00;
+  background-color     : #00003F;
+  border               : 1px #0060FF ridge;
+  padding-left         : 3px;
+  padding-right        : 3px;
+}
+
+/*Formatierung der Spalten mit Textinhalt - hervorgehoben*/
+/*formate of the cells with content - highlighted*/
+table td table td b, table td b
+{
+  font-weight          : bold;
+  color                : #FF9F00;
+}
+
+/*mittlere Überschriften*/
+/*medium headlines*/
+h4
+{
+  font-size            : 15px;
+  font-weight          : bold;
+  font-family          : Tahoma;
+  color                : #FF3F00;
+}
+
+/*Haupt Überschrift*/
+/*main headlines*/
+h3
+{
+  font-size            : 20px;
+  font-weight          : normal;
+  font-family          : Tahoma;
+  color                : #FF5F00;
+}
+
+/*Speedsimlink*/
+a, a.s, a.t
+{
+  color                : #FF0000;
+  text-decoration      : none;
+  font-weight          : bold;
+}
+
+a:hover
+{
+  color                : #FF5F00;
+}

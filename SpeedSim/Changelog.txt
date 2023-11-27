@@ -1,0 +1,781 @@
+SpeedSim.exe:
+~~~~~~~~~~~~~~
+v0.9.8.1b
+	- fix: Flotten wurden unter Umständen falsch gespeichert
+	- fix: Abwehrraks nun in Berichtsverlauf integriert
+	- chg: Einstellungen/Kampfberichte werden nun in 
+	       %AppData%\SpeedSim abgelegt
+	- chg: "Strukturpunkte ins TF" individuell anpassbar
+	- fix: kleinere Grafikbugs
+
+v0.9.8.0b
+	- fix: falsche Zeitzone im Spionageberichtsverlauf
+	- neu: Position & Größe des Berichtsverlaufs werden nun gespeichert
+	- neu: Korrekte Trennzeichen werden nun automatisch verwendet
+	- neu: Berichtsverlauf kann nun gespeichert werden
+	- fix: mögliches Speicherleck entfernt
+	- neu: Schlachtkreuzer jetzt auch im ToolTip der theoretischen
+	       Beute
+
+v0.9.7.0b
+	- fix: RF-Dateien konnten nicht (ent)laden werden
+	- fix: Fenster wurde manchmal nicht neugezeichnet
+	- fix: kleine Verbesserungen beim Skinning
+	- neu: Name/Koords im Kampfergebnis werden nun automatisch nach
+	  rechts gescrollt
+	- fix: (IPR-Sim) Anzeige war bei höherer DPI-Zahl verschwunden
+	- neu: Verlauf für Spionageberichte (mittels [F2] 
+	  anzeigen/verstecken)
+	- fix: In der Bilanz der Wellenangriffe wird der Gesamtverbrauch
+	  nun mit eingerechnet
+	- neu: Schlachschiff per Option an Uni20 anpassbar
+	- neu: Hotkey [Strg]+E zum Ändern der Zielinfos
+
+v0.9.6.1b
+	- fix: Schlachkreuzer werden nun korrekt gelöscht
+	- chg: Die Bilanz lässt sich nun herauskopieren
+	- chg: Button zum Löschen der Koords auf anderer Seite
+	- chg: (IPR-Sim) Checkboxen anstatt von Radioboxen
+	- chg: interne Änderungen
+	- neu: Option zum Ändern des Verhaltens bei den Wellen
+	- neu: Abbrechen im Optionen-Dialog
+	- chg: Name der Sprache im Sprachdialog zugefügt
+	- chg: Auswahl der Schildberechnung entfernt
+
+v0.9.6.0b
+	- fix: GDI-Leak bei aktiviertem Skinning
+	- neu: Schlachtkreuzer eingebaut
+	- neu: Koordinaten nun mit einem Button löschbar
+	- fix: Wellenstatus zurücksetzen funktioniert wieder
+	- fix: Tabreihenfolge
+
+v0.9.5.3b
+	- fix: Nächste Welle funktioniert wieder korrekt
+	- chg: Wenn ein Spionagebericht eingelesen wurde, wird nun
+	  die benötige Anzahl der IP-Raketen gelöscht
+	- neu: Manuelle Anpassung der Spielgeschwindigkeit
+	- neu: Änderung des Namen vom Zielplaneten
+	- fix: Ergebnis in die Zwischenablage kopieren funktioniert wieder
+	- fix: (IPR-Sim) Ergebnis von den Raketen wird übernommen
+	- chg: neue Icons für den Installer (thx to EleCTro_GHeTTo!)
+	- fix: Sprachauswahl kommt nun vor der Frage nach dem Profil
+
+v0.9.5.1b
+	- fix: (IPR-Sim) Abwehrraketen wurden gelöscht
+	- fix: (IPR-Sim) Techs wurden beim Übernehmen des Ergebnisses
+	  durcheinander gebracht
+	- fix: Abbrechen mit [Enter] wieder möglich
+	- neu: LC_Ships_Res_Def u. LC_Ships_Res_Att beim Skinning
+	  hinzugefügt
+	- neu: (IPR-Sim) Anzeige der nötigen Raketen
+
+v0.9.5.0b
+	- chg: Spionagesonden aus der theoretischen Beute genommen
+	- fix: Übersetzungen
+	- neu: IP-Rakten Simulator eingebaut
+	- chg: Transparenz des Popups wird nun gespeichert
+	- neu: Transparenz des Hauptfensters einstellbar
+	- fix: (Skinning) Probleme beim Laden der css Dateien
+	
+v0.9.4.4b
+	- fix: HTML Seiten sehen nun auch beim aktiviertem Skin gut aus
+
+v0.9.4.3b
+	- fix: beim Wechsel der Flottenslots wurde die Flugzeit verändert
+	- fix: ein Deaktivieren der Skins machte die Schrift viel zu groß
+	- fix: Das Menü wurde beim ersten Start nicht übersetzt
+	- fix: SpeedSim verschwindet nun nicht mehr, wenn man den 
+	  Spionagebericht bearbeitet
+	- fix: Überwachen der Zwischenablage wurde nicht immer ordnungsgemäß
+	  beendet (thx to MrHiggins)
+	- fix: Wenn die Hintergrundbilder nicht die richtige Größe haben,
+	  gibt es jetzt keine komischen Bildverschiebungen mehr
+	- fix: In einigen Fällen wurde das Deuterium nicht berechnet
+	- fix: Deuteriumverbrauch in Uni50
+	- fix: Ausgabeproblem bei zu großen Zahlen
+	- neu: mit [Strg]+[Enter] kann nun das Raid-PopUp aufgerufen werden
+	- neu: es kann beim Skinning nun auch eine Transparente Farbe für
+	  die Buttons festgelegt werden (dafür in [Colors] 'Button_TransColor'
+	  setzen)
+	- neu: Bei der Flugzeit wird nun auch die Dauer für Recycler angegeben
+	- neu: Skinner können nun ihre eigenen CSS Dateien für die html Dateien
+	  angeben (in [General] die Keys 'CSS_CR' und 'CSS_BWC' setzen)
+	- neu: In den erweiterten Optionen kann man nun eigene Schiffs- und
+	  RF-Daten laden
+
+v0.9.4.2b
+	- Check für UnicoWS.dll in der Unicode version entfernt
+	- Bugfix beim Wechsel der Profile
+	- Überwachen der Zwischenablage funktionierte in Unicode nicht
+	- beim Wechsel der Sprache auf Deutsch muss SpeedSim nun nicht mehr
+	  neugestartet werden
+	- im ToolTip zum Trümmerfeld werden nun auch Maximum, Minimum und
+	  Durchschnitt der benötigten Recycler angezeigt
+	- Das Wechseln der Skins funktioniert nun ohne Neustart von SpeedSim
+	- viele andere Fehlerbereinigungen
+	- Einstellung für Uni50 in den Erweiterten Optionen [F4]
+
+v0.9.4.1b
+	- versch. Probleme mit der Raidliste behoben
+	- für WinE User das "64d"-Problem in den meisten Fällen behoben
+	- Bug beim Starten mit "Techs des Angreifers auf 0 setzen.." 
+	  behoben
+	
+v0.9.4.0b
+	- neu: Raidliste:
+		Diese dient dazu, mehrere Gegner einfach nacheinander 
+		abzuarbeiten könnnen
+		-> Hinzufügen/Löschen über "+" / "-" in "Raidliste"
+		-> Durchschalten geht außer über "<-" / "->" noch im PopUp
+		   über die rechte Maustaste
+	- Transparenz für das PopUp einstellbar (nur Win2k/XP)
+	- PopUp schließt sich jetzt automatisch, wenn das Hauptfenster 
+	  wiederhergestellt wird
+	- Optionen-Dialog sortiert
+	- Technologien werden nun beim Speichern der Flotte mitgespeichert
+	- Monde werden nun bei den Spionageberichten erkannt und können 
+	  eingestellt werden ("M" in der Kampfauswertung)
+	  Im Popup: [1:11:1M], wenn Mond erkannt
+	- Spionagesonde in ToolTip für theoretische Beute aufgenommen
+	- kleinere Änderungen und viele Fehlerbehebungen
+
+v0.9.3.1b
+	- zwischen alter und neuer Schildberechnung ist nun umschaltbar
+	  (aufgrund immer wieder auftretener Abweichungen eingebaut;
+	  neue Berechnung ist Standard-Einstellung)
+	- SpeedSim wird jetzt beim Start auch angezeigt, wenn ein 
+	  Spionagebericht o.ä. in der Zwischenablage ist und 
+	  "Beim Start minimieren" aktiviert ist
+	- kl. Fix im PopUp
+	- man kann jetzt auswählen, welches Schiff bei der Berechnung der 
+	  theoretischen Beute verwendet werden soll
+	- jetzt wird ein Tooltip bei den abgeschnittenen Zeilen im
+	  Kampfergebnis angezeigt
+
+v0.9.3.0b
+	- einige Felder für versch. Sprachen verlängert
+	- IRC-Addresse berichtigt
+	- Popup eingebaut, was die Angriffinformationen nochmal angibt
+	  (thx to "Little Bastard" (Idee) & "eXcezZ" (Hintergrund))
+	- Sprachen lassen sich jetzt über das Menü ändern
+	- "Wellenstatus zurücksetzen" nun auch zusätzlich neben "Nächste
+	  Welle vorbereiten"
+	- Nach Vorschlag von "besucher347" kann jetzt die Verteidigung, wenn
+	  deren Anzahl unter 10 ist, vollständig wieder aufgebaut werden
+	- Texte verwischen nun nicht mehr in der Kampfzusammenfassung,
+	  wenn man nach rechts scrollt und keinen Skin eingestellt hat
+	- Menü Punkt im Flotten-Menü: "Alle Flotten zurücksetzen" damit 
+	  werden alle aktuell gesetzten Flotten in den AKS-Flottenslots
+	  gelöscht
+	- per [Strg]-[rechts] bzw. [Strg]-[links] kann man nun zwischen den
+	  AKS-Flottenslots wechseln
+	- neue Einstellung für Skinner: LC_Res_Titles in [LabelColors] um auch die
+	  'Titel' im Ergebnis einzufärben
+	- versch. Skin-Sachen aktualisiert
+
+v0.9.2.5b
+	- Systray Icon eingebaut
+	- SpeedSim kann nun automatisch aufpoppen, wenn z.B. ein
+	  Spionagebericht eingelesen wurde
+	- fix im Wiederaufbauwert der Defense
+	- neue Optionen: Autostart von SpeedSim, beim Start minimieren,
+	  nur eine Instanz erlauben
+	- Technologien nochmal extra über das Menü speicherbar
+	- Speichersystem nochmal komplett verändert (neuer Name der
+	  Speicherdatei: SpeedSim.cfg)
+	- Einstellungen und Flotten nun benenn- und löschbar
+	- die ersten 5 Einstellungen lassen sich nun über [Strg]+[Nr] wechseln
+	- per [Strg]+[N] kann man nun eine neue SpeedSim-Instanz starten
+	- [F4] zum zeigen der Optionen eingebaut
+
+v0.9.2.1b
+	- Skins funtionieren wieder
+	- Aufbauwert der Verteidigung sollte jetzt nicht mehr von alleine
+	  runterzählen
+	
+v0.9.2.0b
+	- Menüleiste eingefügt
+	- Speichern/Laden koplett überarbeitet - es ist nun möglich mehrere
+	  Flotten/ Einstellungen gleichzeitig zu speichern
+	- kleine Speicherlecks im Skinningsystem geschlossen
+	- es war unter Umständen möglich, mehreren AKS-Verteidigern Defense
+	  zu geben
+	- 5-fache Geschwindigkeit für SpeedUni einstellbar
+	- bei den AKS-Angreifern kann man nun verschiedene Positionen angeben, 
+	  um den korrekten Deuteriumverbrauch zu bekommen
+	- neuen Sprachauswahldialog erstellt
+	- Überprüfungen auf Echtheit der Skin- und Sprachdateien eingebaut
+	- Gesamtgewinn nun auch in Bilanz einsehbar
+
+v0.9.1.1b
+	- Problem mit Win9x/ME behoben
+
+v0.9.1.0b
+	- Kampfzusammenfasssungen werden nun beim Überwachen der Zwischenablage
+	  aussortiert
+	- wenn beim Flottentausch eine der beiden Flotten leer war, wurde die
+	  Flotte verdoppelt
+	- kleinere Ausrichtungen
+	- gespeicherte Forschungen werden nun nicht mehr geladen, wenn ein KB
+	  vor dem Start in der Zwischenablage ist
+	- kleines Speicherleck geschlossen
+	- Bug mit XP-Style behoben, der verursachte, das der Texthintergrund
+	  bei einigen Labels weiß war
+	- beim Laden der Skin-/Sprachdateien wird überprüft, ob diese überhaupt
+	  existieren
+	- interne Umstellung auf Unicode
+	- alte RapidFire-Werte herausgenommen, da das SpeedUni nicht mehr existiert
+	- kleine Fixes
+	- Größe der exe fast halbiert
+
+v0.9.0.1b
+	- Aufhänger beim Abbrechen der Simulation beseitigt
+	- "eigenes RF" hinzugefügt
+	
+v0.9.0.0b
+	- SpeedSim gibt eine Fehlermeldung aus, wenn die ini-Dateien nicht im
+	  SpeedSim Ordner sind
+	- Anzahl der max. speicherbaren Positionen erhöht
+	- AKS aktiviert
+
+v0.8.9.9b
+	- Kleiner Transporter verschwindet nun nicht mehr
+
+v0.8.9.8b
+	- Anpassungen/Vorbereitungen fürs AllyKampfsystem
+	- einige Sprachstrings hinzugefügt
+	- Bugfixes ohne Ende
+
+v0.8.9.5b
+	- Tab-Reihenfolge überarbeitet
+	- beim Skinning ist es nun möglich verschiedene Einstellungen für die
+	  Schrift zu machen
+	- Bilanz wieder über MessageBox verfügbar
+	- Felder auf gleiche Breite ausgerichtet
+	- Dialog zum Bearbeiten von Spionageberichten hinzugefügt
+	- wenn eine Sprachdatei geladen wird, wird die englische Homepage
+	  anstatt der deutschen aufgerufen
+
+v0.8.9.0b
+	- Comobox jetzt richtigherum und das Dropdownfeld ein wenig verlängert
+	- Sprachstrings hinzugefügt
+	- Updater auf neuen Server angepasst
+	- Schrift wird bei transparenten Buttons nicht mehr verwischt
+	- workaround für SpeedSim-Homepage in neuem Fenster gefunden
+
+v0.8.8.8b
+	- beim Beenden werden nun die Einstellungen automatisch gespeichert
+	- Überwachen der Zwischenablage funktioniert jetzt besser
+	- Techs werden nun beim Flottentausch mit getauscht
+	- manueller Update-Checker hält nun SpeedSim nicht mehr an
+	- die letzte Planetenposition wird jetzt korrekt abgespeichert
+	- Problem mit dem Arbeitsverzeichnis und Skins behoben
+	- Felder in der Kampfzusammenfassung verändert
+	- Kampfzusammenfassung ist nun bei anderen Sprachen auch übersetzt
+
+v0.8.8.5b
+	- ein paar Felder im Dialog nochmals ausgerichtet
+	- SpeedSim startet beim Skinwechsel jetzt von alleine neu, d.h.
+	  man muss nun nicht mehr manuell neustarten
+	- Man kann nun auswählen, ob die Def beim Flottentausch gelöscht
+	  werden soll
+	- Eine Überwachung der Zwischenablage eingebaut, die es ermöglicht,
+	  einen Spionagebericht o.ä. einzulesen, wenn man ihn nur in der 
+	  Zwischenablage hat
+	- Es besteht nun die Möglichkeit, mehrere Planeten abzuspeichern
+	  und ggf. abzurufen
+	- Maximalanzahl pro Schiff auf 9999999 erhöht
+	
+v0.8.8.0b
+	- Design verändert
+	- Sprachunterstützung eingebaut, dass auch die englischen oGamer
+	  SpeedSim benutzen können
+	- Einlesefelder entfernt und durch ein universelles ersetzt
+	- Button zum Flotten tauschen eingebaut
+	
+v0.8.7.1b
+	- Komischerweise wurden bei einigen Scans 9 KT dazuberechnet. Bug wurde gefixt
+
+v0.8.7b
+	- Simulator auf andere Sprachen vorbereitet, fehlen nur noch Sprachdateien
+	- Spionageberichte werden jetzt wieder mit Ress eingelesen
+
+v0.8.5.6b
+	- der Updater verzögert nun nicht mehr den Start von SpeedSim
+	- Wenn die Übersicht eingelesen wird, werden jetzt automatisch die Techs gelöscht
+	- Datei ein wenig verkleinert
+	- ein paar Standardeinstellungen, wenn die SpeedSim.dat nicht existiert, verändert
+		
+v0.8.5.5b
+	- die Anzahl der benötigten Transporter bei der theoretischen Beute
+	  ist jetzt ein wenig genauer
+	- Updater wurde auf den neuen Server angepasst
+	
+v0.8.5.4b
+	- andere Icons in die exe-Datei eingefügt
+
+v0.8.5.3b
+	- Skinauswahl verändert
+	- Beim Auswählen eines Skins kommt ein kleines Popup mit Informationen
+	  zum gewählten Skin
+
+v0.8.5.2b
+	- Skinsystem nochmal ein wenig verbessert (das Hintergrundbild wird
+	  nicht mehr so extrem verzerrt)
+
+v0.8.5.1b
+	- Das Feld LC_Res_Moon in der Section LabelColors wurde nicht
+	  ausgelesen, ist jetzt gefixt
+
+v0.8.5b
+	- SpeedSim enthält jetzt ein Skinsystem, mit dem man SpeedSim noch
+	  schöner machen kann :-)
+	
+v0.8.3b
+	- Fehler behoben, der wenn man ganz schnell auf 'Simulieren abbrechen'
+	  klickt, SpeedSim zum Absturz brachte
+
+v0.8.2b
+	- Nochmals 800x600 Unterstützung verbessert
+	- Der Autoupdater ist jetzt etwas weniger fehleranfällig (hoffen wir)
+	  da wir nur noch eine Datei updaten müssen. Außerdem werden alle
+	  Versionschritte bis zur eigenen Version angezeigt und nicht nur
+	  der letzte beim Updatefenster
+	  
+v0.8.1b
+	- Unterstützung für 800x600 nochmal ein wenig verändert und man
+	  kann jetzt auch mit Mausrad scrollen
+	- AutoUpdate abschaltbar
+
+v0.8.0b
+	- In der Planetenposition funktioniert die Rücktaste wieder
+	- kleine Fixes
+	- 800x600 Unterstützung eingebaut
+
+v0.7.8b
+	- Autoupdater hinzugefügt, der einmal täglich checkt, ob eine neuere
+	  Version vorhanden ist
+
+v0.7.6.7b
+	- Kleinere Bugfixes
+	- Es wird jetzt bei der Anzeige der Recycler die Recyclermenge für
+	  den Worst-Case angeziegt, damit man immer auf der sicheren Seite ist
+
+v0.7.6.5b
+	- Einlesen der Kampfberichte möglich
+
+v0.7.6.1b
+	- Eigene Flotten können eingelesen werden
+	
+v0.7.6.0b
+	- Update-Funktion eingebaut, mit der man sehr leicht schauen kann,
+	  ob man die aktuellste Version von SpeedSim hat
+	
+v0.7.5.5b
+	- keine Änderung; neue Version ist aber erforderlich aufgrund eines
+	  Bugs im Kernel (Spritberechnung)
+	
+v0.7.5.4b
+	- Probleme mit dem Speichern/Laden behoben
+	- Der Kampfbericht wird jetzt immer in einem neuem Browserfenster angezeigt
+
+v0.7.5.3b
+	- nur kleine Fixes
+   
+v0.7.5.2b
+	- jetzt hat SpeedSim ein wenig mehr Farbe..
+
+v0.7.5.1b
+	- Bei Wellenangriffen wird die Gesamtbeute aller Angriffe
+	  zusammengerechnet und ausgegeben. Außerdem die Anzahl der Angriffe
+	- kleine Bugfixes
+
+v0.7.5b
+	- jetzt kann die eigene Position eingegeben, gespeichert werden und der Treibstoff
+	  ausgerechnet werden (wenn ein Scanbericht vorhanden ist)
+	- Kommunikation mit PlanDB ist möglich; d.h. es werden die von PlanDB gesendeten Daten
+	  für SpeedSim benutzt. Ist aber noch Beta-Phase
+	- Bug beim Speichern und Laden behoben
+	- Button zum Alles Speichern eingebaut
+	- kleinere Bug-Fixes
+
+v0.7.4.3b
+	- Anzeigen des Best/Worst-Case und des Kampfberichtes müsste jetzt wieder
+ 	  funktionieren
+	- Speichern und Laden müsste jetzt wieder klappen
+	- kleinere Bugs gefixt
+
+v0.7.4.2b
+	- Der Kampfbericht wird nun nicht mehr im Internet Explorer geöffnet, sondern
+	  im installierten Standardbrowser des Systems
+	- Die Kampfbericht-Datei wird nun nicht mehr im Temp-Verzeichnis von Windows sondern
+	  im aktuellen Arbeitsverzeichnis abgelegt
+	- Es ist jetzt wieder möglich bis zu 9999 Simulationen durchzuführen,
+	  noch mehr ist eigentlich Unfug
+	- Der Best/Worst-Case wird jetzt immer berechnet. Es gibt eine Check-Box, die angibt, 
+	  ob er nach der Simulation gleich angezeigt werden soll. Außerdem gibt es einen
+	  Button, der Den BW-Case gleich anzeigt
+
+v0.7.4b
+	- Es ist möglich, sich eine Kampfbilanz anzeigen zu lassen, die die eigentlichen 
+	  Verluste bzw. Gewinne berechnet
+
+v0.7.3b
+	- Beim Löschen des Spionageberichtes besteht die Möglichkeit, gleich die Flotte 
+	  und Verteidigung des Verteidigers mitzulöschen. Gleiches funktioniert mit 
+	  dem Löschen-Button der Übersicht, nur dass dann die Schiffe des Angreifers 
+	  gelöscht werden
+
+v0.7.1b
+	- Beim erneuten Einlesen der Übersicht oder eines Scanberichtes bleiben 
+      die alten Schiffe erhalten und werden nicht noch hinzuaddiert.
+	- Kleine Hilfe beim Speichern und Laden-Dialog eingebaut
+
+v0.7b:
+	- Flotten, Def und Techs speichern und laden funktioniert nun
+
+
+SpeedKernel.dll
+~~~~~~~~~~~~~~~~
+v0.9.8.1b
+	- fix: Abwehrraketen werden nun wieder eingelesen
+	- fix: falsches Erkennen von Spionageberichten
+	
+v0.9.8.0b
+	- fix: Problem beim Parsen von bestimmten Schiffsnamen
+	- neu: Strukturpunkte, die ins TF gehen können, einstellbar
+
+v0.9.7.0b
+	- fix: Metall wurde bei langem Namen nicht eingelesen
+
+v0.9.6.1b
+	- fix: korrekter Name von Schlachtkreuzern im KB
+	- fix: Einles-Probleme bei manchen KBs und eigener Def
+	- fix: Schildberechnung
+	- fix: Schild, Waffen und Panzer werden nun abgerundet
+
+v0.9.6.0b
+	- fix: Rundung beim Erbeuten von Rohstoffen korrigiert
+	- neu: Einbau des Schlachtkreuzers
+	- chg: RF auf Version OGame version 0.75 aktualisiert
+
+v0.9.5.3b
+	- chg: interne Struktur geändert
+	- fix: Probleme mit der RaidListe & Flottentausch
+	- chg: bessere Unicode Unterstützung
+	- neu: [BaseSpeed] & [Capacity] werden nun aus der .sd Datei ausgelesen
+
+v0.9.5.1b
+	- fix: (IPR-Sim) manchmal komische Zahlen bei den Ergebnissen
+	- fix: Schiffe wurden zum Teil gelöscht
+	- neu: Deuteriumkosten für Recycler
+
+v0.9.5.0b
+	- fix: Ändern der Koordinaten des Verteidigers konnte die Flotte 
+	  löschen
+	- fix: [AltShips] wurde aus der Sprachdatei nicht eingelesen
+	- chg: Spionagesonden an OGame 0.74b angepasst
+	- fix: Aufhänger beim Einlesen bestimmter Texte
+	- neu: IP-Raketen Simulation
+	- fix: (seltener) Fehler beim Abbrechen der Simulation
+	
+v0.9.4.4b
+	- fix: manche Schiffe wurden nicht richtig eingelesen
+
+v0.9.4.3b
+	- fix: Ausgabeproblem bei zu großen Zahlen
+	- chg: Kompatibilität für andere Compiler verbessert
+	- chg: Verbessertes Auslesen von ini-Dateien
+	- chg: Kelders Formel für die theoretische Beute eingebaut
+	- neu: KBs jetzt mittels css individuell anpassbar und in neuem look
+	  (Standarddesign von Mic2003)
+
+v0.9.4.2b
+	- Positionen werden nun besser erkannt; es ist nun nicht mehr
+	  unbedingt nötig, einen Doppelpunkt zu verwenden
+	- kl. Geschwindigkeitserhöhung in Kämpfen mit viel RF
+	- Bugfix beim KB-Einlesen
+	  
+v0.9.4.1b
+	- "64d"-Problem für die meisten Fälle behoben (für WinE User)
+	- seltenen Aufhänger bei der Beuteberechnung beseitigt
+	
+v0.9.4.0b
+	- Speicherbedarf bei der Simulation gesenkt
+	- Monderkennung in Spionageberichten
+	- veränderte Treibstoffberechnung eingebaut
+	- KB Einlesen verbessert
+	- bei der theoretischen Beute werden wird die benötigte
+	  Schiffszahl nun korrekt berechnet (und nicht mehr geschätzt)
+	- Wellenangriffe gefixt
+
+v0.9.3.1b
+	- RF von Rips gegen Spios/Sats berichtigt
+	- Veränderungen der Geschwindigkeiten beim KT und Bomber bei
+	  erreichen bestimmter Antriebsstufen eingebaut
+	- "Verteidigung kleiner 10 vollständig wieder aufbauen" funktioniert
+	  nun korrekt
+
+v0.9.3.0b
+	- minimaler Fix im RF
+	- Nachkommastellen werden im KB nur noch wenn nötig angezeigt
+	- kleine Änderung beim Einlesen der eigenen Flotte
+	- interne Änderungen
+	- Techniken des Verteidiger werden nun nicht mehr gelöscht, wenn
+	  der eingelesene Text nicht erkannt wird	
+
+v0.9.2.5b
+	- ausländische Zeichen können nun unter der Angabe der Codepage
+	  korrekt im BW-Case und KB ausgegeben werden
+	- kl. Verbesserung der Einleseroutinen
+	- beim Einlesen der Übersicht werden nun die Koordinaten richtig
+	  eingelesen
+	- runden in Kampfberichten berichtigt
+
+v0.9.2.1b
+	- Fehler mit ausländischen Spionageberichten gefixt
+	- Schildberechnung wieder auf alte Version umgestellt
+	- kl. bugfix
+	
+v0.9.2.0b
+	- Kampfergebnis wird auch nach Abbruch angezeigt
+	- es ist nun auch möglich die eigenen Technologien aus dem 
+	  Forschungsmenü in OGame auszulesen
+	- KB einlesen verbessert
+	- Aufbauwert der Verteidigung ist von jetzt an individuell einstellbar
+	- Treibstoffberechnung an OGame v0.68a angepasst (umschaltbar)
+
+v0.9.1.1b
+	- Bug bei den Forschungen im AKS behoben (thx MrMage für den Hinweis ;) )
+
+v0.9.1.0b
+	- Verbesserung beim Einlesen der Kampfberichte
+	- Wiederaufbauwert der Verteidigung auf 80% gestellt
+	- intern auf Unicode umgestellt
+	
+v0.9.0.1b
+	- "Nächste Welle vorbereiten" funktioniert wieder korrekt
+	- Möglichkeit zum Einlesen einer RapidFire-Datei hinzugefügt	
+	 
+v0.9.0.0b
+	- Änderung an Spionageberichten übernommen
+	- Falsche Texte, die eingelesen werden, verursachen nun seltener Fehler
+	- beim KB Einlesen neue Technik eingebaut, die versucht, die 
+	  Technologien direkt aus der Tabelle zu errechnen
+
+v0.8.9.9b
+	- Bilanz-Bug behoben
+	- Fehler bei großen Simulationen beseitigt (trat nur bei mehr als 
+	  ca. 1500 Simulationsdurchläufen auf)
+	- Tabelle in KB's zeigt nun wieder die korrekten Werte
+
+v0.8.9.8b
+	- Bug bei Beuteberechnung behoben
+	- Einlese-Routinen verbessert
+	- Verluste des Verteidigers nach Def-Wiederaufbau werden in 
+	  BWC-Berechnung angezeigt
+	- Kernel fürs AKS umgeschrieben
+	- Anpassungen an OGame v0.65a1 (neue Schildregel wird bei "v.60-RF"
+	  bzw. alten RF-Werten deaktiviert)
+	- viele Bugfixes
+
+v0.8.9.5b
+	- Treibstoff wird jetzt bei der Beuteberechnung eingerechnet
+	- bei Wellenangriffen kann man nun die Anzahl der gesamt benötigten Recycler sehen
+	- RF für die verbuggte OGame version hinzugefügt
+	- KBs werden wieder richtig eingelesen
+	- Kernelaufbau überarbeitet
+	- Hilfsfunktionen hinzugefügt
+
+v0.8.9.2b
+	- Schildbug behoben (thx to Nepenthes)
+
+v0.8.9.1b
+	- RF von RIPs gegen Flotten berichtigt (war nur in der vorherigen Version falsch)
+
+v0.8.9.0b
+	- Kernel intern umstruktutiert
+	- Größe der DLL mehr als halbiert
+	- diverse kleine Fehler behoben
+	- Fehler beim Abbrechen gefixt
+
+v0.8.8.8b
+	- kleine Geschwindigkeitsoptimierung
+	- Flottengeschwindigkeitsberechnung eingebaut
+	- Fluggeschwindigkeit lässt sich festlegen
+	- Im Kampfbericht wurden die Kommastellen rausgemacht
+
+v0.8.8.5b
+	- Planetennamen in Spionageberichten werden jetzt ignoriert
+	- Bilanzinformationen in die Best/Worst-Case Datei verschoben und Infos für den Verteidiger hinzugefügt
+	- Kampfberichte mit vielen Leerzeichen sind nun einlesbar
+	- Fehler bei Spionageberichten im Zusammenhang mit Sprachdateien gefixt
+	- RF-Werte des TS sind von nun an umschaltbar
+	- Wenn man die Eigene Verteidigung einliest, werden jetzt nicht mehr die eigenen Schiffe gelöscht
+
+v0.8.8.0b
+	- Kampfbericht einlesen überarbeitet. Große Schildkuppel wird wieder mit eingelesen
+	- Name vom Koloschiff an oGame angepasst
+
+v0.8.7.4b
+	- RF gegen Sats angepasst
+
+v0.8.7.3b
+	- RF nochmal an die neuen Änderungen angepasst
+
+v0.8.7.2b
+	- kleiner Fehler beim Einlesen der Spionageberichte behoben
+	
+v0.8.7b
+	- Neues Kampfsystem von oGame-Version v0.59a unterstützt. Die RF-Werte sind zum Teil aus dem Forum übernommen, zum Teil durch Kämpfe ermittelt worden, da wir immernoch keine genauen Informationen über das RF von Verantwortlichen erhalten haben
+	- Name der dll verändert in SpeedKernel.dll
+	- Wert der Flotten hinzugefügt zur Best/Worst-Case-Berechnung
+	- einige Designänderugnen
+	- KB-Einlese-Funktion verbessert.
+
+v0.8.6.2b
+	- Kleinere Probleme beim Einlesen der Eigenen Flotte/Def behoben
+
+v0.8.6.1b
+	- Zufallsalgorithmus im Kampfsystem verbessert, jetzt sollte es v.a. bei kleinen Schlachten ein wenig genauer sein
+	- kleinen Fehler beim Einlesen der Eigenen Flotte beseitigt
+	
+v0.8.6b
+	- Einlesen der eigenen Verteidigung geht jetzt. Man muss die unter eigene Flotten einfügen
+	- 1%-Regel nochmals überarbeitet
+	- Scan-Einlese-Funktion verbessert. Man kann jetzt auch Scans ohne Koords einlesen. Außerdem werden Zeilenumbrüche u.ä. im Scan ignoriert
+
+v0.8.5.3b
+	- Kampfsystem an 1%-Regel angepasst
+
+v0.8.5.2b
+	- kleinere Bugfixes im Zusammenhang mit dem neuen Skinsystem
+	
+v0.8.5b
+	- beim Einlesen der eigenen Flotte wurde ausversehen die Zerstörer anstatt die Sat's übersprungen
+	- Runden der Verluste stimmt jetzt
+
+v0.8.4b
+	- Reihenfolge von Gauß- und Ionenkanonen vertauscht
+
+v0.8.3b
+	- Best/Worst-Case wird jetzt als html-Datei ausgegeben
+	- mehr Informationen zur B/W-Case-Datei hinzugefügt
+	
+v0.8.2b
+	- KB nochmal minimal verändert
+	- Einlesen der Kampfberichte klappt jetzt noch besser und SpeedSim hängt sich nicht mehr sooft auf
+	- Deuterium geht nun nicht mehr ins TF
+
+v0.8.1b
+	- Im Kampfbericht stehen die Schiffsnamen nun zentriert
+	- Fix bei der Anzeige der Schadensabsorbation
+	- manchmal konnte der Kampf nicht angehalten werden bzw. es dauerte sehr lange
+	
+v0.8.0b
+	- RF-Werte der RIPs verbessert
+	- Kleine Änderung am Kampfsystem
+	- Namen im Kampfbericht geändert
+	- Anzeige der verlorenen Units an oGame angepasst
+v0.7.6b
+	- Berechnung des Trümmerfeldes für den Worst Case
+	- Verluste und Trümmerfeld werden auf ganze Einheiten gerundet
+	- Ausgabebug beim Kampfbericht anzeigen gefixt (manchmal traten dort komische
+	  Zahlen in der letzten Runde auf)
+	- Rechtschreibfehler im Kampfbericht gefixt
+
+v0.7.5.8b
+	- Bug beim Kampfberichte einlesen gefixt, der auftrat, als Koloschiffe am
+	  Kampf beteiligt waren
+	- Bug gefixt, der es verhinderte weniger als 3 Verteidigungsanlagen wieder
+	  aufzubauen
+
+v0.7.5.5b
+	- nun kann man Kampfberichte einlesen lassen um zu testen, wie genau SpeedSim ist
+	- RF gegen Solarsat's korrigiert
+
+v0.7.5.0b
+	- Einlesen der eigenen Flotte aus dem Flottenmenü nun möglich
+	- Wieder einen Fehler bei der Beuteberechnung gefixt
+	
+v0.7.4.8b
+	- Überlauf bei der Spritberechnung gefixt
+	- Beuteberechnung sollte jetzt endlich stimmen
+	
+v0.7.4.7b
+	- bei der Durchschnittsberechnung der Beute wurden auch verlorene/unentschieden
+	  ausgegangene Kämpfe mitgerechnet, dadurch kam eine verfälschte praktische Beute heraus
+  
+v0.7.4.6b
+	- Überlauffehler korrigiert, bei dem die Anzahl der Schiffe plötzlich nicht mehr stimmte
+  
+v0.7.4.5b
+	- Treibstoffverbrauch des Bombers stimmt jetzt
+	- es fehlten plötzlich 100 Einheiten bei der Verlustrechnung
+
+v0.7.4.4b
+	- Gesamtbeute aller Angriffe einer Welle kann berechnet werden.
+
+v0.7.4.3b
+	- Ab jetzt ist es möglich Wellenangriffe zu planen. Dazu der Button Verbleibende Def 
+	  laden im SpeedSim
+	- Bilanz verbessert
+
+v0.7.4.1b
+	- Kleiner Bug gefixt, der bei großen Schlachten die Verluste und Gewinne in der Bilanz
+	  falsch anzeigen ließ
+
+v0.7.4b
+	- Nochmals den gesamten Simulationsvorgang debuggt. Hab noch nen Fehler
+	  gefunden und gefixt. Die Ergebnisse waren nur richtig, wenn beide Teams die selbe
+	  Stufe in Raumschiffpanzerung hatten. Jetzt hoffentlich nicht mehr :)
+
+v0.7.3b
+	- Nochmals die Zielauswahl überprüft und einen kleinen Bug mit den Pseudo-Zufalls-
+	  zahlen gefunden, ist nun gefixt
+	- Tech-Bug gefixt: Beim schießen wurde immer die entgegengesetzte Rüstungstechnik
+	  verwendet. Nun nicht mehr. Deswegen haben zB auch funktioniert 100 LJ gegen 100 SS 
+	  mit allen Techs auf 30, Waffen auch 31 zu schlagen. Geht nun nicht mehr :-)
+
+v0.7.1b
+	- Das Rapid Fire der TS und der anderen Einheiten wurde nochmal überarbeitet. Ich 
+	  hoffe, dass es jetzt korrekt berechnet wird. Erste Tests im Vergleich Dragosim - 
+	  SpeedSim zeigen, dass es stimmen könnte.
+	- Wenn noch gar kein Kampf simuliert worden ist, so ist das im Kampfbericht sichtbar
+	  und es werden nicht irgendwelche kryptischen Zeichen ausgegeben.
+
+v0.7b
+	- Es ist möglich, sich eine Kampfbilanz anzeigen zu lassen, die die eigentlichen 
+	  Verluste bzw. Gewinne berechnet
+
+v0.6.9.2b
+	- Schiffswerte korrigiert
+	- Die Werte des Verteidigers im KB werden jetzt mit den richtigen Forschungen 
+	  berechnet.
+
+v0.6.9.1b
+	- Recycler bringen nun richtige Menge Kris ins TF
+	- Recycler-Anzahl wird erst jetzt wirklich exakt angezeigt.
+
+v0.6.9b
+	- Es ist nun möglich einen Kampfbericht der Simulation anzeigen zu lassen.
+	- Es wrid nun wieder die richtige Anzahl an Recyclern ausgerechnet
+
+v0.6.7b
+	- Der schwerwiegende Fehler, dass große Schlachten nicht richtig berechnet wurden,
+	  ist gefixt. Bei Schlachten mit mehr als 32767 Schiffen auf einer Seite wurden
+	  nur die ersten 32767 Schiffe getroffen. Nun müssten alle Schiffe richtig berechnet
+	  werden.
+
+v0.6.3b
+	- Neuartige Simulationstechnik bringt bessere Performance besonders
+	  bei großen Schlachten
+
+v0.6.1b
+	- Speicherbedarf beim Simulieren um 60% gesenkt
+	- Ionengeschütze und Kleine Transporter werden jetzt exakt eingelesen
+	
+v0.6b:
+	- Gauß bringen jetzt richtige Menge an Kristall ins TF
+	- Es kommt nur noch die wirklich zerstörte Def ins TF, nicht mehr die,
+	  die wieder aufgebaut werden konnte
