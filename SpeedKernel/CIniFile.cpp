@@ -305,7 +305,7 @@ genstr CIniFile::RemoveSpaces(genstr str, bool remove_first, bool remove_last)
     }
     if(remove_last)
     {
-        int i = str.length();
+        auto i = str.length();
         while(str[i - 1] == ' ')
             i--;
         str.erase(i);
