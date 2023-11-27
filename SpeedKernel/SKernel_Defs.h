@@ -154,16 +154,8 @@ typedef basic_stringstream<TCHAR, char_traits<TCHAR>, allocator<TCHAR> > genstrs
 
 #define _STR(x) genstring(_T(x))
 
-// DLL-Export
-#ifdef WIN32
-    #ifdef SPEEDKERNEL_EXPORTS
-    #define SPEEDKERNEL_API __declspec(dllexport)
-    #else
-    #define SPEEDKERNEL_API __declspec(dllimport)
-    #endif
-#else
-    #define SPEEDKERNEL_API
-#endif //WIN32
+// Now in the static library.
+#define SPEEDKERNEL_API
 
 
 // Standard windows data types

@@ -2148,24 +2148,6 @@ void SetGerLang(HWND wnd, map<HWND, genstring> strings)
     }
 }
 
-int _stprintf(TCHAR * target, const TCHAR * format, ...)
-{
-    int i;
-    va_list arglist;
-    va_start(arglist, format);
-#ifndef UNICODE
-    i =  vsprintf(target, format, arglist);
-#else
-#if _MSC_VER > 1200 || !defined(_MSC_VER)
-    i = vswprintf(target, 1024, format, arglist);
-#else
-    i = vswprintf(target, format, arglist);
-#endif
-#endif
-    va_end(arglist);
-    return i;
-}
-
 void CheckLangFileVersion(TCHAR* ver_str)
 {
     // did we already checked with that speedsim version?

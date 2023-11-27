@@ -17,8 +17,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#ifndef SPEEDKERNEL_H
-#define SPEEDKERNEL_H
+#pragma once
 
 #pragma warning(disable: 4251 4244 4786 4996 4503)
 #pragma once
@@ -602,4 +601,5 @@ void CheckVector(const vector<Obj>& v);
 
 string wchar_to_utf8(wstring str);
 
-#endif
+#undef _stprintf
+int _stprintf(TCHAR* target, const TCHAR* format, ...);

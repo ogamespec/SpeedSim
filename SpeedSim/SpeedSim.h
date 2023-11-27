@@ -235,9 +235,6 @@ void CheckLangFileVersion(TCHAR* ver_str);
 bool IsLanguageFile(TCHAR* IniFileName);
 bool IsSkinFile(TCHAR* IniFileName);
 
-#undef _stprintf
-int _stprintf(TCHAR * target, const TCHAR * format, ...);
-
 extern genstring g_strSim[3], g_strSimState[2];
 // output strings of battle result
 extern genstring g_ResString[15];
