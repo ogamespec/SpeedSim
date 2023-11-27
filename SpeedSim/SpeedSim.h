@@ -49,13 +49,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include <string>
 #include <map>
 
-#include "SkinClass.h"
 #include "resource.h"
 
 #include "..\SpeedKernel\SpeedKernel.h"
 
 #include "SSim_Tools.h"
 #include "SSim_ERMan.h"
+#include "SkinClass.h"
 
 #define SCAN_MSG_TXT _T("SPEEDSIM")
 #define SPEEDSIM_VERSION _T("0.9.8.1b")
