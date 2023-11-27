@@ -990,7 +990,7 @@ void pngwriter::close()
    text_ptr[2].text = textdescription_;
    text_ptr[2].compression = PNG_TEXT_COMPRESSION_NONE;
    text_ptr[3].key = "Creation Time";
-   text_ptr[3].text = png_convert_to_rfc1123(png_ptr, &mod_time);
+   text_ptr[3].text = (png_charp)png_convert_to_rfc1123(png_ptr, &mod_time);
    text_ptr[3].compression = PNG_TEXT_COMPRESSION_NONE;
    text_ptr[4].key = "Software";
    text_ptr[4].text = textsoftware_;
@@ -1196,7 +1196,7 @@ void pngwriter::readfromfile(char * name)
    png_structp     png_ptr;
    png_infop       info_ptr;
    unsigned char   **image;
-   unsigned long   width, height;
+   png_uint_32   width, height;
    int bit_depth, color_type, interlace_type;
    //   png_uint_32     i;
    //
@@ -1366,6 +1366,9 @@ int pngwriter::read_png_info(FILE *fp, png_structp *png_ptr, png_infop *info_ptr
 	fclose(fp);
 	return 0;
      }
+
+   // TODO: Deal with setjmp
+#if 0
    if (setjmp((*png_ptr)->jmpbuf)) /*(setjmp(png_jmpbuf(*png_ptr)) )*//////////////////////////////////////
      {
 	png_destroy_read_struct(png_ptr, info_ptr, (png_infopp)NULL);
@@ -1374,6 +1377,7 @@ int pngwriter::read_png_info(FILE *fp, png_structp *png_ptr, png_infop *info_ptr
 	return 0;
 	//exit(EXIT_FAILURE);
      }
+#endif
    png_init_io(*png_ptr, fp);
    png_set_sig_bytes(*png_ptr, PNG_BYTES_TO_CHECK);
    png_read_info(*png_ptr, *info_ptr);

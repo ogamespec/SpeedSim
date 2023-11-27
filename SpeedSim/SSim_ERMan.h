@@ -29,9 +29,9 @@ void GetBestReports();
 void UpdateResultInfo(TargetInfo* ti);
 void UpdateReportResult();
 
-int __stdcall ERManPage1Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall ERManPage2Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall ERManPage3Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR ERManPage1Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR ERManPage2Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR ERManPage3Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 bool InitListView(HWND hwndParent, int ctrlID);
 bool MoveSelItems(int ctrlStart, int ctrlTarget);

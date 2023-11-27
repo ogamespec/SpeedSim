@@ -89,7 +89,7 @@ void ERManGetText()
         ListView_DeleteAllItems(GetDlgItem(hWndERManPages[0], IDC_ESPIONEXT));
     }
     
-    AddERToManager(tis, nER);
+    AddERToManager(tis, nER, NULL);
 }
 
 void AddERToManager(TargetInfo *tis, int nTI, HWND hwndLV /*= NULL*/)
@@ -292,7 +292,7 @@ void UpdateReportResult()
     tis = (TargetInfo*)lvi.lParam;
 }
 
-int __stdcall ERManPage1Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+INT_PTR ERManPage1Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch(uMsg)
     {
@@ -365,7 +365,7 @@ int __stdcall ERManPage1Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     return TRUE;
 }
 
-int __stdcall ERManPage2Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+INT_PTR ERManPage2Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch(uMsg)
     {
@@ -400,7 +400,7 @@ int __stdcall ERManPage2Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     return TRUE;
 }
 
-int __stdcall ERManPage3Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+INT_PTR ERManPage3Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch(uMsg)
     {

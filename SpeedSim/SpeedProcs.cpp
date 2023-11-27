@@ -25,7 +25,7 @@ int g_GeradeEingefuegt;
 COLORREF g_TabColor;
 HBRUSH g_TabBkBrush = NULL;
 
-int __stdcall DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+INT_PTR DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     // messages by other programs
     if(uMsg == SCAN_MSG) {
@@ -418,7 +418,7 @@ int __stdcall DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
     return TRUE;
 }
 
-int __stdcall EditProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+INT_PTR EditProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     if(uMsg == WM_KEYDOWN || uMsg == WM_CHAR || uMsg == WM_KEYUP){
         if(IsCharNum((TCHAR)wParam) || (TCHAR)wParam == ':' || wParam == VK_BACK ){
             return CallWindowProc(g_oldEditProc, hwnd, uMsg, wParam, lParam);
@@ -429,7 +429,7 @@ int __stdcall EditProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     return CallWindowProc(g_oldEditProc, hwnd, uMsg, wParam, lParam);
 }
 
-int __stdcall UpdateProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+INT_PTR UpdateProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     switch(uMsg)
     {
@@ -490,7 +490,7 @@ int __stdcall UpdateProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
     return 1;
 }
 
-int __stdcall SpioProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+INT_PTR SpioProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     
     TCHAR c[64];
     Res r;
@@ -583,7 +583,7 @@ void CallBack(int sim, int round)
     SendMessageTimeout(GetDlgItem(g_hwndDlg, IDC_RUNNING_NUM), WM_SETTEXT, 0, (LPARAM)c, SMTO_BLOCK, 1, NULL);
 }
 
-int __stdcall OptionsProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+INT_PTR OptionsProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch(uMsg) {
     case WM_INITDIALOG:
         g_hwndOpt = hwndDlg;
@@ -601,7 +601,7 @@ int __stdcall OptionsProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case IDC_OPT_OK:
             {
                 // save all options
-                TabInfo *pTInfo = (TabInfo*)GetWindowLongPtr(g_hwndOpt, GWL_USERDATA);
+                TabInfo *pTInfo = (TabInfo*)GetWindowLongPtr(g_hwndOpt, GWLP_USERDATA);
                 g_Options.iDefRebuild = GetDlgItemInt(pTInfo->hwndDisplay[1], IDC_DEF_REBUILD, NULL, false);
                 g_Options.iSpeedFactor = GetDlgItemInt(pTInfo->hwndDisplay[1], IDC_SPEED_FAC_IN, NULL, false);
                 sim.SetDefRebuildFactor(g_Options.iSpeedFactor / 100.f);
@@ -681,7 +681,7 @@ int __stdcall OptionsProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
         switch(wParam) {
         case IDC_OPT_TAB:
             if(((NMHDR*)lParam)->code == TCN_SELCHANGE){
-                TabInfo *pTInfo = (TabInfo*)GetWindowLongPtr(g_hwndOpt, GWL_USERDATA);
+                TabInfo *pTInfo = (TabInfo*)GetWindowLongPtr(g_hwndOpt, GWLP_USERDATA);
                 // hide old dialog
                 ShowWindow(pTInfo->hwndDisplay[pTInfo->lastSel], SW_HIDE);
                 int sel = TabCtrl_GetCurSel(GetDlgItem(g_hwndOpt, IDC_OPT_TAB));
@@ -708,7 +708,7 @@ int __stdcall OptionsProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
     case WM_DESTROY:
         {
             // free memory
-            TabInfo *pTInfo = (TabInfo*)GetWindowLongPtr(g_hwndOpt, GWL_USERDATA);
+            TabInfo *pTInfo = (TabInfo*)GetWindowLongPtr(g_hwndOpt, GWLP_USERDATA);
             for(int i = 0; i < C_PAGES; i++) {
                 DestroyWindow(pTInfo->hwndDisplay[i]);
             }
@@ -722,7 +722,7 @@ int __stdcall OptionsProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
     return 1;
 }
 
-int __stdcall TabPageProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+INT_PTR TabPageProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch(uMsg) {
     case WM_INITDIALOG:
         InitTabpages(hwndDlg);
@@ -864,7 +864,7 @@ int __stdcall TabPageProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 void CreateTabs() {
     TCITEM tie;
     TabInfo *pTInfo = (TabInfo*)LocalAlloc(LPTR, sizeof(TabInfo));
-    SetWindowLongPtr(g_hwndOpt, GWL_USERDATA, (LONG)pTInfo);
+    SetWindowLongPtr(g_hwndOpt, GWLP_USERDATA, (LONG)pTInfo);
     
     HWND hwndTab = GetDlgItem(g_hwndOpt, IDC_OPT_TAB);
     // add tabs
@@ -891,7 +891,7 @@ void CreateTabs() {
     SendMessage(g_hwndOpt, WM_NOTIFY, IDC_OPT_TAB, (LPARAM)&nmhdr);
 }
 
-int __stdcall AboutProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+INT_PTR AboutProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     static HFONT newFont;
     static bool bLinkClick = false;
     static bool bIRCClick = false;
@@ -1009,7 +1009,7 @@ int __stdcall AboutProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     return 1;
 }
 
-int __stdcall LangProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+INT_PTR LangProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch(uMsg) {
     case WM_INITDIALOG:
         {
@@ -1090,7 +1090,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
     return DefDlgProc(hwnd, uMsg, wParam, lParam);
 }
 
-int __stdcall InputBoxProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam) {
+INT_PTR InputBoxProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam) {
     static genstring* out = NULL;
     
     switch(Msg) {
@@ -1126,7 +1126,7 @@ int __stdcall InputBoxProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam) {
 
 extern vector<sRaidListItem> g_vRaidList;
 
-int __stdcall PopupInfoProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
+INT_PTR PopupInfoProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
     static TCHAR text[512];
     static int iCurRL = -1;
@@ -1180,7 +1180,7 @@ int __stdcall PopupInfoProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
     return TRUE;
 }
 
-int __stdcall BalanceProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
+INT_PTR BalanceProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
     switch(Msg) 
     {
@@ -1231,7 +1231,7 @@ int __stdcall BalanceProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
     return TRUE;
 }
 
-int __stdcall ReportHistProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
+INT_PTR ReportHistProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
     static RECT org_rect;
     switch(Msg) 

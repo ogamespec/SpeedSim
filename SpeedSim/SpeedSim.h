@@ -55,6 +55,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "..\SpeedKernel\SpeedKernel.h"
 
 #include "SSim_Tools.h"
+#include "SSim_ERMan.h"
 
 #define SCAN_MSG_TXT _T("SPEEDSIM")
 #define SPEEDSIM_VERSION _T("0.9.8.1b")
@@ -100,18 +101,18 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define TT_ID_MOON 15
 
 LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall OptionsProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall EditProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall UpdateProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall SpioProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall TabPageProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall AboutProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall LangProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
-int __stdcall InputBoxProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
-int __stdcall PopupInfoProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
-int __stdcall BalanceProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
-int __stdcall ReportHistProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
+INT_PTR DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR OptionsProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR EditProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR UpdateProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR SpioProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR TabPageProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR AboutProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR LangProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR InputBoxProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
+INT_PTR PopupInfoProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
+INT_PTR BalanceProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
+INT_PTR ReportHistProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
 LRESULT CALLBACK ListViewProc(HWND hDlg, UINT Msg, WPARAM wParam, LPARAM lParam);
 
 struct SaveData;
