@@ -125,7 +125,7 @@ BEGIN
     PUSHBUTTON      "B/W-Case zeigen",IDC_SHOW_BW,386,109,79,12
     PUSHBUTTON      "Bilanz zeigen",IDC_BILANZ,386,122,79,12
     CONTROL         "Rapid Fire",IDC_RAPID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,254,134,60,10
-    CONTROL         "Def ins TF (Uni 14, 15, 20, 25)",IDC_DEFTF,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,254,148,131,10
+    CONTROL         "Def ins Trummerfeld",IDC_DEFTF,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,254,148,131,10
     CONTROL         "Techs des Angreifers auf 0 setzen, wenn diese beim Verteidiger auch 0 sind.",IDC_CHECKTECHS,
                     "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,386,136,118,25
     CONTROL         "Defense beim Flottentausch loschen",IDC_DEL_DEF_ON_SWITCH,
@@ -288,8 +288,8 @@ BEGIN
     CONTROL         "Schlachtkreuzer",IDC_S14,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,195,72,8
     LTEXT           "->",IDC_STATIC,119,195,8,8
     LTEXT           "->",IDC_STATIC,189,195,8,8
-    LTEXT           "",IDC_IC_A_E,125,195,30,8
-    LTEXT           "",IDC_IC_V_E,195,195,30,8
+    LTEXT           "",IDC_IC_A_E,125,196,30,8
+    LTEXT           "",IDC_IC_V_E,195,196,30,8
     EDITTEXT        IDC_REAP_A,88,207,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
     EDITTEXT        IDC_REAP_V,158,207,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
     CONTROL         "Reaper",IDC_S15,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,209,72,8
@@ -301,16 +301,16 @@ BEGIN
     LTEXT           "->",IDC_STATIC,119,222,8,8
     LTEXT           "->",IDC_STATIC,189,222,8,8
     EDITTEXT        IDC_SOL_V,159,379,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
-    CONTROL         "Solar Satellit",IDC_S11,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,379,72,8
-    LTEXT           "---",IDC_STATIC,103,379,8,8
+    CONTROL         "Solar Satellit",IDC_S11,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,381,72,8
+    LTEXT           "---",IDC_STATIC,103,381,8,8
     LTEXT           "->",IDC_STATIC,191,381,8,8
-    LTEXT           "",IDC_REAP_V_E,195,208,30,8
-    LTEXT           "",IDC_PF_V_E,195,221,30,8
-    LTEXT           "",IDC_REAP_A_E,126,208,30,8
-    LTEXT           "",IDC_PF_A_E,125,221,30,8
+    LTEXT           "",IDC_REAP_V_E,195,209,30,8
+    LTEXT           "",IDC_PF_V_E,195,222,30,8
+    LTEXT           "",IDC_REAP_A_E,126,209,30,8
+    LTEXT           "",IDC_PF_A_E,125,222,30,8
     EDITTEXT        IDC_CRA_V,159,394,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER,WS_EX_RIGHT
-    CONTROL         "Crawler",IDC_S17,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,394,72,8
-    LTEXT           "---",IDC_STATIC,103,394,8,8
+    CONTROL         "Crawler",IDC_S17,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,13,395,72,8
+    LTEXT           "---",IDC_STATIC,103,395,8,8
     LTEXT           "->",IDC_STATIC,191,396,8,8
     LTEXT           "",IDC_SOL_V_E,197,381,30,8
     LTEXT           "",IDC_CRA_V_E,197,396,30,8
