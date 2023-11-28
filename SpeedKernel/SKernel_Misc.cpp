@@ -164,7 +164,7 @@ void CSpeedKernel::ComputeShipData()
 		if(!m_UseOldBS)
 			Kosten[T_SS] = Res(45000, 15000);
 		else
-			Kosten[T_SS] = Res(40000, 20000);
+			Kosten[T_SS] = Res(40000, 20000);			// The cost of a battleship from the legendary OGame 20.DE (press F)
 		Kosten[T_KOLO] = Res(10000, 20000, 10000);
 		Kosten[T_REC] = Res(10000, 6000, 2000);
 		Kosten[T_SPIO] = Res(0, 1000);
@@ -180,7 +180,7 @@ void CSpeedKernel::ComputeShipData()
 		Kosten[T_LL] = Res(1500, 500);
 		Kosten[T_SL] = Res(6000, 2000);
 		Kosten[T_GAUSS] = Res(20000, 15000, 2000);
-		Kosten[T_IONEN] = Res(2000, 6000);
+		Kosten[T_IONEN] = Res(5000, 3000);				// was 2000, 6000
 		Kosten[T_PLASMA] = Res(50000, 50000, 30000);
 		Kosten[T_KS] = Res(10000, 10000);
 		Kosten[T_GS] = Res(50000, 50000);
