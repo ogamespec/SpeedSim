@@ -25,50 +25,50 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 		-Function for battle simulation
 
 		Simulation:
-		    void AbortSim();
-            bool InitSim();
-            bool Simulate(int count);
-        
-        Ships during simulation:
-            void ShipShoots(Obj& o, int Team, DWORD AtterID);
-            bool CanShootAgain_FromTable(ITEM_TYPE AttType, ITEM_TYPE ZielType);
-            
-            void DestroyExplodedShips();
-            void ShipsDontExplode();
-            void MaxAllShields();
-        
-        Fleet / Technologies:
-            bool SetFleet(vector<SItem>* Attacker, vector<SItem>* Defender);
-            void SetTechs(int* att, int* def, DWORD PlayerID);
-            void GetTechs(int* att, int* def, DWORD PlayerID);            
-        
-        Functions for battle result:
-            void ComputeCRArrays();
-            void SaveShipsToCR(int round);
-            void UpdateBestWorstCase()
+			void AbortSim();
+			bool InitSim();
+			bool Simulate(int count);
+		
+		Ships during simulation:
+			void ShipShoots(Obj& o, int Team, DWORD AtterID);
+			bool CanShootAgain_FromTable(ITEM_TYPE AttType, ITEM_TYPE ZielType);
+			
+			void DestroyExplodedShips();
+			void ShipsDontExplode();
+			void MaxAllShields();
+		
+		Fleet / Technologies:
+			bool SetFleet(vector<SItem>* Attacker, vector<SItem>* Defender);
+			void SetTechs(int* att, int* def, DWORD PlayerID);
+			void GetTechs(int* att, int* def, DWORD PlayerID);            
+		
+		Functions for battle result:
+			void ComputeCRArrays();
+			void SaveShipsToCR(int round);
+			void UpdateBestWorstCase()
 
-        Misc:            
-            Obj FillObj(ITEM_TYPE Type, int Team, DWORD PlayerID);
+		Misc:            
+			Obj FillObj(ITEM_TYPE Type, int Team, DWORD PlayerID);
 */
 
 // sets a new fleet
 bool CSpeedKernel::SetFleet(SItem* Attacker, SItem* Defender, int size_att, int size_def)
 {
-    vector<SItem> fleet;
-    int i;
-    if(Attacker && size_att)
-    {
-        for(i = 0; i < size_att; i++)
-            fleet.push_back(Attacker[i]);
-        SetFleet(&fleet, NULL);
-    }
-    if(Defender && size_def)
-    {
-        for(i = 0; i < size_def; i++)
-            fleet.push_back(Defender[i]);
-        SetFleet(NULL, &fleet);
-    }
-    return true;
+	vector<SItem> fleet;
+	int i;
+	if(Attacker && size_att)
+	{
+		for(i = 0; i < size_att; i++)
+			fleet.push_back(Attacker[i]);
+		SetFleet(&fleet, NULL);
+	}
+	if(Defender && size_def)
+	{
+		for(i = 0; i < size_def; i++)
+			fleet.push_back(Defender[i]);
+		SetFleet(NULL, &fleet);
+	}
+	return true;
 }
 
 // sets a new fleet
@@ -94,125 +94,125 @@ bool CSpeedKernel::SetFleet(vector<SItem>* Attacker, vector<SItem>* Defender)
 		}
 	}
 
-    int StartPos=0, EndPos=999;
-    int OwnersToSet[MAX_PLAYERS_PER_TEAM], tmp = 0;
-    unsigned int NumOwnersToSet = 0;
-    size_t i = 0, j = 0;
-    if(Attacker) {
+	int StartPos=0, EndPos=999;
+	int OwnersToSet[MAX_PLAYERS_PER_TEAM], tmp = 0;
+	unsigned int NumOwnersToSet = 0;
+	size_t i = 0, j = 0;
+	if(Attacker) {
 //	    CheckVector(m_NumSetShipsAtt);
 //	    CheckVector(*Attacker);
-    }
-    if(Attacker && Attacker->size())
-    {
-        // check, which OwnerIDs should be set new
-        for(i = 0; i < MAX_PLAYERS_PER_TEAM; i++)
-            OwnersToSet[i] = -1;
-        for(i = 0; i < Attacker->size(); i++)
-        {
-            tmp = (*Attacker)[i].OwnerID;
-            for(j = 0; j < NumOwnersToSet; j++)
-                if(OwnersToSet[j] == tmp)
-                    break;
-            if(j != NumOwnersToSet && NumOwnersToSet != 0)
-                break;
+	}
+	if(Attacker && Attacker->size())
+	{
+		// check, which OwnerIDs should be set new
+		for(i = 0; i < MAX_PLAYERS_PER_TEAM; i++)
+			OwnersToSet[i] = -1;
+		for(i = 0; i < Attacker->size(); i++)
+		{
+			tmp = (*Attacker)[i].OwnerID;
+			for(j = 0; j < NumOwnersToSet; j++)
+				if(OwnersToSet[j] == tmp)
+					break;
+			if(j != NumOwnersToSet && NumOwnersToSet != 0)
+				break;
 
-            // owner is not in list of new owners
-            OwnersToSet[NumOwnersToSet++] = tmp;
-        }
+			// owner is not in list of new owners
+			OwnersToSet[NumOwnersToSet++] = tmp;
+		}
 
-        // Remove all fleets of owners to be reset
+		// Remove all fleets of owners to be reset
 		SItem t;
 		for(i = 0; i < m_NumSetShipsAtt.size(); i++)
-        {
-            for(j = 0; j < NumOwnersToSet; j++)
-            {
-                t = m_NumSetShipsAtt[i];
+		{
+			for(j = 0; j < NumOwnersToSet; j++)
+			{
+				t = m_NumSetShipsAtt[i];
 				if(m_NumSetShipsAtt[i].OwnerID == OwnersToSet[j])
-                {
-                    m_NumSetShipsAtt.erase(m_NumSetShipsAtt.begin() + i);
-                    i--;
-                    break;
-                }
-            }
-        }
-        // delete 'non-ships'
-        for(i = 0; i < Attacker->size(); i++) {
-            vector<SItem>::iterator it = Attacker->begin() + i;
-            if(!it->Num || it->Type == T_NONE) {
-                Attacker->erase(it);
-                i--;
-            }
-        }
+				{
+					m_NumSetShipsAtt.erase(m_NumSetShipsAtt.begin() + i);
+					i--;
+					break;
+				}
+			}
+		}
+		// delete 'non-ships'
+		for(i = 0; i < Attacker->size(); i++) {
+			vector<SItem>::iterator it = Attacker->begin() + i;
+			if(!it->Num || it->Type == T_NONE) {
+				Attacker->erase(it);
+				i--;
+			}
+		}
 //		CheckVector(m_NumSetShipsAtt);
-        // Insert new fleets into fleet vector
-        m_NumSetShipsAtt.insert(m_NumSetShipsAtt.end(), Attacker->begin(), Attacker->end());
-        sort(m_NumSetShipsAtt.begin(), m_NumSetShipsAtt.end(), ItemCompare);
+		// Insert new fleets into fleet vector
+		m_NumSetShipsAtt.insert(m_NumSetShipsAtt.end(), Attacker->begin(), Attacker->end());
+		sort(m_NumSetShipsAtt.begin(), m_NumSetShipsAtt.end(), ItemCompare);
 //      CheckVector(m_NumSetShipsAtt);
-    }
+	}
 
-    // repeat algorithm for defender
-    NumOwnersToSet = 0, tmp = 0;
-    i = 0; j = 0;
-    if(Defender && Defender->size())
-    {
-        for(i = 0; i < MAX_PLAYERS_PER_TEAM; i++)
-            OwnersToSet[i] = -1;
-        for(i = 0; i < Defender->size(); i++)
-        {
-            tmp = (*Defender)[i].OwnerID;
-            for(j = 0; j < NumOwnersToSet; j++)
-                if(OwnersToSet[j] == tmp)
-                    break;
-            if(j != NumOwnersToSet && NumOwnersToSet != 0)
-                break;
+	// repeat algorithm for defender
+	NumOwnersToSet = 0, tmp = 0;
+	i = 0; j = 0;
+	if(Defender && Defender->size())
+	{
+		for(i = 0; i < MAX_PLAYERS_PER_TEAM; i++)
+			OwnersToSet[i] = -1;
+		for(i = 0; i < Defender->size(); i++)
+		{
+			tmp = (*Defender)[i].OwnerID;
+			for(j = 0; j < NumOwnersToSet; j++)
+				if(OwnersToSet[j] == tmp)
+					break;
+			if(j != NumOwnersToSet && NumOwnersToSet != 0)
+				break;
 
-            OwnersToSet[NumOwnersToSet++] = tmp;
-        }
-        for(i = 0; i < m_NumSetShipsDef.size(); i++)
-        {
-            for(j = 0; j < NumOwnersToSet; j++)
-            {
-                if(m_NumSetShipsDef[i].OwnerID == OwnersToSet[j])
-                {
-                    m_NumSetShipsDef.erase(m_NumSetShipsDef.begin() + i);
-                    i--;
-                    break;
-                }
-            }
-        }
-        for(i = 0; i < Defender->size(); i++) {
-            vector<SItem>::iterator it = Defender->begin() + i;
-            if(!it->Num || it->Type == T_NONE) {
-                Defender->erase(it);
-                i--;
-            }
-        }
-        m_NumSetShipsDef.insert(m_NumSetShipsDef.end(), Defender->begin(), Defender->end());
-        sort(m_NumSetShipsDef.begin(), m_NumSetShipsDef.end(), ItemCompare);
-        // Update TargetInfo Fleet
-        for(j = 0; j < NumOwnersToSet; j++)
-        {
-            // remove fleet & defence from TargetInfo
-            m_DefenderInfos[OwnersToSet[j]].Fleet.clear();
-            m_DefenderInfos[OwnersToSet[j]].Defence.clear();
-        }
-        for(i = 0; i < Defender->size(); i++)
-        {
-            vector<SItem>::iterator it = Defender->begin() + i;
-            if(it->Type < T_SHIPEND)
-                m_DefenderInfos[it->OwnerID].Fleet.push_back(*it);
-            else
-                m_DefenderInfos[it->OwnerID].Defence.push_back(*it);
-        }
-    }
+			OwnersToSet[NumOwnersToSet++] = tmp;
+		}
+		for(i = 0; i < m_NumSetShipsDef.size(); i++)
+		{
+			for(j = 0; j < NumOwnersToSet; j++)
+			{
+				if(m_NumSetShipsDef[i].OwnerID == OwnersToSet[j])
+				{
+					m_NumSetShipsDef.erase(m_NumSetShipsDef.begin() + i);
+					i--;
+					break;
+				}
+			}
+		}
+		for(i = 0; i < Defender->size(); i++) {
+			vector<SItem>::iterator it = Defender->begin() + i;
+			if(!it->Num || it->Type == T_NONE) {
+				Defender->erase(it);
+				i--;
+			}
+		}
+		m_NumSetShipsDef.insert(m_NumSetShipsDef.end(), Defender->begin(), Defender->end());
+		sort(m_NumSetShipsDef.begin(), m_NumSetShipsDef.end(), ItemCompare);
+		// Update TargetInfo Fleet
+		for(j = 0; j < NumOwnersToSet; j++)
+		{
+			// remove fleet & defence from TargetInfo
+			m_DefenderInfos[OwnersToSet[j]].Fleet.clear();
+			m_DefenderInfos[OwnersToSet[j]].Defence.clear();
+		}
+		for(i = 0; i < Defender->size(); i++)
+		{
+			vector<SItem>::iterator it = Defender->begin() + i;
+			if(it->Type < T_SHIPEND)
+				m_DefenderInfos[it->OwnerID].Fleet.push_back(*it);
+			else
+				m_DefenderInfos[it->OwnerID].Defence.push_back(*it);
+		}
+	}
 	return true;
 }
 
 void CSpeedKernel::GetTechs(ShipTechs* att, ShipTechs* def, DWORD PlayerID)
 {
-    if(att) {
-        memcpy(att, &m_TechsAtt[PlayerID], sizeof(ShipTechs));
-    }		
+	if(att) {
+		memcpy(att, &m_TechsAtt[PlayerID], sizeof(ShipTechs));
+	}		
 	if(def)
 		memcpy(def, &m_TechsDef[PlayerID], sizeof(ShipTechs));
 }
@@ -222,10 +222,10 @@ void CSpeedKernel::SetTechs(ShipTechs* att, ShipTechs* def, DWORD FleetID)
 	if(att)
 		m_TechsAtt[FleetID] = *att;
 	if(def)
-    {
+	{
 		m_TechsDef[FleetID] = *def;
-        m_DefenderInfos[FleetID].Techs = *def;
-    }
+		m_DefenderInfos[FleetID].Techs = *def;
+	}
 }
 
 // creates an object with the correct values
@@ -237,14 +237,14 @@ Obj CSpeedKernel::FillObj(ITEM_TYPE Type, int Team, DWORD PlayerID)
 	o.Life = MaxLifes[PlayerID][Team][Type];
 	o.Shield = MaxShields[PlayerID][Team][Type];
 	o.Explodes = false;
-    o.PlayerID = PlayerID;
+	o.PlayerID = PlayerID;
 	return o;
 }
 
 /// simulate the battle
 bool CSpeedKernel::Simulate(int count)
 {
-    m_InitSim = false;
+	m_InitSim = false;
 
 	m_DataIsDeleted = false;
 	m_SimulateFreedItsData = false;
@@ -252,48 +252,48 @@ bool CSpeedKernel::Simulate(int count)
 	if(count == 0)
 		return false;
 
-    int def_won = 0, att_won = 0, draw = 0;
+	int def_won = 0, att_won = 0, draw = 0;
 
 	// init internal values, count ships etc.
 	InitSim();
 #ifdef CREATE_ADV_STATS
-    m_DebrisFields.resize(count);
-    m_LossAtt.resize(count);
-    m_LossDef.resize(count);
-    m_CombatResultsAtt.resize(count);
-    m_CombatResultsDef.resize(count);
-    for(int i = 0; i < count; i++)
-    {
-        m_CombatResultsAtt[i].resize(T_END);
-        m_CombatResultsDef[i].resize(T_END);
-    }
-    
+	m_DebrisFields.resize(count);
+	m_LossAtt.resize(count);
+	m_LossDef.resize(count);
+	m_CombatResultsAtt.resize(count);
+	m_CombatResultsDef.resize(count);
+	for(int i = 0; i < count; i++)
+	{
+		m_CombatResultsAtt[i].resize(T_END);
+		m_CombatResultsDef[i].resize(T_END);
+	}
+	
 #endif
 
 	vector<Obj> Att, Def;
 	// backup set fleet
 	// possibly copy into file for less memory usage when using _very_ big fleets?
-    Att = (*m_AttObj);
+	Att = (*m_AttObj);
 	Def = (*m_DefObj);
 
 	bool aborted = false;
 
-    m_InitSim = true;
+	m_InitSim = true;
 	int num, round;
-    m_CurrentSim = 0;
+	m_CurrentSim = 0;
 
-    for(num = 0; num < count; num++)
+	for(num = 0; num < count; num++)
 	{
-        m_CurrentSim++;
-        (*m_AttObj) = Att;
+		m_CurrentSim++;
+		(*m_AttObj) = Att;
 		(*m_DefObj) = Def;
 		for(round = 1; round < 7; round++)
 		{
-            if(m_DataIsDeleted)
-            {
-                aborted = true;
-                break;
-            }
+			if(m_DataIsDeleted)
+			{
+				aborted = true;
+				break;
+			}
 
 			if(m_FuncPtr)
 				m_FuncPtr(num + 1, round);
@@ -307,7 +307,7 @@ bool CSpeedKernel::Simulate(int count)
 			MaxAllShields();
 			// make every ship shoot
 			size_t i;
-            for(i = 0; i < m_AttObj->size(); i++)
+			for(i = 0; i < m_AttObj->size(); i++)
 			{
 				ShipShoots((*m_AttObj)[i], ATTER, (*m_AttObj)[i].PlayerID);
 			}
@@ -339,15 +339,15 @@ bool CSpeedKernel::Simulate(int count)
 					m_NumShipsDef[Index].Num++;
 				}
 
-                // => attacker won
+				// => attacker won
 				if(m_AttObj->size() > 0 && m_DefObj->size() == 0)
 					m_Result.AttWon++;
 				// => defender won
-                else if(m_DefObj->size() > 0 && m_AttObj->size() == 0)
-                    m_Result.DefWon++;
-                else
-                    // => draw
-                    m_Result.Draw++;
+				else if(m_DefObj->size() > 0 && m_AttObj->size() == 0)
+					m_Result.DefWon++;
+				else
+					// => draw
+					m_Result.Draw++;
 
 				// recalculate best/worst case (check for better/worse case)
 				UpdateBestWorstCase(num);
@@ -355,39 +355,39 @@ bool CSpeedKernel::Simulate(int count)
 				break;
 			}
 		}
-        if(aborted)
-        {
-            break;
-        }
+		if(aborted)
+		{
+			break;
+		}
 		m_Result.NumRounds += (round > 6 ? 6 : round);
 	}
-    Att.clear();
-    Def.clear();
-    
-    m_CurrentSim = 0;
-    
-    if(!num && aborted)
-        return false;
+	Att.clear();
+	Def.clear();
+	
+	m_CurrentSim = 0;
+	
+	if(!num && aborted)
+		return false;
 
-    else if (aborted)
-    {
+	else if (aborted)
+	{
 #ifdef CREATE_ADV_STATS
-        // trim unused data
-        m_DebrisFields.resize(num);
-        m_LossAtt.resize(num);
-        m_LossDef.resize(num);
-        m_CombatResultsAtt.resize(num);
-        m_CombatResultsDef.resize(num);
+		// trim unused data
+		m_DebrisFields.resize(num);
+		m_LossAtt.resize(num);
+		m_LossDef.resize(num);
+		m_CombatResultsAtt.resize(num);
+		m_CombatResultsDef.resize(num);
 #endif
-    }
+	}
 
 	// battle result is added permanently added during multiple simulation
-    // -> calculate average result by dividing through number of simulations
+	// -> calculate average result by dividing through number of simulations
 	m_Result /= num;
-    size_t t;
-    for(t = 0; t < m_NumShipsAtt.size(); t++)
+	size_t t;
+	for(t = 0; t < m_NumShipsAtt.size(); t++)
 	{
-        m_NumShipsAtt[t].Num /= num;
+		m_NumShipsAtt[t].Num /= num;
 	}
 	for(t = 0; t < m_NumShipsDef.size(); t++)
 	{
@@ -397,43 +397,43 @@ bool CSpeedKernel::Simulate(int count)
 	// now get the average number of ships in every round for combat reports
 	ComputeCRArrays();
 
-    // calculation of combat report
+	// calculation of combat report
 	ComputeBattleResult();
 
-    m_SimulateFreedItsData = true;
+	m_SimulateFreedItsData = true;
 #ifdef PROFILING
-    ofstream aus("prof.txt");
-    CProfiler::GetInst().GetResults(aus);
+	ofstream aus("prof.txt");
+	CProfiler::GetInst().GetResults(aus);
 #endif
 	return true;
 }
 
 void CSpeedKernel::MaxAllShields()
 {
-    // this function sets all shields to its maximum
+	// this function sets all shields to its maximum
 	size_t i;
-    DWORD id;
-    for(i = 0; i < m_AttObj->size(); i++) {
-        id = (*m_AttObj)[i].PlayerID;
+	DWORD id;
+	for(i = 0; i < m_AttObj->size(); i++) {
+		id = (*m_AttObj)[i].PlayerID;
 		(*m_AttObj)[i].Shield = MaxShields[id][ATTER][(*m_AttObj)[i].Type];
-    }
+	}
 
-    for(i = 0; i < m_DefObj->size(); i++) {
-        id = (*m_DefObj)[i].PlayerID;
+	for(i = 0; i < m_DefObj->size(); i++) {
+		id = (*m_DefObj)[i].PlayerID;
 		(*m_DefObj)[i].Shield = MaxShields[id][DEFFER][(*m_DefObj)[i].Type];
-    }
+	}
 }
 
 int CSpeedKernel::GetCurrentSim()
 {
-    return m_CurrentSim;
+	return m_CurrentSim;
 }
 
 void CSpeedKernel::ShipsDontExplode()
 {
 	// set all explosion flags to 'false'
-    size_t i;
-    for(i = 0; i < m_AttObj->size(); i++)
+	size_t i;
+	for(i = 0; i < m_AttObj->size(); i++)
 		(*m_AttObj)[i].Explodes = false;
 
 	for(i = 0; i < m_DefObj->size(); i++)
@@ -443,12 +443,12 @@ void CSpeedKernel::ShipsDontExplode()
 // removes destroyed ships from the arrays
 void CSpeedKernel::DestroyExplodedShips()
 {
-    vector<Obj>* tmpAtt = new vector<Obj>;
+	vector<Obj>* tmpAtt = new vector<Obj>;
 	vector<Obj>* tmpDef = new vector<Obj>;
 
 	DWORD Num = 0;
 	size_t i;
-    for(i = 0; i < m_AttObj->size(); i++)
+	for(i = 0; i < m_AttObj->size(); i++)
 	{
 		if((*m_AttObj)[i].Explodes == false)
 			Num++;
@@ -467,7 +467,7 @@ void CSpeedKernel::DestroyExplodedShips()
 	count = 0;
 	for(i = 0; i < m_DefObj->size(); i++)
 	{
-        if((*m_DefObj)[i].Explodes == false)
+		if((*m_DefObj)[i].Explodes == false)
 			Num++;
 	}
 
@@ -487,10 +487,10 @@ void CSpeedKernel::DestroyExplodedShips()
 // lets shoot a ship
 void CSpeedKernel::ShipShoots(Obj& o, int Team, DWORD AtterID)
 {
-    bool ShootsAgain = true;
+	bool ShootsAgain = true;
 	ULONG Ziel = 0;
 	int ZielTeam = Team == ATTER ? DEFFER : ATTER;
-    DWORD DefferID = 0;
+	DWORD DefferID = 0;
 	
 	double Dam = Dams[AtterID][Team][o.Type];
 	double Dam2 = Dam;	
@@ -508,13 +508,13 @@ void CSpeedKernel::ShipShoots(Obj& o, int Team, DWORD AtterID)
 	{
 		Dam = Dams[AtterID][Team][o.Type];
 		Dam2 = Dam;
-        DefferID = 0;
-        {
-            //PR_PROF_FUNC(F_RANDNR);
-            // get random target from enemy
-            Ziel = RandomNumber(ListSize);
-            DefferID = (*treffer)[Ziel].PlayerID;
-        }
+		DefferID = 0;
+		{
+			//PR_PROF_FUNC(F_RANDNR);
+			// get random target from enemy
+			Ziel = RandomNumber(ListSize);
+			DefferID = (*treffer)[Ziel].PlayerID;
+		}
 
 		if(Team == ATTER)
 		{
@@ -527,20 +527,20 @@ void CSpeedKernel::ShipShoots(Obj& o, int Team, DWORD AtterID)
 			m_ShotStrengthDef[m_CurrentRound] += Dam;
 		}
 
-        obj = &(*treffer)[Ziel];
-        double max_shield = MaxShields[DefferID][ZielTeam][obj->Type];
-        if(Dam < obj->Shield)
-        {
-            // round damage down to full percents
-            double perc = floor(100.0f * Dam / max_shield);
-            Dam = max_shield * perc;
-            Dam /= 100.0f;
-            
-            Dam2 = Dam;
-        }
+		obj = &(*treffer)[Ziel];
+		double max_shield = MaxShields[DefferID][ZielTeam][obj->Type];
+		if(Dam < obj->Shield)
+		{
+			// round damage down to full percents
+			double perc = floor(100.0f * Dam / max_shield);
+			Dam = max_shield * perc;
+			Dam /= 100.0f;
+			
+			Dam2 = Dam;
+		}
 		if(obj->Shield <= 0 || Dam > 0)
 		{
-            // reduce shield by damage
+			// reduce shield by damage
 			Dam -= obj->Shield;
 			obj->Shield -= Dam2;
 			if(Dam < 0)
@@ -552,27 +552,27 @@ void CSpeedKernel::ShipShoots(Obj& o, int Team, DWORD AtterID)
 		}
 		double absorbed = Dams[AtterID][Team][o.Type] - Dam;
 		// absorbed damage (for combat reports)
-        if(Team == ATTER)
+		if(Team == ATTER)
 			m_AbsorbedDef[m_CurrentRound] += absorbed;
 		else
 			m_AbsorbedAtt[m_CurrentRound] += absorbed;
-        
+		
 		if(obj->Shield < 0)
 			obj->Shield = 0;
 		if(Dam > 0)
 		{
-            // if damage left, destroy hull
+			// if damage left, destroy hull
 			obj->Life -= Dam;
 			if(obj->Life < 0)
 				obj->Life = 0;
 
 		}
-        if(obj->Life <= 0.7f * MaxLifes[DefferID][ZielTeam][obj->Type])
-        {
-            // ship probably explodes, when hull damage >= 30 %
-            if(rand() % 100 >= 100.f * obj->Life / MaxLifes[DefferID][ZielTeam][obj->Type])
-                obj->Explodes = true;
-        }
+		if(obj->Life <= 0.7f * MaxLifes[DefferID][ZielTeam][obj->Type])
+		{
+			// ship probably explodes, when hull damage >= 30 %
+			if(rand() % 100 >= 100.f * obj->Life / MaxLifes[DefferID][ZielTeam][obj->Type])
+				obj->Explodes = true;
+		}
 		// can shoot this at ship again?
 		ShootsAgain = CanShootAgain_FromTable(o.Type, obj->Type);
 	}
@@ -581,31 +581,31 @@ void CSpeedKernel::ShipShoots(Obj& o, int Team, DWORD AtterID)
 
 bool CSpeedKernel::CanShootAgain_FromTable(ITEM_TYPE AttType, ITEM_TYPE TargetType)
 {
-    return RandomNumber(10000) >= m_RF[AttType][TargetType];
+	return RandomNumber(10000) >= m_RF[AttType][TargetType];
 }
 
 // computes new best/worst case
 void CSpeedKernel::UpdateBestWorstCase(int CurSim)
 {
-    if(!m_CompBestWorstCase)
+	if(!m_CompBestWorstCase)
 		return;
 
 	int a[T_END], d[T_END];
 	size_t i;
-    for(i = 0; i < T_END; i++)
+	for(i = 0; i < T_END; i++)
 	{
 		a[i] = 0;
 		d[i] = 0;
 	}
 
-    // count ships
-    for(i = 0; i < m_AttObj->size(); i++)
+	// count ships
+	for(i = 0; i < m_AttObj->size(); i++)
 		a[(*m_AttObj)[i].Type]++;
 
-    for(i = 0; i < m_DefObj->size(); i++)
+	for(i = 0; i < m_DefObj->size(); i++)
 		d[(*m_DefObj)[i].Type]++;
 
-    // check if better / worse
+	// check if better / worse
 	for(i = 0; i < T_END; i++)
 	{
 		if(m_BestCaseAtt[i] < a[i])
@@ -617,11 +617,11 @@ void CSpeedKernel::UpdateBestWorstCase(int CurSim)
 			m_BestCaseDef[i] = d[i];
 		if(m_WorstCaseDef[i] > d[i])
 			m_WorstCaseDef[i] = d[i];
-        
+		
 #ifdef CREATE_ADV_STATS
-        // save result
-        m_CombatResultsAtt[CurSim][i] = a[i];
-        m_CombatResultsDef[CurSim][i] = d[i];
+		// save result
+		m_CombatResultsAtt[CurSim][i] = a[i];
+		m_CombatResultsDef[CurSim][i] = d[i];
 #endif
 	}
 }
@@ -630,10 +630,10 @@ void CSpeedKernel::UpdateBestWorstCase(int CurSim)
 // updates number of ships for each round (needed for combat reports)
 void CSpeedKernel::SaveShipsToCR(int round)
 {
-    round--;
+	round--;
 	m_NumSimulatedRounds[round]++;
 	size_t t, i;
-    for(i = 0; i < m_AttObj->size(); i++)
+	for(i = 0; i < m_AttObj->size(); i++)
 	{
 		t = (*m_AttObj)[i].Type;
 		m_NumShipsInKBAtt[round][t].Num++;
@@ -648,22 +648,22 @@ void CSpeedKernel::SaveShipsToCR(int round)
 
 bool CSpeedKernel::InitSim()
 {
-    // more randomness
-    InitRand();
-    srand(time(NULL));
+	// more randomness
+	InitRand();
+	srand(time(NULL));
 
-    // calculate cost, hull, shield etc. of ships
-    ComputeShipData();
+	// calculate cost, hull, shield etc. of ships
+	ComputeShipData();
 
-    Obj obj;
-    DWORD CurrPl = 999;
-    unsigned int item = 0;
-    int i;
-    // reset fleet
+	Obj obj;
+	DWORD CurrPl = 999;
+	unsigned int item = 0;
+	int i;
+	// reset fleet
 	m_AttObj->clear();
-    m_DefObj->clear();
+	m_DefObj->clear();
 	m_NumShipsAtt.resize(T_RAK*MAX_PLAYERS_PER_TEAM);
-    m_NumShipsDef.resize((T_END)*MAX_PLAYERS_PER_TEAM);
+	m_NumShipsDef.resize((T_END)*MAX_PLAYERS_PER_TEAM);
 	for(i = 0; i < MAX_PLAYERS_PER_TEAM; i++)
 	{
 		for(int j = 0; j < T_SHIPEND; j++)
@@ -684,39 +684,39 @@ bool CSpeedKernel::InitSim()
 	}
 	for(item = 0; item < m_NumSetShipsAtt.size(); item++)
 	{
-        // create attacking objects; for every ship 1 object
+		// create attacking objects; for every ship 1 object
 		obj = FillObj(m_NumSetShipsAtt[item].Type, ATTER, m_NumSetShipsAtt[item].OwnerID);
-        if(m_NumSetShipsAtt[item].OwnerID != CurrPl)
-            CurrPl = m_NumSetShipsAtt[item].OwnerID;
-        for(size_t o = 0; o < m_NumSetShipsAtt[item].Num; o++)
+		if(m_NumSetShipsAtt[item].OwnerID != CurrPl)
+			CurrPl = m_NumSetShipsAtt[item].OwnerID;
+		for(size_t o = 0; o < m_NumSetShipsAtt[item].Num; o++)
 			m_AttObj->push_back(obj);
 	}
-    if(CurrPl < MAX_PLAYERS_PER_TEAM)
-        m_NumPlayersPerTeam[ATTER] = CurrPl+1;
-    else
-        m_NumPlayersPerTeam[ATTER] = 0;
+	if(CurrPl < MAX_PLAYERS_PER_TEAM)
+		m_NumPlayersPerTeam[ATTER] = CurrPl+1;
+	else
+		m_NumPlayersPerTeam[ATTER] = 0;
 
-    CurrPl = 999;
+	CurrPl = 999;
 	for(item = 0; item < m_NumSetShipsDef.size(); item++)
 	{
-        // defending units
+		// defending units
 		obj = FillObj(m_NumSetShipsDef[item].Type, DEFFER, m_NumSetShipsDef[item].OwnerID);
-        if(m_NumSetShipsDef[item].OwnerID != CurrPl)
-            CurrPl = m_NumSetShipsDef[item].OwnerID;
+		if(m_NumSetShipsDef[item].OwnerID != CurrPl)
+			CurrPl = m_NumSetShipsDef[item].OwnerID;
 		for(size_t o = 0; o < m_NumSetShipsDef[item].Num; o++)
 			m_DefObj->push_back(obj);
 	}
-    if(CurrPl < MAX_PLAYERS_PER_TEAM)
-        m_NumPlayersPerTeam[DEFFER] = CurrPl+1;
-    else
-        m_NumPlayersPerTeam[DEFFER] = 0;
+	if(CurrPl < MAX_PLAYERS_PER_TEAM)
+		m_NumPlayersPerTeam[DEFFER] = CurrPl+1;
+	else
+		m_NumPlayersPerTeam[DEFFER] = 0;
 
 	m_Result.NumRounds = 0;
 	m_Result.TF = Res();
 	m_Result.MaxTF = Res();
 	m_Result.VerlusteAngreifer = Res();
 	m_Result.VerlusteVerteidiger = Res();
-    m_Result.VerlVertmitAufbau = Res();
+	m_Result.VerlVertmitAufbau = Res();
 	m_Result.MaxVerlAtt = Res();
 	m_Result.MaxVerlDef = Res();
 	m_Result.MinTF = Res();
@@ -727,11 +727,11 @@ bool CSpeedKernel::InitSim()
 	m_Result.DefWon = 0;
 	m_Result.Draw = 0;
 	m_Result.SpritVerbrauch = 0;
-    m_Result.Ausbeute = 0;
+	m_Result.Ausbeute = 0;
 	m_Result.WertAtt = Res();
 	m_Result.WertDef = Res();
 
-    // reset best/worst case
+	// reset best/worst case
 	for(int u = 0; u < T_END; u++)
 	{
 		m_WorstCaseAtt[u] = 999999999;
@@ -740,7 +740,7 @@ bool CSpeedKernel::InitSim()
 		m_BestCaseDef[u] = 0;
 	}
 
-    // reset combat report data
+	// reset combat report data
 	for(int r = 0; r < 7; r++)
 	{
 		for(int i = 0; i < T_END; i++)
@@ -775,11 +775,11 @@ void CSpeedKernel::ComputeCRArrays()
 			if(m_NumSimulatedRounds[r] > 0)
 			{
 				m_NumShipsInKBAtt[r][t].Num /= m_NumSimulatedRounds[r];
-                if(m_NumShipsInKBAtt[r][t].Num > 0)
-                    m_NumShipsInKBAtt[r][t].Num += 0.5f;
+				if(m_NumShipsInKBAtt[r][t].Num > 0)
+					m_NumShipsInKBAtt[r][t].Num += 0.5f;
 				m_NumShipsInKBDef[r][t].Num /= m_NumSimulatedRounds[r];
-                if(m_NumShipsInKBDef[r][t].Num > 0)
-                    m_NumShipsInKBDef[r][t].Num += 0.5f;
+				if(m_NumShipsInKBDef[r][t].Num > 0)
+					m_NumShipsInKBDef[r][t].Num += 0.5f;
 			}
 			else
 			{
@@ -805,22 +805,22 @@ void CSpeedKernel::ComputeCRArrays()
 void CSpeedKernel::AbortSim()
 {
 	long u = 0;
-    m_DataIsDeleted = true;
-    
-    if(m_SimulateFreedItsData)
-        return;
+	m_DataIsDeleted = true;
+	
+	if(m_SimulateFreedItsData)
+		return;
 
-    // wait until simulation is initialised
-    while(!m_InitSim)
+	// wait until simulation is initialised
+	while(!m_InitSim)
 		u++;
 
 	DWORD num = 0;
-    size_t i;
-    // count number of ships, to wait a certain time
+	size_t i;
+	// count number of ships, to wait a certain time
 	for(i = 0; i < m_NumSetShipsAtt.size(); i++)
 		num += m_NumSetShipsAtt[i].Num;
 	for(i = 0; i < m_NumSetShipsDef.size(); i++)
-        num += m_NumSetShipsDef[i].Num;
+		num += m_NumSetShipsDef[i].Num;
 	DWORD warten = ((float)num / WARTEN_PRO_100K) * CLOCKS_PER_SEC / 1000.0f;
 
 	DWORD start = clock();
@@ -830,103 +830,103 @@ void CSpeedKernel::AbortSim()
 
 void CSpeedKernel::SendStopSim()
 {
-    m_DataIsDeleted = true;
+	m_DataIsDeleted = true;
 }
 
 bool CSpeedKernel::IsSimulating()
 {
-    return !m_SimulateFreedItsData;
+	return !m_SimulateFreedItsData;
 }
 
 
 IPMBattleResult CSpeedKernel::SimulateIPM(int NumIPM, int NumABM, int FleetID, ITEM_TYPE PrimaryItem /* = T_RAK*/)
 {
-    size_t i;
-    IPMBattleResult br;
-    TargetInfo ti = GetTargetInfo(FleetID);
-    ComputeShipData();
-    m_NumShipsDef = m_NumSetShipsDef;
-    // damage needed to destroy thw whole defense
-    int NeededDam = 0;
-    
-    // copy target information into result struct
-    _tcsncpy(br.PlaniName, ti.Name, 63);
-    br.Position = ti.Pos;
+	size_t i;
+	IPMBattleResult br;
+	TargetInfo ti = GetTargetInfo(FleetID);
+	ComputeShipData();
+	m_NumShipsDef = m_NumSetShipsDef;
+	// damage needed to destroy thw whole defense
+	int NeededDam = 0;
+	
+	// copy target information into result struct
+	_tcsncpy(br.PlaniName, ti.Name, 63);
+	br.Position = ti.Pos;
 
-    if(PrimaryItem < T_SHIPEND)
-        return br;
-    Res WorthIPM = Res(12500, 2500, 10000), WorthABM = Res(8000, 0, 2000);
+	if(PrimaryItem < T_SHIPEND)
+		return br;
+	Res WorthIPM = Res(12500, 2500, 10000), WorthABM = Res(8000, 0, 2000);
 
-    SItem def[T_END - T_SHIPEND];
-    for(i = 0; i < T_END - T_SHIPEND; i++)
-    {
-        def[i].Num = 0;
-        def[i].Type = (ITEM_TYPE)(i + T_SHIPEND);
-        def[i].OwnerID = FleetID;
-    }
-    int num = 0;
-    // check through items
-    for (i = 0; i < m_NumSetShipsDef.size(); i++)
-    {
-        if(m_NumSetShipsDef[i].OwnerID == FleetID && m_NumSetShipsDef[i].Type >= T_SHIPEND)
-        {
-            num += def[m_NumSetShipsDef[i].Type - T_SHIPEND].Num = m_NumSetShipsDef[i].Num;
-            NeededDam += MaxLifes[FleetID][DEFFER][m_NumSetShipsDef[i].Type] * m_NumSetShipsDef[i].Num;
-        }
-    }
-    br.NeededMissiles = ceil(NeededDam / (12000 * (1 + m_TechsAtt[FleetID].Weapon / 10.f))) + NumABM;
-    
-    br.LossesAttacker = WorthIPM * NumIPM;
-    br.NumIPM = 0;
-    if(NumIPM <= NumABM)
-    {
-        br.LossesDefender = WorthABM * NumIPM;
-        br.NumABM = NumABM - NumIPM;
-        br.NumIPM = 0;
-        return br;
-    }
-    NumIPM -= NumABM;
-    br.LossesDefender = WorthABM * NumABM;
-    br.NumABM = 0;
+	SItem def[T_END - T_SHIPEND];
+	for(i = 0; i < T_END - T_SHIPEND; i++)
+	{
+		def[i].Num = 0;
+		def[i].Type = (ITEM_TYPE)(i + T_SHIPEND);
+		def[i].OwnerID = FleetID;
+	}
+	int num = 0;
+	// check through items
+	for (i = 0; i < m_NumSetShipsDef.size(); i++)
+	{
+		if(m_NumSetShipsDef[i].OwnerID == FleetID && m_NumSetShipsDef[i].Type >= T_SHIPEND)
+		{
+			num += def[m_NumSetShipsDef[i].Type - T_SHIPEND].Num = m_NumSetShipsDef[i].Num;
+			NeededDam += MaxLifes[FleetID][DEFFER][m_NumSetShipsDef[i].Type] * m_NumSetShipsDef[i].Num;
+		}
+	}
+	br.NeededMissiles = ceil(NeededDam / (12000 * (1 + m_TechsAtt[FleetID].Weapon / 10.f))) + NumABM;
+	
+	br.LossesAttacker = WorthIPM * NumIPM;
+	br.NumIPM = 0;
+	if(NumIPM <= NumABM)
+	{
+		br.LossesDefender = WorthABM * NumIPM;
+		br.NumABM = NumABM - NumIPM;
+		br.NumIPM = 0;
+		return br;
+	}
+	NumIPM -= NumABM;
+	br.LossesDefender = WorthABM * NumABM;
+	br.NumABM = 0;
 
-    if(!num)
-        return br;
+	if(!num)
+		return br;
 
-    unsigned int pri_it = PrimaryItem - T_SHIPEND;
-    m_NumShipsDef.clear();
-    m_NumShipsAtt.clear();
-    for(i = 0; i < m_NumSetShipsDef.size(); i++)
-    {
-        if(m_NumSetShipsDef[i].Type < T_SHIPEND)
-            m_NumShipsDef.push_back(m_NumSetShipsDef[i]);
-    }
+	unsigned int pri_it = PrimaryItem - T_SHIPEND;
+	m_NumShipsDef.clear();
+	m_NumShipsAtt.clear();
+	for(i = 0; i < m_NumSetShipsDef.size(); i++)
+	{
+		if(m_NumSetShipsDef[i].Type < T_SHIPEND)
+			m_NumShipsDef.push_back(m_NumSetShipsDef[i]);
+	}
 
-    int MaxDam = (int)(NumIPM * 12000 * (1 + m_TechsAtt[FleetID].Weapon / 10.f));
-    for (i = 0; i < T_END - T_SHIPEND; i++)
-    {
-        unsigned int target;
-        if(i == 0)
-            target = pri_it;
-        else if(i <= pri_it)
-            target = i - 1;
-        else
-            target = i;
-        int Dam = MaxDam - MaxLifes[FleetID][DEFFER][target + T_SHIPEND] * def[target].Num;
-        int dest = 0;
-        if(Dam > 0)
-        {
-            dest = (int)def[target].Num;
-            def[target].Num = 0;
-        }
-        else
-        {
-            // not enough damage for all items
-            dest = floor(MaxDam / MaxLifes[FleetID][DEFFER][target + T_SHIPEND]);
-            def[target].Num -= dest;
-            m_NumShipsDef.push_back(def[target]);
-        }
-        MaxDam -= dest * (int)MaxLifes[FleetID][DEFFER][target + T_SHIPEND];
-        br.LossesDefender += Kosten[target + T_SHIPEND] * dest;
-    }
-    return br;
+	int MaxDam = (int)(NumIPM * 12000 * (1 + m_TechsAtt[FleetID].Weapon / 10.f));
+	for (i = 0; i < T_END - T_SHIPEND; i++)
+	{
+		unsigned int target;
+		if(i == 0)
+			target = pri_it;
+		else if(i <= pri_it)
+			target = i - 1;
+		else
+			target = i;
+		int Dam = MaxDam - MaxLifes[FleetID][DEFFER][target + T_SHIPEND] * def[target].Num;
+		int dest = 0;
+		if(Dam > 0)
+		{
+			dest = (int)def[target].Num;
+			def[target].Num = 0;
+		}
+		else
+		{
+			// not enough damage for all items
+			dest = floor(MaxDam / MaxLifes[FleetID][DEFFER][target + T_SHIPEND]);
+			def[target].Num -= dest;
+			m_NumShipsDef.push_back(def[target]);
+		}
+		MaxDam -= dest * (int)MaxLifes[FleetID][DEFFER][target + T_SHIPEND];
+		br.LossesDefender += Kosten[target + T_SHIPEND] * dest;
+	}
+	return br;
 }

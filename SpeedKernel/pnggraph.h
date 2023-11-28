@@ -35,51 +35,51 @@ using namespace std;
 
 struct sColor 
 {
-    int r, g, b;
-    sColor() { r = g = b = 0; }
-    sColor(int red, int green, int blue) { r = red; g = green; b = blue; }
+	int r, g, b;
+	sColor() { r = g = b = 0; }
+	sColor(int red, int green, int blue) { r = red; g = green; b = blue; }
 };
 
 struct sPoint 
 {
-    float x, y;
-    sPoint() { x = y = 0; }
-    sPoint(float xPos, float yPos) { x = xPos; y = yPos;  }
-    sPoint operator+(const sPoint& p) { return sPoint(x + p.x, y + p.y); };
-    sPoint operator+=(const sPoint& p) { x += p.x; y += p.y; return *this; };
-    sPoint operator-(const sPoint& p) { return sPoint(x - p.x, y - p.y); };
-    sPoint operator-=(const sPoint& p) { x -= p.x; y -= p.y; return *this; };
-    sPoint operator*(const float f) { return sPoint(x * f, y * f); };
-    sPoint operator*=(const float f) { x *= f; y *= f; return *this; };
-    sPoint operator/(const float f) { return sPoint(x / f, y / f); };
-    sPoint operator/=(const float f) { x /= f; y /= f; return *this; };
-    bool operator==(const sPoint& p) { return (x == p.x) && (y == p.y); };
-    bool operator<(const sPoint& p) { return (x < p.x) && !(*this == p); }
-    bool operator>(const sPoint& p) { return !(*this < p) && !(*this == p);}
+	float x, y;
+	sPoint() { x = y = 0; }
+	sPoint(float xPos, float yPos) { x = xPos; y = yPos;  }
+	sPoint operator+(const sPoint& p) { return sPoint(x + p.x, y + p.y); };
+	sPoint operator+=(const sPoint& p) { x += p.x; y += p.y; return *this; };
+	sPoint operator-(const sPoint& p) { return sPoint(x - p.x, y - p.y); };
+	sPoint operator-=(const sPoint& p) { x -= p.x; y -= p.y; return *this; };
+	sPoint operator*(const float f) { return sPoint(x * f, y * f); };
+	sPoint operator*=(const float f) { x *= f; y *= f; return *this; };
+	sPoint operator/(const float f) { return sPoint(x / f, y / f); };
+	sPoint operator/=(const float f) { x /= f; y /= f; return *this; };
+	bool operator==(const sPoint& p) { return (x == p.x) && (y == p.y); };
+	bool operator<(const sPoint& p) { return (x < p.x) && !(*this == p); }
+	bool operator>(const sPoint& p) { return !(*this < p) && !(*this == p);}
 };
 
 class CPngGraph 
 {
 public:
-    CPngGraph(int height, int width);
-    ~CPngGraph();
-    
-    bool WriteToFile(char* filename);
-    void SetColours(sColor BackgrndColor, sColor GraphColor, sColor AxisColor, sColor TextColor);
+	CPngGraph(int height, int width);
+	~CPngGraph();
+	
+	bool WriteToFile(char* filename);
+	void SetColours(sColor BackgrndColor, sColor GraphColor, sColor AxisColor, sColor TextColor);
 
-    // paints the axes including , image data will be deleted
-    bool CreateAxes(float xMin, float xMax, float yMin, float yMax, float xStep, float yStep);    
-    int PlotData(vector<sPoint> data, unsigned long flags);
+	// paints the axes including , image data will be deleted
+	bool CreateAxes(float xMin, float xMax, float yMin, float yMax, float xStep, float yStep);    
+	int PlotData(vector<sPoint> data, unsigned long flags);
 private:
 	void PrepareData(vector<sPoint> &points);
 
-    pngwriter m_PngData;
-    bool m_bAxesDone;
-    
-    sColor m_BackgrndColor, m_AxisColor, m_TextColor, m_GraphColor;
+	pngwriter m_PngData;
+	bool m_bAxesDone;
+	
+	sColor m_BackgrndColor, m_AxisColor, m_TextColor, m_GraphColor;
 
-    int m_Height, m_Width;
-    float m_pixPerX, m_pixPerY;
-    float m_minX, m_maxX;
-    sPoint m_Orgin;
+	int m_Height, m_Width;
+	float m_pixPerX, m_pixPerY;
+	float m_minX, m_maxX;
+	sPoint m_Orgin;
 };

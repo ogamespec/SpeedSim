@@ -22,9 +22,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define _CRT_SECURE_NO_DEPRECATE
 
 #ifdef UNICODE
-    #ifndef _UNICODE
-        #define _UNICODE 
-    #endif
+	#ifndef _UNICODE
+		#define _UNICODE 
+	#endif
 #endif
 
 #include <map>
@@ -48,8 +48,8 @@ enum WNDTYPE
 	WT_CHKBOX,
 	WT_GROUPBOX,
 	WT_LABEL,
-    WT_STATUSBAR,
-    WT_RADIOBTN
+	WT_STATUSBAR,
+	WT_RADIOBTN
 };
 
 enum BMPTYPE
@@ -90,14 +90,14 @@ public:
 	bool AddWindow(HWND wnd, WNDTYPE type);
 	bool AddAllChildWindows(HWND ParentWnd);
 	bool SetColor(HWND wnd, DWORD mode, DWORD Value);
-    
-    bool SetTransparentColor(HWND wnd, DWORD color);
-    bool SetBtnTransparentColor(DWORD color);
+	
+	bool SetTransparentColor(HWND wnd, DWORD color);
+	bool SetBtnTransparentColor(DWORD color);
 
-    bool SetFont(HWND hwnd, LPCTSTR lpszName, INT iSize, WORD wFontFormat);
+	bool SetFont(HWND hwnd, LPCTSTR lpszName, INT iSize, WORD wFontFormat);
 	bool LoadBitmap(TCHAR* name, BMPTYPE type);
 	bool LoadDataFile(TCHAR* name);
-    const TCHAR* GetCurrentDataFile();
+	const TCHAR* GetCurrentDataFile();
 	bool SetBitmap(HBITMAP bmp, BMPTYPE type);
 	bool DrawWindow(DRAWITEMSTRUCT* item);
 	bool DrawBGWindow(HWND wnd);
@@ -111,35 +111,35 @@ private:
 		HWND wnd;
 		WNDTYPE type;
 		WNDPROC oldWndProc;
-        DWORD OldStyle;
+		DWORD OldStyle;
 		DWORD BkColor;
 		DWORD BkMode;
 		DWORD TextColor;
 		HBRUSH UseBrush;
-        HFONT UseFont;
-        HFONT OldFont;
-        BOOL bTransColor;
-        UINT TransColor;
-        SkinnedWnd() {
-            ZeroMemory(this, sizeof(SkinnedWnd));
-        }
+		HFONT UseFont;
+		HFONT OldFont;
+		BOOL bTransColor;
+		UINT TransColor;
+		SkinnedWnd() {
+			ZeroMemory(this, sizeof(SkinnedWnd));
+		}
 	};
 	
 	struct BMP
 	{
 		HBITMAP handle;
 		BITMAP info;
-        BMP() {
-            handle = NULL;
+		BMP() {
+			handle = NULL;
 			ZeroMemory(&info, sizeof(info));
-        }
+		}
 	};
 
 	int GetBitmapType(DRAWITEMSTRUCT* s);
 	bool DrawWndText(DRAWITEMSTRUCT* s);
-    bool TransparentBltU(HDC dcDest, int nXOriginDest, int nYOriginDest, int nWidthDest, int nHeightDest, HDC dcSrc, int nXOriginSrc, int nYOriginSrc, 
-        int nWidthSrc, int nHeightSrc, UINT crTransparent);
-    void DeactivateTheme(HWND wnd, bool deactivate);
+	bool TransparentBltU(HDC dcDest, int nXOriginDest, int nYOriginDest, int nWidthDest, int nHeightDest, HDC dcSrc, int nXOriginSrc, int nYOriginSrc, 
+		int nWidthSrc, int nHeightSrc, UINT crTransparent);
+	void DeactivateTheme(HWND wnd, bool deactivate);
 
 
 	static LRESULT CALLBACK SubClassProc(HWND wnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -151,17 +151,17 @@ private:
 	vector<BMP> m_Bitmaps;
 
 	float m_BGImScaleX, m_BGImScaleY;
-    int m_iStatusBarHeight;
+	int m_iStatusBarHeight;
 
 	HWND m_BGWnd;
 	WNDPROC m_OldWndProc;
-    DWORD m_OldBGWndSyle;
-    
-    bool m_ThemedApp;
-    HMODULE m_hThemeUX;
-    SETWINDOWTHEME* m_pSetWindowTheme;
-    ISAPPTHEMED* m_pIsAppThemed;
-    DRAWTHEMEPARENTBACKGROUND* m_pDrawThemeParentBackground;
+	DWORD m_OldBGWndSyle;
+	
+	bool m_ThemedApp;
+	HMODULE m_hThemeUX;
+	SETWINDOWTHEME* m_pSetWindowTheme;
+	ISAPPTHEMED* m_pIsAppThemed;
+	DRAWTHEMEPARENTBACKGROUND* m_pDrawThemeParentBackground;
 
-    genstring m_DataFile;
+	genstring m_DataFile;
 };

@@ -23,7 +23,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 CSpeedKernel::CSpeedKernel()
 {
-    int r;
+	int r;
 	// set all variables to default values
 	m_DefInTF = false;
 	m_Result.PlaniName[0] = '\0';
@@ -35,10 +35,10 @@ CSpeedKernel::CSpeedKernel()
 	m_CompBestWorstCase = true;
 	m_Result.GesamtBeute = Res();
 	m_Result.NumAtts = 0;
-    m_Result.GesamtRecs = 0;
-    m_LossesToDF = 30;
-    for(r = 0; r < MAX_PLAYERS_PER_TEAM; r++)
-        m_Speed[r] = 10;
+	m_Result.GesamtRecs = 0;
+	m_LossesToDF = 30;
+	for(r = 0; r < MAX_PLAYERS_PER_TEAM; r++)
+		m_Speed[r] = 10;
 
 	m_NumShipsAtt.resize(T_END);
 	m_NumShipsDef.resize(T_END);
@@ -48,77 +48,77 @@ CSpeedKernel::CSpeedKernel()
 		m_NumShipsInKBAtt[r].resize(T_END);
 		m_NumShipsInKBDef[r].resize(T_END);
 	}
-    m_NumSetShipsAtt.clear();
-    m_NumSetShipsDef.clear();
+	m_NumSetShipsAtt.clear();
+	m_NumSetShipsDef.clear();
 	srand((unsigned)time(NULL));
-    InitRand();
+	InitRand();
 
 	m_AttObj = new vector<Obj>;
 	m_DefObj = new vector<Obj>;
 
-    memset(m_OwnPos, 0, MAX_PLAYERS_PER_TEAM * sizeof(PlaniPos));
+	memset(m_OwnPos, 0, MAX_PLAYERS_PER_TEAM * sizeof(PlaniPos));
 
 	m_DataIsDeleted = false;
 	m_SimulateFreedItsData = true;
-    LoadLangFile(NULL);
+	LoadLangFile(NULL);
 	// set to newest version
-    FillRFTable(RF_075);
-    m_DefRebuildFac = DEF_AUFBAU_FAKTOR;
-    m_LastScanHadTechs = false;
-    m_ShipDataFromFile = false;
-    m_RebuildSmallDef = true;
+	FillRFTable(RF_075);
+	m_DefRebuildFac = DEF_AUFBAU_FAKTOR;
+	m_LastScanHadTechs = false;
+	m_ShipDataFromFile = false;
+	m_RebuildSmallDef = true;
 
-    m_NumPlayersPerTeam[ATTER] = 0;
-    m_NumPlayersPerTeam[DEFFER] = 0;
-    m_BracketNames = false;
-    m_CurrentSim = 0;
-    m_UseOldBS = false;
+	m_NumPlayersPerTeam[ATTER] = 0;
+	m_NumPlayersPerTeam[DEFFER] = 0;
+	m_BracketNames = false;
+	m_CurrentSim = 0;
+	m_UseOldBS = false;
 
-    for(r = 0; r < T_SHIPEND; r++) {
-        for(int i = 0; i < T_END; i++) {
-            m_RF[r][i] = 0;
-        }
-    }
+	for(r = 0; r < T_SHIPEND; r++) {
+		for(int i = 0; i < T_END; i++) {
+			m_RF[r][i] = 0;
+		}
+	}
 
-    ComputeShipData();
+	ComputeShipData();
 
-    // ini-names of ships
-    m_IniFleetNames[T_KT] = _T("S_CAR");
-    m_IniFleetNames[T_GT] = _T("L_CAR");
-    m_IniFleetNames[T_LJ] = _T("L_FI");
-    m_IniFleetNames[T_SJ] = _T("H_FI");
-    m_IniFleetNames[T_KREUZER] = _T("CRUI");
-    m_IniFleetNames[T_SS] = _T("BS");
-    m_IniFleetNames[T_KOLO] = _T("COL");
-    m_IniFleetNames[T_REC] = _T("REC");
-    m_IniFleetNames[T_SPIO] = _T("ESP");
-    m_IniFleetNames[T_BOMBER] = _T("BOM");
-    m_IniFleetNames[T_SAT] = _T("SOL");
-    m_IniFleetNames[T_ZER] = _T("DEST");
-    m_IniFleetNames[T_TS] = _T("RIP");
-    m_IniFleetNames[T_IC] = _T("IC");
-    m_IniFleetNames[T_RAK] = _T("MISS");
-    m_IniFleetNames[T_LL] = _T("S_LAS");
-    m_IniFleetNames[T_SL] = _T("H_LAS");
-    m_IniFleetNames[T_GAUSS] = _T("GAUSS");
-    m_IniFleetNames[T_IONEN] = _T("ION");
-    m_IniFleetNames[T_PLASMA] = _T("PLAS");
-    m_IniFleetNames[T_KS] = _T("S_SDOME");
-    m_IniFleetNames[T_GS] = _T("L_SDOME");
+	// ini-names of ships
+	m_IniFleetNames[T_KT] = _T("S_CAR");
+	m_IniFleetNames[T_GT] = _T("L_CAR");
+	m_IniFleetNames[T_LJ] = _T("L_FI");
+	m_IniFleetNames[T_SJ] = _T("H_FI");
+	m_IniFleetNames[T_KREUZER] = _T("CRUI");
+	m_IniFleetNames[T_SS] = _T("BS");
+	m_IniFleetNames[T_KOLO] = _T("COL");
+	m_IniFleetNames[T_REC] = _T("REC");
+	m_IniFleetNames[T_SPIO] = _T("ESP");
+	m_IniFleetNames[T_BOMBER] = _T("BOM");
+	m_IniFleetNames[T_SAT] = _T("SOL");
+	m_IniFleetNames[T_ZER] = _T("DEST");
+	m_IniFleetNames[T_TS] = _T("RIP");
+	m_IniFleetNames[T_IC] = _T("IC");
+	m_IniFleetNames[T_RAK] = _T("MISS");
+	m_IniFleetNames[T_LL] = _T("S_LAS");
+	m_IniFleetNames[T_SL] = _T("H_LAS");
+	m_IniFleetNames[T_GAUSS] = _T("GAUSS");
+	m_IniFleetNames[T_IONEN] = _T("ION");
+	m_IniFleetNames[T_PLASMA] = _T("PLAS");
+	m_IniFleetNames[T_KS] = _T("S_SDOME");
+	m_IniFleetNames[T_GS] = _T("L_SDOME");
 
-    m_BWC_CSS = _T("bwc.css");
-    m_CR_CSS = _T("cr.css");
+	m_BWC_CSS = _T("bwc.css");
+	m_CR_CSS = _T("cr.css");
 
-    setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "");
 
-    lconv *lc = localeconv();
-    TCHAR ts[10];
+	lconv *lc = localeconv();
+	TCHAR ts[10];
 #ifdef UNICODE
-    mbstowcs(ts, lc->thousands_sep, 10);
+	mbstowcs(ts, lc->thousands_sep, 10);
 #else
-    strncpy(ts, lc->thousands_sep, 10);
+	strncpy(ts, lc->thousands_sep, 10);
 #endif
-    m_ThousandSep = genstring(ts);
+	m_ThousandSep = genstring(ts);
 
 	return;
 }
@@ -141,25 +141,25 @@ void CSpeedKernel::Reset()
 {
 	m_NumShipsAtt.clear();
 	m_NumShipsDef.clear();
-    m_NumSetShipsAtt.clear();
-    m_NumSetShipsDef.clear();
+	m_NumSetShipsAtt.clear();
+	m_NumSetShipsDef.clear();
 	m_AttObj->clear();
 	m_DefObj->clear();
 	m_DefInTF = false;
-    m_FuncPtr = NULL;
-    for(int r = 0; r < MAX_PLAYERS_PER_TEAM; r++)
-        m_Speed[r] = 10;
-    memset(m_OwnPos, 0, MAX_PLAYERS_PER_TEAM * sizeof(PlaniPos));
+	m_FuncPtr = NULL;
+	for(int r = 0; r < MAX_PLAYERS_PER_TEAM; r++)
+		m_Speed[r] = 10;
+	memset(m_OwnPos, 0, MAX_PLAYERS_PER_TEAM * sizeof(PlaniPos));
 	memset(m_TechsAtt, 0, MAX_PLAYERS_PER_TEAM * sizeof(ShipTechs));
 	memset(m_TechsDef, 0, MAX_PLAYERS_PER_TEAM * sizeof(ShipTechs));
 	memset(&m_Result, 0, sizeof(BattleResult));
-    FillRFTable(RF_075);
-    m_NumPlayersPerTeam[ATTER] = 0;
-    m_NumPlayersPerTeam[DEFFER] = 0;
-    m_LossesToDF = 30;
+	FillRFTable(RF_075);
+	m_NumPlayersPerTeam[ATTER] = 0;
+	m_NumPlayersPerTeam[DEFFER] = 0;
+	m_LossesToDF = 30;
 
-    srand((unsigned)time(NULL));
-    InitRand();
+	srand((unsigned)time(NULL));
+	InitRand();
 }
 
 void CheckVector(const vector<SItem>& v)
@@ -184,52 +184,52 @@ void CheckVector(const vector<Obj>& v)
 
 size_t GetNextNumber(genstring str, int& num, size_t pos)
 {
-    size_t i;
-    // find next number
-    for(i = pos; i < str.length(); i++) {
-        if(_istdigit(str[i])) {
-            // convert into int
-            num = _ttoi(str.substr(i).c_str());
-            // get num of chars
-            while(_istdigit(str[i]))
-                i++;
-            break;
-        }
-    }
-    if(i == str.length())
-        i = genstring::npos;
-    return i;
+	size_t i;
+	// find next number
+	for(i = pos; i < str.length(); i++) {
+		if(_istdigit(str[i])) {
+			// convert into int
+			num = _ttoi(str.substr(i).c_str());
+			// get num of chars
+			while(_istdigit(str[i]))
+				i++;
+			break;
+		}
+	}
+	if(i == str.length())
+		i = genstring::npos;
+	return i;
 }
 
 int _stprintf(TCHAR * target, const TCHAR * format, ...)
 {
-    int i;
-    va_list arglist;
-    va_start(arglist, format);
+	int i;
+	va_list arglist;
+	va_start(arglist, format);
 #ifndef UNICODE
-    i = vsprintf(target, format, arglist);
+	i = vsprintf(target, format, arglist);
 #else
 #if _MSC_VER > 1200 || !defined(_MSC_VER)
-    i =  vswprintf(target, 512, format, arglist);
+	i =  vswprintf(target, 512, format, arglist);
 #else
-    i =  vswprintf(target, format, arglist);
+	i =  vswprintf(target, format, arglist);
 #endif
 #endif
-    va_end(arglist);
-    return i;
+	va_end(arglist);
+	return i;
 }
 
 string wchar_to_utf8(wstring str)
 {
-    string utf8str;
-    vector<char> utf8chars;
-    if(sizeof(wchar_t) == 2)
-        utf8::utf16to8(str.begin(), str.end(), back_inserter(utf8chars));
-    else if(sizeof(wchar_t) == 4)
-        utf8::utf32to8(str.begin(), str.end(), back_inserter(utf8chars));
-    for (size_t i = 0; i < utf8chars.size(); i++)
-    {
-        utf8str += utf8chars[i];
-    }
-    return utf8str;
+	string utf8str;
+	vector<char> utf8chars;
+	if(sizeof(wchar_t) == 2)
+		utf8::utf16to8(str.begin(), str.end(), back_inserter(utf8chars));
+	else if(sizeof(wchar_t) == 4)
+		utf8::utf32to8(str.begin(), str.end(), back_inserter(utf8chars));
+	for (size_t i = 0; i < utf8chars.size(); i++)
+	{
+		utf8str += utf8chars[i];
+	}
+	return utf8str;
 }

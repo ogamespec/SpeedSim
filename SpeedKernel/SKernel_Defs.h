@@ -20,8 +20,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #pragma once
 
 /*!
-    \file
-    \brief This file contains several defines
+	\file
+	\brief This file contains several defines
 */
 
 ////////////////////////////////////////////////////////
@@ -41,26 +41,26 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #if !defined(_DEBUG) && defined(_MSC_VER)
 /*! \def ASMRAND
-    \brief If defined, own assembler random number generator is used
-    \warning Use only, when you use Windows with Visual C++, or else you can't compile 
+	\brief If defined, own assembler random number generator is used
+	\warning Use only, when you use Windows with Visual C++, or else you can't compile 
 */
 #define ASMRAND
 #endif
 
 /*!
-    \def INCL_OPTIMIZED_FUNCTIONS
-    \brief If defined, optimized functions will be included
-    
-    This is not needed at the moment so just let it undefined
+	\def INCL_OPTIMIZED_FUNCTIONS
+	\brief If defined, optimized functions will be included
+	
+	This is not needed at the moment so just let it undefined
 */
 //#define INCL_OPTIMIZED_FUNCTIONS
 
 /*!
-    \def CREATE_ADV_STATS
-    \brief Define this that the more accurate statistics (in png format) will be created
+	\def CREATE_ADV_STATS
+	\brief Define this that the more accurate statistics (in png format) will be created
 
-    You can see these stats in the BestWorst-Case File. To be able to use this you will need 
-    the freetype library, pnglib and zlib.
+	You can see these stats in the BestWorst-Case File. To be able to use this you will need 
+	the freetype library, pnglib and zlib.
 */
 //#define CREATE_ADV_STATS
 #ifdef CREATE_ADV_STATS
@@ -76,8 +76,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define NAME_RF_USER _T("RF_USER")
 
 /*!
-    \def RFPERC(x)
-    \brief RF(x) converts RF(x) into RF x%
+	\def RFPERC(x)
+	\brief RF(x) converts RF(x) into RF x%
 */
 #define RFPERC(x) (x == 0 ? 0 : (100-100.0f/x)*100)
 
@@ -96,8 +96,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define MAX_PLAYERS_PER_TEAM 16
 
 /*!
-    \def UNICODE
-    \brief Define this, to compile as Unicode version
+	\def UNICODE
+	\brief Define this, to compile as Unicode version
 */ 
 //#define UNICODE 
 
@@ -114,39 +114,39 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #undef _istdigit
 
 #ifdef UNICODE
-    #define _T(x) L ## x
-    typedef wchar_t TCHAR;
-    #define _tcscpy wcscpy
-    #define _tcsncpy wcsncpy
-    #define _ttoi(x) wcstol(x, NULL, 10)
-    #define _tcscat wcscat
-    #define _tcsncat wcsncat
-    #define _tcslen wcslen
-    #define _tfopen _wfopen
-    #define _fgetts fgetws
-    #define _istdigit iswdigit
+	#define _T(x) L ## x
+	typedef wchar_t TCHAR;
+	#define _tcscpy wcscpy
+	#define _tcsncpy wcsncpy
+	#define _ttoi(x) wcstol(x, NULL, 10)
+	#define _tcscat wcscat
+	#define _tcsncat wcsncat
+	#define _tcslen wcslen
+	#define _tfopen _wfopen
+	#define _fgetts fgetws
+	#define _istdigit iswdigit
 #else
-    #define  _T(x) x
-    typedef char TCHAR;
-    #define _tcscpy strcpy
-    #define _tcsncpy strncpy
-    #define _ttoi atoi
-    #define _tcscat strcat
-    #define _tcsncat strncat
-    #define _tcslen strlen
-    #define _tfopen fopen
-    #define _fgetts fgets
-    #define _istdigit isdigit
+	#define  _T(x) x
+	typedef char TCHAR;
+	#define _tcscpy strcpy
+	#define _tcsncpy strncpy
+	#define _ttoi atoi
+	#define _tcscat strcat
+	#define _tcsncat strncat
+	#define _tcslen strlen
+	#define _tfopen fopen
+	#define _fgetts fgets
+	#define _istdigit isdigit
 #endif
 
 #undef _stprintf
 int _stprintf(TCHAR * target, const TCHAR * format, ...);
 
 /*!
-    \var typedef basic_string<TCHAR, char_traits<TCHAR>, allocator<TCHAR> > genstring;
-    \brief Type for Unicode and non unicode strings
+	\var typedef basic_string<TCHAR, char_traits<TCHAR>, allocator<TCHAR> > genstring;
+	\brief Type for Unicode and non unicode strings
 
-    Use this type for all strings to be unicode compatible
+	Use this type for all strings to be unicode compatible
 */
 typedef basic_string<TCHAR, char_traits<TCHAR>, allocator<TCHAR> > genstring;
 typedef basic_stringstream<TCHAR, char_traits<TCHAR>, allocator<TCHAR> > genstrstream;
@@ -165,7 +165,7 @@ typedef unsigned short int  WORD;
 typedef unsigned char       BYTE;
 
 #ifndef _MSC_VER
-    typedef long long  __int64;
+	typedef long long  __int64;
 #endif //Win32
 
 size_t GetNextNumber(genstring str, int& num, size_t pos = 0);

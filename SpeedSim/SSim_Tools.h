@@ -94,41 +94,41 @@ void SetDefCSSFiles();
 map<genstring, genstring> UpdateLangFiles();
 
 struct sRaidListItem {
-    vector<SItem> vAttItems[MAX_PLAYERS_PER_TEAM];
-    vector<SItem> vDefItems[MAX_PLAYERS_PER_TEAM];
-    PlaniPos StartPos[MAX_PLAYERS_PER_TEAM];
-    PlaniPos TargetPos;
-    ShipTechs TechsAtt[MAX_PLAYERS_PER_TEAM];
-    ShipTechs TechsDef[MAX_PLAYERS_PER_TEAM];
-    BattleResult battle_res;
-    SItem AttResult[MAX_PLAYERS_PER_TEAM][T_END];
-    SItem DefResult[MAX_PLAYERS_PER_TEAM][T_END];
-    BYTE iUsedFleet;
-    sRaidListItem() {
-        for (int i = 0; i < MAX_PLAYERS_PER_TEAM; i++) {
-            StartPos[i] = PlaniPos();
-        }
-        TargetPos = PlaniPos();
-        memset(TechsAtt, 0, sizeof(ShipTechs) * MAX_PLAYERS_PER_TEAM);
-        memset(TechsDef, 0, sizeof(ShipTechs) * MAX_PLAYERS_PER_TEAM);
-        memset(AttResult, 0, sizeof(SItem) * MAX_PLAYERS_PER_TEAM * T_END);
-        memset(DefResult, 0, sizeof(SItem) * MAX_PLAYERS_PER_TEAM * T_END);
-        iUsedFleet = 0;
-    }
+	vector<SItem> vAttItems[MAX_PLAYERS_PER_TEAM];
+	vector<SItem> vDefItems[MAX_PLAYERS_PER_TEAM];
+	PlaniPos StartPos[MAX_PLAYERS_PER_TEAM];
+	PlaniPos TargetPos;
+	ShipTechs TechsAtt[MAX_PLAYERS_PER_TEAM];
+	ShipTechs TechsDef[MAX_PLAYERS_PER_TEAM];
+	BattleResult battle_res;
+	SItem AttResult[MAX_PLAYERS_PER_TEAM][T_END];
+	SItem DefResult[MAX_PLAYERS_PER_TEAM][T_END];
+	BYTE iUsedFleet;
+	sRaidListItem() {
+		for (int i = 0; i < MAX_PLAYERS_PER_TEAM; i++) {
+			StartPos[i] = PlaniPos();
+		}
+		TargetPos = PlaniPos();
+		memset(TechsAtt, 0, sizeof(ShipTechs) * MAX_PLAYERS_PER_TEAM);
+		memset(TechsDef, 0, sizeof(ShipTechs) * MAX_PLAYERS_PER_TEAM);
+		memset(AttResult, 0, sizeof(SItem) * MAX_PLAYERS_PER_TEAM * T_END);
+		memset(DefResult, 0, sizeof(SItem) * MAX_PLAYERS_PER_TEAM * T_END);
+		iUsedFleet = 0;
+	}
 };
 
 struct EspHistItem
 {
-    TargetInfo Target;
-    time_t ctime;
-    TCHAR TipText[1024];
-    bool Checked;
-    EspHistItem()
-    {
-        memset(TipText, 0, 1024 * sizeof(TCHAR));
-        Checked = false;
-        ctime = 0;
-    }
+	TargetInfo Target;
+	time_t ctime;
+	TCHAR TipText[1024];
+	bool Checked;
+	EspHistItem()
+	{
+		memset(TipText, 0, 1024 * sizeof(TCHAR));
+		Checked = false;
+		ctime = 0;
+	}
 };
 extern vector<EspHistItem> g_vRaidHistory;
 extern WNDPROC OldLVProc;

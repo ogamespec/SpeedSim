@@ -261,88 +261,88 @@ extern SetWndThmProc fnSetWndThm;
 
 struct TechOpts
 {
-    ShipTechs STechs;
-    BYTE Combust;
-    BYTE Impulse;
-    BYTE Hyper;
-    TechOpts()
-    {
-        Combust = Impulse = Hyper = 0;
-    }
+	ShipTechs STechs;
+	BYTE Combust;
+	BYTE Impulse;
+	BYTE Hyper;
+	TechOpts()
+	{
+		Combust = Impulse = Hyper = 0;
+	}
 };
 
 struct SaveData {
-    TechOpts Techs;
-    bool bCheckTechs;
-    BYTE RFType;
-    bool bDelDefOnSwitch;
-    bool DefTF;
-    bool BWCase;
+	TechOpts Techs;
+	bool bCheckTechs;
+	BYTE RFType;
+	bool bDelDefOnSwitch;
+	bool DefTF;
+	bool BWCase;
 	bool HookClipboard;
-    WORD NumSims;
-    TCHAR PlanPos[MAX_POS][9];
+	WORD NumSims;
+	TCHAR PlanPos[MAX_POS][9];
 	BYTE SelPos;
 	TCHAR LastUpdCheck[16];
-    bool bDoUpdate;
+	bool bDoUpdate;
 	TCHAR SkinFileName[64];
-    char LangFileName[64];
-    char RFFileName[64];
-    char ShipDataFile[64];
-    int iSpeedFactor;
-    int iDefRebuild;
-    BYTE bTrayIcon;
-    BYTE bPopUpOnText;
-    BYTE bMinimizeOnStart;
-    BYTE bSingleInst;
-    BYTE bRebuildSmallDef;
-    ITEM_TYPE PlunderShip;
-    int iDlgTransparency;
-    int iPopUpTransparency;
-    REBUILD_OPTION RebuildOpt;
-    bool bShowEspHist;
-    TCHAR LastLangCheckVer[64];
-    bool bUseOldBS;
-    int EspHistPos[2];
-    int EspHistSize[2];
-    int cHistInFile;
-    int StructureToDF;
-    SaveData()
-    {
-        bUseOldBS = false;
-        bCheckTechs = false;
-        RFType = RF_075;
-        bDelDefOnSwitch = false;
-        DefTF = false;
-        BWCase = false;
-        HookClipboard = false;
-        NumSims = 100;
-        memset(PlanPos, 0, (9 * MAX_POS) * sizeof(TCHAR));
-        SelPos = 0;
-        memset(LastUpdCheck, 0, 16 * sizeof(TCHAR));
-        bDoUpdate = true;
-        memset(SkinFileName, 0, 64 * sizeof(TCHAR));
-        memset(LangFileName, 0, 64);
-        memset(RFFileName, 0, 64);
-        memset(ShipDataFile, 0, 64);
-        memset(LastLangCheckVer, 0, 64);
-        iSpeedFactor = 1;
-        iDefRebuild = 75;
-        bTrayIcon = false;
-        bPopUpOnText = false;
-        bMinimizeOnStart = false;
-        bSingleInst = false;
-        bRebuildSmallDef = false;
-        PlunderShip = T_GT;
-        iDlgTransparency = 0;
-        iPopUpTransparency = 0;
-        RebuildOpt = REBUILD_AVG;
-        bShowEspHist = true;
-        cHistInFile = 10;
-        StructureToDF = 30;
-        EspHistPos[0] = 0;
-        EspHistPos[1] = 0;
-        memset(EspHistSize, 0, 2 * sizeof(int));
-    }
+	char LangFileName[64];
+	char RFFileName[64];
+	char ShipDataFile[64];
+	int iSpeedFactor;
+	int iDefRebuild;
+	BYTE bTrayIcon;
+	BYTE bPopUpOnText;
+	BYTE bMinimizeOnStart;
+	BYTE bSingleInst;
+	BYTE bRebuildSmallDef;
+	ITEM_TYPE PlunderShip;
+	int iDlgTransparency;
+	int iPopUpTransparency;
+	REBUILD_OPTION RebuildOpt;
+	bool bShowEspHist;
+	TCHAR LastLangCheckVer[64];
+	bool bUseOldBS;
+	int EspHistPos[2];
+	int EspHistSize[2];
+	int cHistInFile;
+	int StructureToDF;
+	SaveData()
+	{
+		bUseOldBS = false;
+		bCheckTechs = false;
+		RFType = RF_075;
+		bDelDefOnSwitch = false;
+		DefTF = false;
+		BWCase = false;
+		HookClipboard = false;
+		NumSims = 100;
+		memset(PlanPos, 0, (9 * MAX_POS) * sizeof(TCHAR));
+		SelPos = 0;
+		memset(LastUpdCheck, 0, 16 * sizeof(TCHAR));
+		bDoUpdate = true;
+		memset(SkinFileName, 0, 64 * sizeof(TCHAR));
+		memset(LangFileName, 0, 64);
+		memset(RFFileName, 0, 64);
+		memset(ShipDataFile, 0, 64);
+		memset(LastLangCheckVer, 0, 64);
+		iSpeedFactor = 1;
+		iDefRebuild = 75;
+		bTrayIcon = false;
+		bPopUpOnText = false;
+		bMinimizeOnStart = false;
+		bSingleInst = false;
+		bRebuildSmallDef = false;
+		PlunderShip = T_GT;
+		iDlgTransparency = 0;
+		iPopUpTransparency = 0;
+		RebuildOpt = REBUILD_AVG;
+		bShowEspHist = true;
+		cHistInFile = 10;
+		StructureToDF = 30;
+		EspHistPos[0] = 0;
+		EspHistPos[1] = 0;
+		memset(EspHistSize, 0, 2 * sizeof(int));
+	}
 };
 
 extern SaveData g_Options;
@@ -350,12 +350,12 @@ extern SaveData g_Options;
 #define C_PAGES 3
 
 struct TabInfo { 
-    HWND hwndDisplay[C_PAGES];
-    BYTE lastSel;
+	HWND hwndDisplay[C_PAGES];
+	BYTE lastSel;
 };
 
 struct DLUInfo
 {
-    int xPx;
-    int yPx;
+	int xPx;
+	int yPx;
 };

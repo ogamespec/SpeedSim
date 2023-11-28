@@ -23,173 +23,173 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 
 void CSpeedKernel::SetUseShipDataFromFile(bool bFileData) {
-    m_ShipDataFromFile = bFileData;
+	m_ShipDataFromFile = bFileData;
 }
 
 bool CSpeedKernel::UsesShipDataFromFile() {
-    return m_ShipDataFromFile;
+	return m_ShipDataFromFile;
 }
 
 void CSpeedKernel::RebuildSmallDefense(bool bRebuild) {
-    m_RebuildSmallDef = bRebuild;
+	m_RebuildSmallDef = bRebuild;
 }
 
 void CSpeedKernel::SetDefRebuildFactor(float RebuildFac) {
-    m_DefRebuildFac = RebuildFac;
+	m_DefRebuildFac = RebuildFac;
 }
 
 void CSpeedKernel::ResetWaveState()
 {
-    SetTargetInfo(m_LastReadTarget, 0, true);
+	SetTargetInfo(m_LastReadTarget, 0, true);
 }
 
 void CSpeedKernel::SetCallBack(void (*f)(int sim, int round)) {
-    m_FuncPtr = f;
+	m_FuncPtr = f;
 }
 
 void CSpeedKernel::SetDefInDebris(bool really) {
-    m_DefInTF = really;
+	m_DefInTF = really;
 }
 
 void CSpeedKernel::SetComputeBestWorstCase(bool how) {
-    m_CompBestWorstCase = how;
+	m_CompBestWorstCase = how;
 }
 
 void CSpeedKernel::SetOwnPosition(const PlaniPos& p, int FleetID) {
-    if(FleetID >= 0 && FleetID <= MAX_PLAYERS_PER_TEAM)
-        m_OwnPos[FleetID] = p;
+	if(FleetID >= 0 && FleetID <= MAX_PLAYERS_PER_TEAM)
+		m_OwnPos[FleetID] = p;
 }
 
 void CSpeedKernel::GetOwnPosition(PlaniPos& p, int FleetID) {
-    if(FleetID >= 0 && FleetID <= MAX_PLAYERS_PER_TEAM)
-        p = m_OwnPos[FleetID];
+	if(FleetID >= 0 && FleetID <= MAX_PLAYERS_PER_TEAM)
+		p = m_OwnPos[FleetID];
 }
 
 void CSpeedKernel::SetSpeed(int perc_speed, int v, int i, int h, int FleetID) {
-    m_Speed[FleetID] = perc_speed / 10;
-    m_TechsTW[FleetID][0] = v;
-    m_TechsTW[FleetID][1] = i;
-    m_TechsTW[FleetID][2] = h;
+	m_Speed[FleetID] = perc_speed / 10;
+	m_TechsTW[FleetID][0] = v;
+	m_TechsTW[FleetID][1] = i;
+	m_TechsTW[FleetID][2] = h;
 }
 
 void CSpeedKernel::GetSpeed(int &perc_speed, int &v, int &i, int &h, int FleetID) {
-    perc_speed = m_Speed[FleetID] * 10;
-    v = m_TechsTW[FleetID][0];
-    i = m_TechsTW[FleetID][1];
-    h = m_TechsTW[FleetID][2];
+	perc_speed = m_Speed[FleetID] * 10;
+	v = m_TechsTW[FleetID][0];
+	i = m_TechsTW[FleetID][1];
+	h = m_TechsTW[FleetID][2];
 }
 
 void CSpeedKernel::SetRF(RFTYPE ver)
 {
-    /*switch(ver) {
-    case RF_058:
-        CanShootAgain = CanShootAgain_V058;
-    	break;
-    case RF_059:
-        CanShootAgain = CanShootAgain_V059;
-    	break;
-    case RF_062:
-        CanShootAgain = CanShootAgain_V062;
-        break;
-    case RF_065:
-        CanShootAgain = CanShootAgain_V065;
-        break;
-    case RF_NONE:
-        CanShootAgain = CantShootAgain;
-        break;
-    case RF_USER:
-        CanShootAgain = CanShootAgain_User;
-        return;
-        break;
-    default:
-        CanShootAgain = CanShootAgain_V065;
-        break;
-    }
-    CanShootAgain = CanShootAgain_FromTable;*/
-    if(ver != RF_USER)
-        FillRFTable(ver);
+	/*switch(ver) {
+	case RF_058:
+		CanShootAgain = CanShootAgain_V058;
+		break;
+	case RF_059:
+		CanShootAgain = CanShootAgain_V059;
+		break;
+	case RF_062:
+		CanShootAgain = CanShootAgain_V062;
+		break;
+	case RF_065:
+		CanShootAgain = CanShootAgain_V065;
+		break;
+	case RF_NONE:
+		CanShootAgain = CantShootAgain;
+		break;
+	case RF_USER:
+		CanShootAgain = CanShootAgain_User;
+		return;
+		break;
+	default:
+		CanShootAgain = CanShootAgain_V065;
+		break;
+	}
+	CanShootAgain = CanShootAgain_FromTable;*/
+	if(ver != RF_USER)
+		FillRFTable(ver);
 }
 
 void CSpeedKernel::SetTargetInfo(TargetInfo TI, int FleetID, bool ResetWavesState /* = true*/)
 {
-    if(FleetID > MAX_PLAYERS_PER_TEAM)
-        return;
-    size_t i;
-    vector<SItem> items = TI.Fleet;
-    // merge fleets
-    if(FleetID == 0)
-    {
-        for(i = 0; i < TI.Defence.size(); i++)
-        {
-            items.push_back(TI.Defence[i]);
-        }
-    }
+	if(FleetID > MAX_PLAYERS_PER_TEAM)
+		return;
+	size_t i;
+	vector<SItem> items = TI.Fleet;
+	// merge fleets
+	if(FleetID == 0)
+	{
+		for(i = 0; i < TI.Defence.size(); i++)
+		{
+			items.push_back(TI.Defence[i]);
+		}
+	}
 
-    // if there where no fleet unit, add "dummy unit" to delete defender
-    if(items.size() == 0)
-    {
-        SItem sIt;
-        sIt.Num = 0;
-        sIt.Type = T_NONE;
-        items.push_back(sIt);
-    }
-    // set correct fleet id
-    for (i = 0; i < items.size(); i++)
-    {
-        items[i].OwnerID = FleetID;
-    }
-    // update kernel data
-    SetFleet(NULL, &items);
-    SetTechs(NULL, &TI.Techs, FleetID);
-    m_DefenderInfos[FleetID] = TI;
+	// if there where no fleet unit, add "dummy unit" to delete defender
+	if(items.size() == 0)
+	{
+		SItem sIt;
+		sIt.Num = 0;
+		sIt.Type = T_NONE;
+		items.push_back(sIt);
+	}
+	// set correct fleet id
+	for (i = 0; i < items.size(); i++)
+	{
+		items[i].OwnerID = FleetID;
+	}
+	// update kernel data
+	SetFleet(NULL, &items);
+	SetTechs(NULL, &TI.Techs, FleetID);
+	m_DefenderInfos[FleetID] = TI;
 
-    m_TechsDef[FleetID] = TI.Techs;
+	m_TechsDef[FleetID] = TI.Techs;
 
-    if(ResetWavesState)
-    {
-        // reset wave state
-        m_Waves.TotalPlunder = m_Result.GesamtBeute = Res();
-        m_Waves.NumAtts = m_Result.NumAtts = 0;
-        m_Waves.TotalRecs = m_Result.GesamtRecs = 0;
-        m_Waves.TotalDebris = m_Result.GesTF = Res();
-        m_Waves.TotalLosses = m_Result.GesVerlust = Res();
+	if(ResetWavesState)
+	{
+		// reset wave state
+		m_Waves.TotalPlunder = m_Result.GesamtBeute = Res();
+		m_Waves.NumAtts = m_Result.NumAtts = 0;
+		m_Waves.TotalRecs = m_Result.GesamtRecs = 0;
+		m_Waves.TotalDebris = m_Result.GesTF = Res();
+		m_Waves.TotalLosses = m_Result.GesVerlust = Res();
 
-        _tcsncpy(m_Result.PlaniName, TI.Name, 63);
-        m_Result.Position = TI.Pos;
-        m_Result.RessDa = TI.Resources;
-    }
+		_tcsncpy(m_Result.PlaniName, TI.Name, 63);
+		m_Result.Position = TI.Pos;
+		m_Result.RessDa = TI.Resources;
+	}
 }
 
 TargetInfo CSpeedKernel::GetTargetInfo(int FleetID)
 {
-    if (FleetID >= MAX_PLAYERS_PER_TEAM)
-        return TargetInfo();
-    return m_DefenderInfos[FleetID];
+	if (FleetID >= MAX_PLAYERS_PER_TEAM)
+		return TargetInfo();
+	return m_DefenderInfos[FleetID];
 }
 
 void CSpeedKernel::SetCSSFiles(const TCHAR* cr_css, const TCHAR* bwc_css)
 {
-    if(cr_css)
-        m_CR_CSS = cr_css;
-    else
-        m_CR_CSS = _T("cr.css");
-    if(bwc_css)
-        m_BWC_CSS = bwc_css;
-    else
-        m_BWC_CSS = _T("bwc.css");
+	if(cr_css)
+		m_CR_CSS = cr_css;
+	else
+		m_CR_CSS = _T("cr.css");
+	if(bwc_css)
+		m_BWC_CSS = bwc_css;
+	else
+		m_BWC_CSS = _T("bwc.css");
 }
 
 void CSpeedKernel::UseOldBattleShip(bool use)
 {
-    m_UseOldBS = use;
+	m_UseOldBS = use;
 }
 
 void CSpeedKernel::SetPercLossesToDF(int perc)
 {
-    m_LossesToDF = perc;
+	m_LossesToDF = perc;
 }
 
 int CSpeedKernel::GetPercLossesToDF()
 {
-    return m_LossesToDF;
+	return m_LossesToDF;
 }

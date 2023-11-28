@@ -60,51 +60,51 @@ typedef basic_string<TCHAR, char_traits<TCHAR>, allocator<TCHAR> > genstr;
 class CINIFILE_API CIniFile
 {
 public:
-    CIniFile();
-    CIniFile(const char* file, bool remove_leading_spaces = false, bool remove_trailing_spaces = true, bool overwrite_existing = true);
-    ~CIniFile();
+	CIniFile();
+	CIniFile(const char* file, bool remove_leading_spaces = false, bool remove_trailing_spaces = true, bool overwrite_existing = true);
+	~CIniFile();
 
-    // reads out all keys from a file
-    bool ReadIniFile(const char* file, bool append = false, bool overwrite_existing = true);
-    // writes current ini data into file
-    bool WriteIniFile(const char* file, bool write_unicode = false);
+	// reads out all keys from a file
+	bool ReadIniFile(const char* file, bool append = false, bool overwrite_existing = true);
+	// writes current ini data into file
+	bool WriteIniFile(const char* file, bool write_unicode = false);
 
-    bool GetStr(genstr& val, genstr strSection, genstr strKey);
-    bool GetLong(long& val, genstr strSection, genstr strKey);
-    bool RemoveKey(genstr strSection, genstr strKey);
-    bool RemoveSection(genstr strSection);
+	bool GetStr(genstr& val, genstr strSection, genstr strKey);
+	bool GetLong(long& val, genstr strSection, genstr strKey);
+	bool RemoveKey(genstr strSection, genstr strKey);
+	bool RemoveSection(genstr strSection);
 
-    void SetStr(genstr val, genstr strSection, genstr strKey, bool overwrite_existing = true);
-    void SetLong(long val, genstr strSection, genstr strKey, bool overwrite_existing = true);
+	void SetStr(genstr val, genstr strSection, genstr strKey, bool overwrite_existing = true);
+	void SetLong(long val, genstr strSection, genstr strKey, bool overwrite_existing = true);
 
-    void SetRemoveSpaces(bool remove_leading, bool remove_trailing);
+	void SetRemoveSpaces(bool remove_leading, bool remove_trailing);
 
-    // resets the ini data
-    void ClearData();
+	// resets the ini data
+	void ClearData();
 private:
-    genstr GetNextLine(FILE* file);
-    genstr RemoveSpaces(genstr str, bool remove_first, bool remove_last);
-    // converts a string into upper or lower case
-    genstr ChgCase(genstr str, bool to_upper);
-    string WStringToUTF8(wstring str);
-    wstring UTF8ToWString(string str);
+	genstr GetNextLine(FILE* file);
+	genstr RemoveSpaces(genstr str, bool remove_first, bool remove_last);
+	// converts a string into upper or lower case
+	genstr ChgCase(genstr str, bool to_upper);
+	string WStringToUTF8(wstring str);
+	wstring UTF8ToWString(string str);
 
-    // to save strings in correct case (reading=case insensitive, writing=case sensitive)
-    // (only for keys and sections)
-    map<genstr, genstr> m_mRealSecNames;
-    map<genstr, genstr> m_mRealKeyNames;
+	// to save strings in correct case (reading=case insensitive, writing=case sensitive)
+	// (only for keys and sections)
+	map<genstr, genstr> m_mRealSecNames;
+	map<genstr, genstr> m_mRealKeyNames;
 
-    typedef map<genstr, map<genstr, genstr> > IniData;
-    IniData m_mIniData;
+	typedef map<genstr, map<genstr, genstr> > IniData;
+	IniData m_mIniData;
 
-    enum
-    {
-        F_ANSI,
-        F_UTF16LE,
-        F_UTF8,
-    } m_FileFormat;
+	enum
+	{
+		F_ANSI,
+		F_UTF16LE,
+		F_UTF8,
+	} m_FileFormat;
 
 
-    bool m_DelFirstSpaces;
-    bool m_DelLastSpaces;
+	bool m_DelFirstSpaces;
+	bool m_DelLastSpaces;
 };
