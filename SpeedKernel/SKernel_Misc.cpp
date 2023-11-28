@@ -193,12 +193,15 @@ void CSpeedKernel::ComputeShipData()
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_SS] = 200;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_KOLO] = 100;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_REC] = 10;
-		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_SPIO] = 0.01f;
+		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_SPIO] = 0.01f;		// Strange
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_BOMBER] = 500;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_SAT] = 1;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_ZER] = 500;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_TS] = 50000;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_IC] = 400;
+		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_CRA] = 1;
+		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_REAP] = 700;
+		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_PF] = 100;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_RAK] = 20;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_LL] = 25;
 		MaxShields[MAX_PLAYERS_PER_TEAM][ATTER][T_SL] = 100;
@@ -216,12 +219,15 @@ void CSpeedKernel::ComputeShipData()
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_SS] = 1000;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_KOLO] = 50;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_REC] = 1;
-		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_SPIO] = 0.01f;
+		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_SPIO] = 0.01f;		// Strange
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_BOMBER] = 1000;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_SAT] = 1;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_ZER] = 2000;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_TS] = 200000;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_IC] = 700;
+		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_CRA] = 1;
+		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_REAP] = 2800;
+		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_PF] = 200;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_RAK] = 80;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_LL] = 100;
 		Dams[MAX_PLAYERS_PER_TEAM][ATTER][T_SL] = 250;
@@ -273,7 +279,9 @@ void CSpeedKernel::ComputeShipData()
 		{
 			LadeKaps[i] = 0;
 			Verbrauch[i] = 0;
-			BaseSpeed[i] = 0;
+			for (int engine = 0; engine < TW_MAX; engine++) {
+				BaseSpeed[engine][i] = 0;
+			}
 		}
 		// ship capacity
 		LadeKaps[T_KT] = 5000;
@@ -290,6 +298,8 @@ void CSpeedKernel::ComputeShipData()
 		LadeKaps[T_ZER] = 2000;
 		LadeKaps[T_TS] = 1000000;
 		LadeKaps[T_IC] = 750;
+		LadeKaps[T_REAP] = 10000;
+		LadeKaps[T_PF] = 10000;
 
 		// consumption
 		Verbrauch[T_KT] = 10;
@@ -301,26 +311,39 @@ void CSpeedKernel::ComputeShipData()
 		Verbrauch[T_KOLO] = 1000;
 		Verbrauch[T_REC] = 300;
 		Verbrauch[T_SPIO] = 1;
-		Verbrauch[T_BOMBER] = 1000;
+		Verbrauch[T_BOMBER] = 700;
 		Verbrauch[T_ZER] = 1000;
 		Verbrauch[T_TS] = 1;
 		Verbrauch[T_IC] = 250;
+		Verbrauch[T_REAP] = 1100;
+		Verbrauch[T_PF] = 300;
 
 		// speed
-		BaseSpeed[T_KT] = 5000;
-		BaseSpeed[T_GT] = 7500;
-		BaseSpeed[T_LJ] = 12500;
-		BaseSpeed[T_SJ] = 10000;
-		BaseSpeed[T_KREUZER] = 15000;
-		BaseSpeed[T_SS] = 10000;
-		BaseSpeed[T_KOLO] = 2500;
-		BaseSpeed[T_REC] = 2000;
-		BaseSpeed[T_SPIO] = 100000000;
-		BaseSpeed[T_BOMBER] = 4000;
-		BaseSpeed[T_ZER] = 5000;
-		BaseSpeed[T_TS] = 100;
-		BaseSpeed[T_IC] = 10000;
+		// The base speed for each engine type is specified, as ships can be equipped with different types from some time.
+		// If the engine cannot be used by the ship in any way, 0 is specified (initialized above)
+
+		BaseSpeed[TW_VERBRENNUNG][T_KT] = 5000;
+		BaseSpeed[TW_IMPULS][T_KT] = 10000;
+		BaseSpeed[TW_VERBRENNUNG][T_GT] = 7500;
+		BaseSpeed[TW_VERBRENNUNG][T_LJ] = 12500;
+		BaseSpeed[TW_VERBRENNUNG][T_SJ] = 10000;
+		BaseSpeed[TW_HYPERRAUM][T_KREUZER] = 15000;
+		BaseSpeed[TW_HYPERRAUM][T_SS] = 10000;
+		BaseSpeed[TW_IMPULS][T_KOLO] = 2500;
+		BaseSpeed[TW_VERBRENNUNG][T_REC] = 300;
+		BaseSpeed[TW_IMPULS][T_REC] = 600;
+		BaseSpeed[TW_HYPERRAUM][T_REC] = 900;
+		BaseSpeed[TW_VERBRENNUNG][T_SPIO] = 100000000;
+		BaseSpeed[TW_IMPULS][T_BOMBER] = 4000;
+		BaseSpeed[TW_HYPERRAUM][T_BOMBER] = 5000;
+		BaseSpeed[TW_HYPERRAUM][T_ZER] = 5000;
+		BaseSpeed[TW_HYPERRAUM][T_TS] = 100;
+		BaseSpeed[TW_HYPERRAUM][T_IC] = 10000;
+		BaseSpeed[TW_HYPERRAUM][T_REAP] = 7000;
+		BaseSpeed[TW_HYPERRAUM][T_PF] = 12000;
 	}
+
+	// Base Engine. For some ships, the engine can be changed when a certain level is reached. The best engine is always used (see GetShipSpeed)
 
 	Triebwerke[T_KT] = TW_VERBRENNUNG;
 	Triebwerke[T_GT] = TW_VERBRENNUNG;
@@ -335,6 +358,8 @@ void CSpeedKernel::ComputeShipData()
 	Triebwerke[T_ZER] = TW_HYPERRAUM;
 	Triebwerke[T_TS] = TW_HYPERRAUM;
 	Triebwerke[T_IC] = TW_HYPERRAUM;
+	Triebwerke[T_REAP] = TW_HYPERRAUM;
+	Triebwerke[T_PF] = TW_HYPERRAUM;
 }
 
 // inits random number generator
@@ -400,17 +425,20 @@ DWORD CSpeedKernel::ComputeFlyTime(const PlaniPos& b, const PlaniPos& e, int Fle
 
 int CSpeedKernel::GetShipSpeed(ITEM_TYPE Ship, int FleetID)
 {
-	int basesp = BaseSpeed[Ship];
 	int engine = Triebwerke[Ship];
-	if(Ship == T_KT && m_TechsTW[FleetID][engine + 1] >= 5) {
-		basesp *= 2;
-		engine += 1;
+	if(Ship == T_KT && m_TechsTW[FleetID][TW_IMPULS] >= 5) {
+		engine = TW_IMPULS;
 	}
-	if(Ship == T_BOMBER && m_TechsTW[FleetID][engine + 1] >= 8) {
-		basesp = 5000;
-		engine += 1;
+	if(Ship == T_BOMBER && m_TechsTW[FleetID][TW_HYPERRAUM] >= 8) {
+		engine = TW_HYPERRAUM;
 	}
-	return basesp * (1 + (float)m_TechsTW[FleetID][engine] * (engine + 1) / 10.0f);
+	if (Ship == T_REC && m_TechsTW[FleetID][TW_IMPULS] >= 17) {
+		engine = TW_IMPULS;
+	}
+	if (Ship == T_REC && m_TechsTW[FleetID][TW_HYPERRAUM] >= 15) {
+		engine = TW_HYPERRAUM;
+	}
+	return BaseSpeed[engine][Ship] * (1 + (float)m_TechsTW[FleetID][engine] * (engine + 1) / 10.0f);
 }
 
 int CSpeedKernel::GetFleetSpeed(int FleetID, const vector<SItem>& vFleet)
@@ -932,7 +960,7 @@ bool CSpeedKernel::LoadRFFile(char *RFFile) {
 
 bool CSpeedKernel::LoadShipData(char *SDFile) {
 	// load shield, damage, cost (life)
-	genstring s;
+	genstring s, eng;
 	long i, num;
 	if(!SDFile)
 		return false;
@@ -956,9 +984,13 @@ bool CSpeedKernel::LoadShipData(char *SDFile) {
 			// capacity
 			if(iniFile.GetLong(num, _T("Capacity"), m_IniFleetNames[i]))
 				LadeKaps[i] = num;
-			// base speed
-			if(iniFile.GetLong(num, _T("BaseSpeed"), m_IniFleetNames[i]))
-				BaseSpeed[i] = num;
+			// base speed for each type of engine
+			if (iniFile.GetStr(eng, _T("BaseSpeed"), m_IniFleetNames[i])) {
+				auto engines = StringToRes(eng);		// use StringToRes method to get a triplet
+				BaseSpeed[TW_VERBRENNUNG][i] = engines.met;
+				BaseSpeed[TW_IMPULS][i] = engines.kris;
+				BaseSpeed[TW_HYPERRAUM][i] = engines.deut;
+			}
 		}
 	}
 	

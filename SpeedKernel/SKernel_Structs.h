@@ -119,6 +119,7 @@ enum TRIEBWERK {
 	TW_VERBRENNUNG = 0, /*!< Combustion Engine */
 	TW_IMPULS,          /*!< Impulse Engine */
 	TW_HYPERRAUM,       /*!< Hyperspace Engine */
+	TW_MAX,
 };
 
 /*!

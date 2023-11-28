@@ -674,7 +674,14 @@ void CSpeedKernel::ComputeBattleResult()
 			vRec.push_back(SItem(T_REC, 1, pl));
 			m_Result.RecFlyTime[pl] = ComputeFlyTime(m_OwnPos[pl], m_Result.Position, pl, vRec);
 			// fuel for recyclers
-			float rec_bsp = BaseSpeed[T_REC] * (1 + (float)m_TechsTW[pl][Triebwerke[T_REC]] * (Triebwerke[T_REC] + 1) / 10.0f);
+			int rec_engine = Triebwerke[T_REC];
+			if (m_TechsTW[pl][TW_IMPULS] >= 17) {
+				rec_engine = TW_IMPULS;
+			}
+			if (m_TechsTW[pl][TW_HYPERRAUM] >= 15) {
+				rec_engine = TW_HYPERRAUM;
+			}
+			float rec_bsp = BaseSpeed[rec_engine][T_REC] * (1 + (float)m_TechsTW[pl][rec_engine] * (rec_engine + 1) / 10.0f);
 			float rec_sp = 35000.f / (m_Result.RecFlyTime[pl] - 10) * sqrt(dist * 10 / rec_bsp);
 			m_Result.RecFuel[pl] = m_Result.NumRecs * Verbrauch[T_REC] * (rec_sp / 10.0f + 1) * (rec_sp / 10.0f + 1) * dist / 35000.0f + 1;
 
@@ -690,22 +697,28 @@ void CSpeedKernel::ComputeBattleResult()
 			{
 				if(m_NumSetShipsAtt[i].OwnerID == pl) {
 					int type = m_NumSetShipsAtt[i].Type;
-					float basesp = BaseSpeed[type];
 					int engine = Triebwerke[type];
 					int iConsumpt = Verbrauch[type];
-					if(type == T_KT && m_TechsTW[pl][engine + 1] >= 5)
-					{
-						basesp *= 2;
-						engine += 1;
-						iConsumpt *= 2;
+					int cons_factor = 1;
+					if(type == T_KT && m_TechsTW[pl][TW_IMPULS] >= 5) {
+						engine = TW_IMPULS;
+						cons_factor = 2;
 					}
-					if(type == T_BOMBER && m_TechsTW[pl][engine + 1] >= 8) {
-						basesp = 5000;
-						engine += 1;
+					if(type == T_BOMBER && m_TechsTW[pl][TW_HYPERRAUM] >= 8) {
+						engine = TW_HYPERRAUM;
+						// For some reason, the bomber's consumption does not change when the engine is changed.
 					}
-					basesp *= (1 + (float)m_TechsTW[pl][engine] * (engine + 1) / 10.0f);
+					if (type == T_REC && m_TechsTW[pl][TW_IMPULS] >= 17) {
+						engine = TW_IMPULS;
+						cons_factor = 2;
+					}
+					if (type == T_REC && m_TechsTW[pl][TW_HYPERRAUM] >= 15) {
+						engine = TW_HYPERRAUM;
+						cons_factor = 3;
+					}
+					float basesp = BaseSpeed[engine][type] * (1 + (float)m_TechsTW[pl][engine] * (engine + 1) / 10.0f);
 					float sp = 35000.f / (uiTime - 10) * sqrt(dist * 10 / basesp);
-					gesverb += m_NumSetShipsAtt[i].Num * iConsumpt * (sp / 10.0f + 1) * (sp / 10.0f + 1);
+					gesverb += m_NumSetShipsAtt[i].Num * iConsumpt * cons_factor * (sp / 10.0f + 1) * (sp / 10.0f + 1);
 				}
 			}
 			m_Result.SpritVerbrauch += gesverb * dist / 35000.0f + 1;

@@ -541,7 +541,7 @@ private:
 
 	ShipTechs m_TechsAtt[MAX_PLAYERS_PER_TEAM];
 	ShipTechs m_TechsDef[MAX_PLAYERS_PER_TEAM];
-	int m_TechsTW[MAX_PLAYERS_PER_TEAM][3];
+	int m_TechsTW[MAX_PLAYERS_PER_TEAM][TW_MAX];
 
 	// fleet speed (100% = 10)
 	int m_Speed[MAX_PLAYERS_PER_TEAM];
@@ -565,7 +565,7 @@ private:
 	WORD Verbrauch[T_END];
 	// ship engines
 	TRIEBWERK Triebwerke[T_END];
-	int BaseSpeed[T_END];
+	int BaseSpeed[TW_MAX][T_END];
 };
 
 string wchar_to_utf8(wstring str);
