@@ -113,6 +113,7 @@ struct sRaidListItem {
         memset(TechsDef, 0, sizeof(ShipTechs) * MAX_PLAYERS_PER_TEAM);
         memset(AttResult, 0, sizeof(SItem) * MAX_PLAYERS_PER_TEAM * T_END);
         memset(DefResult, 0, sizeof(SItem) * MAX_PLAYERS_PER_TEAM * T_END);
+        iUsedFleet = 0;
     }
 };
 

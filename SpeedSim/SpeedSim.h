@@ -216,11 +216,11 @@ void CreateTabs();
 void __cdecl TestNewerVersion(void*);
 void __cdecl AutoUpdate(void*);
 
-bool GetUpdateFile(genstring &out, LPTSTR UpdFileName = SPEEDSIM_UPDATE_FILE, LPTSTR UpdServer = SPEEDSIM_SERVER);
+bool GetUpdateFile(genstring &out, TCHAR* UpdFileName = SPEEDSIM_UPDATE_FILE, TCHAR* UpdServer = SPEEDSIM_SERVER);
 
 void ProcessClipboardChg();
 
-void ReadSkinIni(LPTSTR inifile);
+void ReadSkinIni(TCHAR* inifile);
 
 void LoadLang(char* langfile);
 map<HWND, genstring> GetGerLang(HWND wnd);

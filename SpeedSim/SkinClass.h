@@ -131,6 +131,7 @@ private:
 		BITMAP info;
         BMP() {
             handle = NULL;
+			ZeroMemory(&info, sizeof(info));
         }
 	};
 

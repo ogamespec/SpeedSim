@@ -714,7 +714,7 @@ void __cdecl AutoUpdate(void* p)
 	SaveOpts(g_CurSaveData);
 }
 
-bool GetUpdateFile(genstring &out, TCHAR *UpdFileName, TCHAR* UpdServer) {
+bool GetUpdateFile(genstring &out, TCHAR *UpdFileName /*=SPEEDSIM_UPDATE_FILE*/, TCHAR* UpdServer /*=SPEEDSIM_SERVER*/) {
     out.erase();
     string dat;
     bool bSendReq = false;

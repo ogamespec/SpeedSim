@@ -1252,7 +1252,7 @@ void pngwriter::readfromfile(char * name)
    //Graph now is the image.
    graph_ = image;
 
-   rowbytes_ = png_get_rowbytes(png_ptr, info_ptr);
+   rowbytes_ = (int)png_get_rowbytes(png_ptr, info_ptr);
 
    png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type, &interlace_type, NULL, NULL);
    bit_depth_ = bit_depth;

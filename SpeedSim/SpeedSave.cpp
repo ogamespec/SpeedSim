@@ -884,7 +884,7 @@ bool SaveEspHistory(int save_id)
         section << _T("ABM=") << it->Target.NumABM << _T("\r");
         section << _T("Time=") << it->ctime << _T("\r");
         section << _T("\r");
-        int a = section.str().length();
+        int a = (int)section.str().length();
         TCHAR* data = new TCHAR[a + 1];
         _tcsncpy(data, section.str().c_str(), a);
         data[a] = 0;

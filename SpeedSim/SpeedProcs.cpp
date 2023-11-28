@@ -156,7 +156,7 @@ INT_PTR DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
             genstr s = GetSaveFolder() + _T("cr.htm");
 			HINSTANCE hi = ShellExecute(NULL, _T("opennew"), s.c_str(), NULL, NULL, SW_SHOWNORMAL);
             // if not IE
-            if((int)hi <= 32)
+            if((INT_PTR)hi <= 32)
                 ShellExecute(NULL, _T("open"), s.c_str(), NULL, NULL, SW_SHOWNORMAL);
             }
 			break;
@@ -165,7 +165,7 @@ INT_PTR DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
             genstr s = GetSaveFolder() + _T("BW.htm");
             HINSTANCE hi = ShellExecute(NULL, _T("opennew"), s.c_str(), NULL, NULL, SW_SHOWNORMAL);
             // if not IE
-            if((int)hi <= 32)
+            if((INT_PTR)hi <= 32)
                 ShellExecute(NULL, _T("open"), s.c_str(), NULL, NULL, SW_SHOWNORMAL);
             }
             break;
@@ -236,7 +236,7 @@ INT_PTR DialogProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			if(GetOpenFileName(&of))
 			{
 				_tcscpy(g_Options.SkinFileName, &filename[of.nFileOffset]);
-                int l1 = _tcslen(g_CurrDir), l2 = of.nFileOffset;
+                int l1 = (int)_tcslen(g_CurrDir), l2 = of.nFileOffset;
                 int len = l1 > l2 ? l1 : l2;
                 if(_tcsncicmp(g_CurrDir, filename, len)) {
                     _tcscpy(g_Options.SkinFileName, _T(""));
@@ -753,7 +753,7 @@ INT_PTR TabPageProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 			if(GetOpenFileName(&of))
 			{
                 _tcsncpy(sd_file, &filename[of.nFileOffset], 64);
-                int l1 = _tcslen(g_CurrDir), l2 = of.nFileOffset;
+                int l1 = (int)_tcslen(g_CurrDir), l2 = of.nFileOffset;
                 int len = l1 > l2 ? l1 : l2;
                 if(_tcsncicmp(g_CurrDir, filename, len)) {
                     _tcscpy(sd_file, _T(""));
@@ -795,7 +795,7 @@ INT_PTR TabPageProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 			if(GetOpenFileName(&of))
 			{
                 _tcsncpy(rf_file, &filename[of.nFileOffset], 64);
-                int l1 = _tcslen(g_CurrDir), l2 = of.nFileOffset;
+                int l1 = (int)_tcslen(g_CurrDir), l2 = of.nFileOffset;
                 int len = l1 > l2 ? l1 : l2;
                 if(_tcsncicmp(g_CurrDir, filename, len)) {
                     _tcscpy(rf_file, _T(""));
@@ -1022,7 +1022,7 @@ INT_PTR LangProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
                 TCHAR c[256];
                 _stprintf(c, _T("%s (%s)"), it->first.c_str(), it->second.c_str());
                 i = SendDlgItemMessage(hwndDlg, IDC_LANGFILES, LB_ADDSTRING, 0, (LPARAM)c);
-                int p;
+                size_t p = 0;
                 for(j = 0; j < g_LangFiles.size(); j++)
                 {
                     if(g_LangFiles[j] == it->second)
