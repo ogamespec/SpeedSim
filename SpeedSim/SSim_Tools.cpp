@@ -853,6 +853,10 @@ DWORD GetEditIdByType(ITEM_TYPE Type, bool Attacker)
             return IDC_TS_A;
         case T_IC:
             return IDC_IC_A;
+        case T_REAP:
+            return IDC_REAP_A;
+        case T_PF:
+            return IDC_PF_A;
         default:
             return (DWORD)-1;
         }
@@ -889,6 +893,12 @@ DWORD GetEditIdByType(ITEM_TYPE Type, bool Attacker)
             return IDC_TS_V;
         case T_IC:
             return IDC_IC_V;
+        case T_CRA:
+            return IDC_CRA_V;
+        case T_REAP:
+            return IDC_REAP_V;
+        case T_PF:
+            return IDC_PF_V;
         case T_RAK:
             return IDC_RAK_V;
         case T_LL:
@@ -943,6 +953,10 @@ DWORD GetLabelIdByType(ITEM_TYPE Type, bool Attacker)
             return IDC_TS_A_E;
         case T_IC:
             return IDC_IC_A_E;
+        case T_REAP:
+            return IDC_REAP_A_E;
+        case T_PF:
+            return IDC_PF_A_E;
         default:
             return (DWORD)-1;
         }
@@ -979,6 +993,12 @@ DWORD GetLabelIdByType(ITEM_TYPE Type, bool Attacker)
             return IDC_TS_V_E;
         case T_IC:
             return IDC_IC_V_E;
+        case T_CRA:
+            return IDC_CRA_V_E;
+        case T_REAP:
+            return IDC_REAP_V_E;
+        case T_PF:
+            return IDC_PF_V_E;
         case T_RAK:
             return IDC_RAK_V_E;
         case T_LL:

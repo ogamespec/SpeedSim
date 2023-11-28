@@ -858,6 +858,9 @@ void ReadSkinIni(TCHAR* inifile) {
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_S12), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_S13), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_S14), SCMODE_COLOR, col);
+        g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_S15), SCMODE_COLOR, col);
+        g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_S16), SCMODE_COLOR, col);
+        g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_S17), SCMODE_COLOR, col);
     }
     if(GetPrivateProfileString(_T("LabelColors"), _T("LC_Ships_Res_Att"), _T(""), buffer, 64, path))
     {
@@ -874,6 +877,8 @@ void ReadSkinIni(TCHAR* inifile) {
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_ZERR_A_E), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_TS_A_E), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_IC_A_E), SCMODE_COLOR, col);
+        g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_REAP_A_E), SCMODE_COLOR, col);
+        g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_PF_A_E), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, ID_OUTPUT_NEEDED_IPM), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, ID_OUTPUT_IPM), SCMODE_COLOR, col);
     }
@@ -893,6 +898,8 @@ void ReadSkinIni(TCHAR* inifile) {
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_ZERR_V_E), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_TS_V_E), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_IC_V_E), SCMODE_COLOR, col);
+        g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_REAP_V_E), SCMODE_COLOR, col);
+        g_Skin.SetColor(GetDlgItem(g_hwndDlg, IDC_PF_V_E), SCMODE_COLOR, col);
         g_Skin.SetColor(GetDlgItem(g_hwndDlg, ID_OUTPUT_ABM), SCMODE_COLOR, col);
     }
     if(GetPrivateProfileString(_T("LabelColors"), _T("LC_Ships_Res_Def2"), _T(""), buffer, 64, path))
@@ -1018,6 +1025,9 @@ void ReadSkinIni(TCHAR* inifile) {
     g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_S12), Font, FSize, format);
     g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_S13), Font, FSize, format);
     g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_S14), Font, FSize, format);
+    g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_S15), Font, FSize, format);
+    g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_S16), Font, FSize, format);
+    g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_S17), Font, FSize, format);
     g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_D1), Font, FSize, format);
     g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_D2), Font, FSize, format);
     g_Skin.SetFont(GetDlgItem(g_hwndDlg, IDC_D3), Font, FSize, format);
@@ -1218,6 +1228,9 @@ void LoadLang(char* langfile) {
     SetDlgItemText(g_hwndDlg, IDC_S12, FleetItems[T_ZER]);
     SetDlgItemText(g_hwndDlg, IDC_S13, FleetItems[T_TS]);
     SetDlgItemText(g_hwndDlg, IDC_S14, FleetItems[T_IC]);
+    SetDlgItemText(g_hwndDlg, IDC_S15, FleetItems[T_REAP]);
+    SetDlgItemText(g_hwndDlg, IDC_S16, FleetItems[T_PF]);
+    SetDlgItemText(g_hwndDlg, IDC_S17, FleetItems[T_CRA]);
     // defense
     SetDlgItemText(g_hwndDlg, IDC_D1, FleetItems[T_RAK]);
     SetDlgItemText(g_hwndDlg, IDC_D2, FleetItems[T_LL]);

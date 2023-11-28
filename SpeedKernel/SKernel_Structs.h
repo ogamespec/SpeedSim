@@ -88,10 +88,13 @@ enum ITEM_TYPE
 	T_REC,          /*!< Recycler */
 	T_SPIO,         /*!< Espionage Probe */
 	T_BOMBER,       /*!< Bomber */
-	T_SAT,          /*!< Solar Satellite */
+	T_SAT,          /*!< 212 Solar Satellite -- def1 only */
 	T_ZER,          /*!< Destroyer */
 	T_TS,           /*!< Death Star */
-    T_IC,           /*!< Interceptor */
+    T_IC,           /*!< Interceptor aka Battlecruiser */
+    T_CRA,          /*!< 217 Crawler -- def1 only */
+    T_REAP,         /*!< 218 Reaper */
+    T_PF,           /*!< 219 Pathfinder */
 
     // defense
 	T_RAK,          /*!< Missile Launcher */

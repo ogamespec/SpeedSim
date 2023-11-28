@@ -319,7 +319,7 @@ bool LoadOpts(int num)
     if(f != NULL)
         fclose(f);
 
-    if(g_Options.PlunderShip == T_SPIO || g_Options.PlunderShip == T_SAT || g_Options.PlunderShip >= T_SHIPEND)
+    if(g_Options.PlunderShip == T_SPIO || g_Options.PlunderShip == T_SAT || g_Options.PlunderShip == T_CRA || g_Options.PlunderShip >= T_SHIPEND)
         g_Options.PlunderShip = T_GT;
 
     if(g_Options.DefTF)

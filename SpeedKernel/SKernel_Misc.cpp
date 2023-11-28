@@ -173,6 +173,9 @@ void CSpeedKernel::ComputeShipData()
         Kosten[T_ZER] = Res(60000, 50000, 15000);
         Kosten[T_TS] = Res(5000000, 4000000, 1000000);
         Kosten[T_IC] = Res(30000, 40000, 15000);
+        Kosten[T_CRA] = Res(2000, 2000, 1000);
+        Kosten[T_REAP] = Res(85000, 55000, 20000);
+        Kosten[T_PF] = Res(8000, 15000, 8000);
         Kosten[T_RAK] = Res(2000, 0);
         Kosten[T_LL] = Res(1500, 500);
         Kosten[T_SL] = Res(6000, 2000);
@@ -337,21 +340,6 @@ void CSpeedKernel::ComputeShipData()
 // inits random number generator
 void CSpeedKernel::InitRand() {
     int seed = time(NULL);
-#ifdef ASMRAND
-    __asm {
-        mov eax, seed
-        xor ecx, ecx
-R80:
-        imul eax, 2891336453
-        inc eax
-        mov randbuf[ecx*4], eax
-        inc ecx
-        cmp ecx, 34
-        jb R80
-        mov p1, 0         // initialize buffer pointers
-        mov p2, 80
-    }
-#else
     int i, j;
 
     for(i = 0; i < 17; i++) {
@@ -363,44 +351,10 @@ R80:
     // initialize pointers to circular buffer
     p1 = 0;
     p2 = 10;
-#endif
 }
 
-#pragma warning(disable: 4035)
 ULONG CSpeedKernel::RandomNumber(ULONG Max)
 {
-#ifdef ASMRAND
-    __asm {
-        mov ebx, p1       // ring buffer pointers
-        mov ecx, p2       // ring buffer pointer
-        mov edx, randbuf[ebx]
-        mov eax, randbuf[ebx]
-        rol edx, 19       // rotate bits
-        rol eax, 27
-        add edx, randbuf[ecx]   // add two dwords
-        add eax, randbuf[ecx+4]
-        mov randbuf[ebx], eax   // save in swapped order
-        mov randbuf[ebx+4], edx
-        sub ebx, 8        // decrement p1
-        jnc R30
-        mov ebx, 128      // wrap around p1
-R30:
-        sub ecx, 8        // decrement p2
-        jnc R40
-        mov ecx, 128      // wrap around p2
-R40:
-        mov p1, ebx       // save updated pointers
-        mov p2, ecx
-
-        mov ebx, Max
-        mov ecx, edx      // high bits of random number
-        mul ebx           // multiply low 32 bits
-        mov eax, ecx
-        mov ecx, edx
-        mul ebx           // multiply high 32 bits
-        mov eax, edx
-    }
-#else
     DWORD y, z;
     // generate next number
     z = _lrotl(randbuf[p1][0], 19) + randbuf[p2][0];
@@ -413,9 +367,7 @@ R40:
     if (--p2 < 0)
         p2 = 16;
     return y % Max;
-#endif
 }
-#pragma warning(default: 4035)
 
 int CSpeedKernel::GetDistance(const PlaniPos& b, const PlaniPos& e)
 {
@@ -616,6 +568,9 @@ bool CSpeedKernel::LoadLangFile(const char *langfile) {
         m_FleetNames[T_ZER] = _T("Zerst\xF6rer");
         m_FleetNames[T_TS] = _T("Todesstern");
         m_FleetNames[T_IC] = _T("Schlachtkreuzer");
+        m_FleetNames[T_CRA] = _T("Crawler");
+        m_FleetNames[T_REAP] = _T("Reaper");
+        m_FleetNames[T_PF] = _T("Pathfinder");
         m_FleetNames[T_RAK] = _T("Raketenwerfer");
         m_FleetNames[T_LL] = _T("Leichtes Lasergesch\xFCtz");
         m_FleetNames[T_SL] = _T("Schweres Lasergesch\xFCtz");
@@ -650,6 +605,9 @@ bool CSpeedKernel::LoadLangFile(const char *langfile) {
         m_KBNames[T_ZER] = _T("Zerst.");
         m_KBNames[T_TS] = _T("Rip");
         m_KBNames[T_IC] = _T("Schlachtkr.");
+        m_KBNames[T_CRA] = _T("Crawler");   // TODO: Check
+        m_KBNames[T_REAP] = _T("Reaper");   // TODO: Check
+        m_KBNames[T_PF] = _T("Pathfinder");     // TODO: Check
         m_KBNames[T_RAK] = _T("Rak.");
         m_KBNames[T_LL] = _T("L.Laser");
         m_KBNames[T_SL] = _T("S.Laser");
@@ -765,6 +723,9 @@ bool CSpeedKernel::LoadLangFile(const char *langfile) {
     iniFile.GetStr(m_FleetNames[T_ZER], _T("Fleet"), _T("ZER"));
     iniFile.GetStr(m_FleetNames[T_TS], _T("Fleet"), _T("TS"));
     iniFile.GetStr(m_FleetNames[T_IC], _T("Fleet"), _T("IC"));
+    iniFile.GetStr(m_FleetNames[T_CRA], _T("Fleet"), _T("CRA"));
+    iniFile.GetStr(m_FleetNames[T_REAP], _T("Fleet"), _T("REAP"));
+    iniFile.GetStr(m_FleetNames[T_PF], _T("Fleet"), _T("PF"));
     iniFile.GetStr(m_FleetNames[T_RAK], _T("Fleet"), _T("RAK"));
     iniFile.GetStr(m_FleetNames[T_LL], _T("Fleet"), _T("LL"));
     iniFile.GetStr(m_FleetNames[T_SL], _T("Fleet"), _T("SL"));
@@ -791,6 +752,9 @@ bool CSpeedKernel::LoadLangFile(const char *langfile) {
     iniFile.GetStr(m_altFleetNames[T_ZER], _T("AltFleet"), _T("ZER2"));
     iniFile.GetStr(m_altFleetNames[T_TS], _T("AltFleet"), _T("TS2"));
     iniFile.GetStr(m_altFleetNames[T_IC], _T("AltFleet"), _T("IC2"));
+    iniFile.GetStr(m_altFleetNames[T_CRA], _T("AltFleet"), _T("CRA2"));
+    iniFile.GetStr(m_altFleetNames[T_REAP], _T("AltFleet"), _T("REAP2"));
+    iniFile.GetStr(m_altFleetNames[T_PF], _T("AltFleet"), _T("PF2"));
     iniFile.GetStr(m_altFleetNames[T_RAK], _T("AltFleet"), _T("RAK2"));
     iniFile.GetStr(m_altFleetNames[T_LL], _T("AltFleet"), _T("LL2"));
     iniFile.GetStr(m_altFleetNames[T_SL], _T("AltFleet"), _T("SL2"));
@@ -816,6 +780,9 @@ bool CSpeedKernel::LoadLangFile(const char *langfile) {
     iniFile.GetStr(m_KBNames[T_ZER], _T("KBNames"), _T("KB_ZER"));
     iniFile.GetStr(m_KBNames[T_TS], _T("KBNames"), _T("KB_TS"));
     iniFile.GetStr(m_KBNames[T_IC], _T("KBNames"), _T("KB_IC"));
+    iniFile.GetStr(m_KBNames[T_CRA], _T("KBNames"), _T("KB_CRA"));
+    iniFile.GetStr(m_KBNames[T_REAP], _T("KBNames"), _T("KB_REAP"));
+    iniFile.GetStr(m_KBNames[T_PF], _T("KBNames"), _T("KB_PF"));
     iniFile.GetStr(m_KBNames[T_RAK], _T("KBNames"), _T("KB_RAK"));
     iniFile.GetStr(m_KBNames[T_LL], _T("KBNames"), _T("KB_LL"));
     iniFile.GetStr(m_KBNames[T_SL], _T("KBNames"), _T("KB_SL"));
