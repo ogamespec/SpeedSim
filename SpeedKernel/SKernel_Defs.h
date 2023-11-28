@@ -17,8 +17,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#ifndef SKERNEL_DEFS
-#define SKERNEL_DEFS
+#pragma once
 
 /*!
     \file
@@ -222,6 +221,4 @@ size_t GetNextNumber(genstring str, int& num, size_t pos = 0);
     #define PR_END_FUNC(ID)
     #define PR_ADD_FUNC(ID, name)
     #define PR_PROF_FUNC(ID)
-#endif
-
 #endif

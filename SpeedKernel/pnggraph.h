@@ -17,8 +17,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#ifndef PNGGRAPH_H
-#define PNGGRAPH_H
+#pragma once
 
 #include "pngwriter.h"
 #include <vector>
@@ -84,5 +83,3 @@ private:
     float m_minX, m_maxX;
     sPoint m_Orgin;
 };
-
-#endif

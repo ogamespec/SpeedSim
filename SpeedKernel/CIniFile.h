@@ -18,10 +18,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
 
-#ifndef CINIFILE_H
-#define CINIFILE_H
-
-#pragma warning(disable: 4251 4244 4786 4996 4503)
 #pragma once
 
 #include <map>
@@ -59,16 +55,7 @@ using namespace std;
 // wstring for unicode, string for non-unicode
 typedef basic_string<TCHAR, char_traits<TCHAR>, allocator<TCHAR> > genstr;
 
-// DLL-Export
-#ifdef WIN32
-#ifdef SPEEDKERNEL_EXPORTS
-#define CINIFILE_API __declspec(dllexport)
-#else
-#define CINIFILE_API __declspec(dllimport)
-#endif
-#else
 #define CINIFILE_API
-#endif //WIN32
 
 class CINIFILE_API CIniFile
 {
@@ -121,5 +108,3 @@ private:
     bool m_DelFirstSpaces;
     bool m_DelLastSpaces;
 };
-
-#endif

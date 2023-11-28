@@ -18,9 +18,6 @@
     <ClCompile Include="..\SpeedKernel\CIniFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\SpeedKernel\Kernel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\SpeedKernel\pnggraph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

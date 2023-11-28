@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\SpeedKernel\CIniFile.cpp" />
-    <ClCompile Include="..\SpeedKernel\Kernel.cpp" />
     <ClCompile Include="..\SpeedKernel\pnggraph.cpp" />
     <ClCompile Include="..\SpeedKernel\pngwriter.cpp" />
     <ClCompile Include="..\SpeedKernel\ProfileClass.cpp" />

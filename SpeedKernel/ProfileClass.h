@@ -1,7 +1,6 @@
-#ifdef _WIN32
+#pragma once
 
-#ifndef PROFILER_INC
-#define PROFILER_INC
+#ifdef _WIN32
 
 // Only compile, if you wish some information about the speed the functions in SpeedSim have
 
@@ -63,6 +62,4 @@ private:
     DWORD m_LastFuncIndex;
 };
 
-#endif
-
-#endif
+#endif  // _WIN32
