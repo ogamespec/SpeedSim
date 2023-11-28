@@ -805,7 +805,7 @@ void ReadSkinIni(TCHAR* inifile) {
         GetPrivateProfileString(_T("Colors"), _T("Edit_BG_Color"), _T(""), buffer, 64, path);
         br.lbStyle = BS_SOLID;
 		br.lbColor = StrToRGB(buffer);
-        g_Skin.SetColor(SCWND_ALLEDITS, SCMODE_BRUSH, (DWORD)&br );
+        g_Skin.SetColor(SCWND_ALLEDITS, SCMODE_BRUSH, br.lbColor );
     }
     GetPrivateProfileString(_T("Colors"), _T("CheckBox_BG_Mode"), _T(""), buffer, 64, path);
     if(!_tcscmp(buffer, _T("TRANSPARENT")))
@@ -814,7 +814,7 @@ void ReadSkinIni(TCHAR* inifile) {
         GetPrivateProfileString(_T("Colors"), _T("CheckBox_BG_Color"), _T(""), buffer, 64, path);
         br.lbStyle = BS_SOLID;
 		br.lbColor = StrToRGB(buffer);
-        g_Skin.SetColor(SCWND_ALLCHK, SCMODE_BRUSH, (DWORD)&br );
+        g_Skin.SetColor(SCWND_ALLCHK, SCMODE_BRUSH, br.lbColor );
     }
     GetPrivateProfileString(_T("Colors"), _T("Label_BG_Mode"), _T(""), buffer, 64, path);
     if(!_tcscmp(buffer, _T("TRANSPARENT")))
@@ -823,7 +823,7 @@ void ReadSkinIni(TCHAR* inifile) {
         GetPrivateProfileString(_T("Colors"), _T("Label_BG_Color"), _T(""), buffer, 64, path);       
         br.lbStyle = BS_SOLID;
         br.lbColor = StrToRGB(buffer);
-        g_Skin.SetColor(SCWND_ALLLABELS, SCMODE_BRUSH, (DWORD)&br);
+        g_Skin.SetColor(SCWND_ALLLABELS, SCMODE_BRUSH, br.lbColor);
     }
 
     // read out label colours

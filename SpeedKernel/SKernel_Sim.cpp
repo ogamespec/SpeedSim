@@ -410,7 +410,6 @@ bool CSpeedKernel::Simulate(int count)
 
 void CSpeedKernel::MaxAllShields()
 {
-	PR_PROF_FUNC(F_MASHIELDS);
     // this function sets all shields to its maximum
 	size_t i;
     DWORD id;
@@ -432,7 +431,6 @@ int CSpeedKernel::GetCurrentSim()
 
 void CSpeedKernel::ShipsDontExplode()
 {
-    PR_BEG_FUNC(F_SDEXPLODE);
 	// set all explosion flags to 'false'
     size_t i;
     for(i = 0; i < m_AttObj->size(); i++)
@@ -445,8 +443,6 @@ void CSpeedKernel::ShipsDontExplode()
 // removes destroyed ships from the arrays
 void CSpeedKernel::DestroyExplodedShips()
 {
-	PR_PROF_FUNC(F_DESTEXPLSHIPS);
-    
     vector<Obj>* tmpAtt = new vector<Obj>;
 	vector<Obj>* tmpDef = new vector<Obj>;
 
@@ -491,7 +487,6 @@ void CSpeedKernel::DestroyExplodedShips()
 // lets shoot a ship
 void CSpeedKernel::ShipShoots(Obj& o, int Team, DWORD AtterID)
 {
-	PR_BEG_FUNC(F_SSHOOTS);
     bool ShootsAgain = true;
 	ULONG Ziel = 0;
 	int ZielTeam = Team == ATTER ? DEFFER : ATTER;
@@ -592,8 +587,6 @@ bool CSpeedKernel::CanShootAgain_FromTable(ITEM_TYPE AttType, ITEM_TYPE TargetTy
 // computes new best/worst case
 void CSpeedKernel::UpdateBestWorstCase(int CurSim)
 {
-	PR_PROF_FUNC(F_ADDPTONUMBER);
-    
     if(!m_CompBestWorstCase)
 		return;
 
@@ -637,8 +630,6 @@ void CSpeedKernel::UpdateBestWorstCase(int CurSim)
 // updates number of ships for each round (needed for combat reports)
 void CSpeedKernel::SaveShipsToCR(int round)
 {
-	PR_PROF_FUNC(F_SSTOKB);
-    
     round--;
 	m_NumSimulatedRounds[round]++;
 	size_t t, i;
@@ -657,8 +648,6 @@ void CSpeedKernel::SaveShipsToCR(int round)
 
 bool CSpeedKernel::InitSim()
 {
-    PR_PROF_FUNC(F_INITSIM);
-
     // more randomness
     InitRand();
     srand(time(NULL));
@@ -779,8 +768,6 @@ bool CSpeedKernel::InitSim()
 
 void CSpeedKernel::ComputeCRArrays()
 {
-    PR_PROF_FUNC(F_CKBARRAYS);
-
 	for(int r = 0; r < 7; r++)
 	{
 		for(int t = 0; t < T_END; t++)

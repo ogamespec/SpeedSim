@@ -862,9 +862,9 @@ INT_PTR TabPageProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 }
 
 void CreateTabs() {
-    TCITEM tie;
+    TCITEM tie{};
     TabInfo *pTInfo = (TabInfo*)LocalAlloc(LPTR, sizeof(TabInfo));
-    SetWindowLongPtr(g_hwndOpt, GWLP_USERDATA, (LONG)pTInfo);
+    SetWindowLongPtr(g_hwndOpt, GWLP_USERDATA, (LONG_PTR)pTInfo);
     
     HWND hwndTab = GetDlgItem(g_hwndOpt, IDC_OPT_TAB);
     // add tabs
@@ -884,7 +884,7 @@ void CreateTabs() {
     pTInfo->hwndDisplay[2] = CreateDialog(g_hInst, MAKEINTRESOURCE(IDD_OPT_PAGE3), g_hwndOpt, TabPageProc);
 
     // send message for changing tabs to paint the first
-    NMHDR nmhdr;
+    NMHDR nmhdr{};
     nmhdr.code = TCN_SELCHANGE;
     nmhdr.hwndFrom = 0;
     nmhdr.idFrom = 0;

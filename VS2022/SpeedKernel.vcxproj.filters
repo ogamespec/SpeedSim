@@ -24,9 +24,6 @@
     <ClCompile Include="..\SpeedKernel\pngwriter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\SpeedKernel\ProfileClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\SpeedKernel\SKernel_Misc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,9 +54,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\SpeedKernel\pngwriter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\SpeedKernel\ProfileClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\SpeedKernel\SKernel_Defs.h">

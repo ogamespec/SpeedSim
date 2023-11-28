@@ -22,7 +22,6 @@
     <ClCompile Include="..\SpeedKernel\CIniFile.cpp" />
     <ClCompile Include="..\SpeedKernel\pnggraph.cpp" />
     <ClCompile Include="..\SpeedKernel\pngwriter.cpp" />
-    <ClCompile Include="..\SpeedKernel\ProfileClass.cpp" />
     <ClCompile Include="..\SpeedKernel\SKernel_Misc.cpp" />
     <ClCompile Include="..\SpeedKernel\SKernel_Optimized.cpp" />
     <ClCompile Include="..\SpeedKernel\SKernel_Opts.cpp" />
@@ -35,7 +34,6 @@
     <ClInclude Include="..\SpeedKernel\CIniFile.h" />
     <ClInclude Include="..\SpeedKernel\pnggraph.h" />
     <ClInclude Include="..\SpeedKernel\pngwriter.h" />
-    <ClInclude Include="..\SpeedKernel\ProfileClass.h" />
     <ClInclude Include="..\SpeedKernel\SKernel_Defs.h" />
     <ClInclude Include="..\SpeedKernel\SKernel_Structs.h" />
     <ClInclude Include="..\SpeedKernel\SpeedKernel.h" />

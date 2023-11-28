@@ -543,7 +543,6 @@ void CSpeedKernel::SetRemainingItemsInDef(REBUILD_OPTION opt)
 TCHAR* CSpeedKernel::AddPointsToNumber(__int64 value, TCHAR* out)
 {
     int i;
-    PR_PROF_FUNC(F_ADDPTONUMBER);
     genstrstream dat;
 
     bool neg = false;
