@@ -393,12 +393,6 @@ public:
 	*/
 	bool LoadShipData(char *SDFile);
 
-	// speed optimized functions - no ACS, only basic combat result
-#ifdef INCL_OPTIMIZED_FUNCTIONS
-	const BattleResult& OptimizedSimulate(int count, const vector<SItem>* Attacker, const vector<SItem>* Defender, int* techAtt, int* techDef);
-	void InitOptimized();
-#endif
-
 private:
 	bool InitSim();
 	void ComputeShipData();
