@@ -19,9 +19,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 #pragma once
 
-#pragma warning(disable: 4251 4244 4786 4996 4503)
-#pragma once
-
 #include <vector>
 #include <string>
 #include <sstream>
@@ -406,13 +403,9 @@ private:
 	bool InitSim();
 	void ComputeShipData();
 	void MaxAllShields();
-	void EndRound();
 	void ShipsDontExplode();
 	void DestroyExplodedShips();
 	void ShipShoots(Obj& o, int Team, DWORD AtterID);
-#ifdef INCL_OPTIMIZED_FUNCTIONS
-	void OptimizedShipShoots(Obj& o, int Team);
-#endif
 
 	bool ParseSpioLine(genstring& s, TargetInfo& ti);
 	bool ReadCRTable(genstring Table, vector<SItem> &Fleet, ShipTechs &techs);
@@ -420,12 +413,6 @@ private:
 	void ComputeBattleResult();
 	void UpdateBestWorstCase(int CurSim);
 	void ComputeLosses();
-#ifdef INCL_OPTIMIZED_FUNCTIONS
-	void OptimizedComputeLosses();
-#endif
-#ifdef CREATE_ADV_STATS
-	void CreateAdvShipStats();
-#endif
 
 	void SaveShipsToCR(int round);
 	void ComputeCRArrays();
@@ -466,15 +453,6 @@ private:
 	double m_ShotStrengthAtt[6], m_ShotStrengthDef[6];
 	double m_AbsorbedAtt[6], m_AbsorbedDef[6];
 	DWORD m_NumSimulatedRounds[7];
-
-#ifdef CREATE_ADV_STATS
-	// number of ships after battle
-	vector<vector<int> > m_CombatResultsAtt, m_CombatResultsDef;
-	// losses / win
-	vector<Res> m_LossAtt, m_LossDef;
-	vector<Res> m_DebrisFields;
-	//vector<Res> m_
-#endif
 
 	int m_CurrentRound;
 	int m_CurrentSim;

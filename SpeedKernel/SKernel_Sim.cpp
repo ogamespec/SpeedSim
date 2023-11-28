@@ -256,19 +256,6 @@ bool CSpeedKernel::Simulate(int count)
 
 	// init internal values, count ships etc.
 	InitSim();
-#ifdef CREATE_ADV_STATS
-	m_DebrisFields.resize(count);
-	m_LossAtt.resize(count);
-	m_LossDef.resize(count);
-	m_CombatResultsAtt.resize(count);
-	m_CombatResultsDef.resize(count);
-	for(int i = 0; i < count; i++)
-	{
-		m_CombatResultsAtt[i].resize(T_END);
-		m_CombatResultsDef[i].resize(T_END);
-	}
-	
-#endif
 
 	vector<Obj> Att, Def;
 	// backup set fleet
@@ -371,14 +358,7 @@ bool CSpeedKernel::Simulate(int count)
 
 	else if (aborted)
 	{
-#ifdef CREATE_ADV_STATS
-		// trim unused data
-		m_DebrisFields.resize(num);
-		m_LossAtt.resize(num);
-		m_LossDef.resize(num);
-		m_CombatResultsAtt.resize(num);
-		m_CombatResultsDef.resize(num);
-#endif
+
 	}
 
 	// battle result is added permanently added during multiple simulation
@@ -401,10 +381,7 @@ bool CSpeedKernel::Simulate(int count)
 	ComputeBattleResult();
 
 	m_SimulateFreedItsData = true;
-#ifdef PROFILING
-	ofstream aus("prof.txt");
-	CProfiler::GetInst().GetResults(aus);
-#endif
+
 	return true;
 }
 
@@ -617,12 +594,6 @@ void CSpeedKernel::UpdateBestWorstCase(int CurSim)
 			m_BestCaseDef[i] = d[i];
 		if(m_WorstCaseDef[i] > d[i])
 			m_WorstCaseDef[i] = d[i];
-		
-#ifdef CREATE_ADV_STATS
-		// save result
-		m_CombatResultsAtt[CurSim][i] = a[i];
-		m_CombatResultsDef[CurSim][i] = d[i];
-#endif
 	}
 }
 

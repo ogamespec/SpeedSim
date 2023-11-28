@@ -32,40 +32,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define DEFFER 1
 
 // version of kernel. Corresponds to the current version of the game on live servers
-#define KERNEL_VERSION _T("11.3.6")
+#define KERNEL_VERSION _T("11.4.0")
 
 //! default defense rebuild factor
 #define DEF_AUFBAU_FAKTOR 0.80f
 // time the simulator waits for 100k units when aborting a simulation
 #define WARTEN_PRO_100K 1000
 
-#if !defined(_DEBUG) && defined(_MSC_VER)
-/*! \def ASMRAND
-	\brief If defined, own assembler random number generator is used
-	\warning Use only, when you use Windows with Visual C++, or else you can't compile 
-*/
-#define ASMRAND
-#endif
-
-/*!
-	\def INCL_OPTIMIZED_FUNCTIONS
-	\brief If defined, optimized functions will be included
-	
-	This is not needed at the moment so just let it undefined
-*/
-//#define INCL_OPTIMIZED_FUNCTIONS
-
-/*!
-	\def CREATE_ADV_STATS
-	\brief Define this that the more accurate statistics (in png format) will be created
-
-	You can see these stats in the BestWorst-Case File. To be able to use this you will need 
-	the freetype library, pnglib and zlib.
-*/
-//#define CREATE_ADV_STATS
-#ifdef CREATE_ADV_STATS
-#include "pnggraph.h"
-#endif
 
 // names for RF versions
 #define NAME_RF_NONE _T("RF_NONE")

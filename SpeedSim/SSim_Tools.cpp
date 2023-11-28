@@ -603,7 +603,7 @@ void SetSkin(TCHAR *szSkinFile)
 		g_Skin.Free();
 	if(!szSkinFile || !_tcslen(szSkinFile))
 	{
-		TCHAR css1[MAX_PATH], css2[MAX_PATH];
+		TCHAR css1[MAX_PATH]{}, css2[MAX_PATH]{};
 		_tcsncpy(css1, g_CurrDir, MAX_PATH);
 		_tcsncpy(css2, g_CurrDir, MAX_PATH);
 		_tcscat(css1, _T("cr.css"));
@@ -635,7 +635,7 @@ void CreateStatusBar()
 	if(!hwndStatus)
 		return;
 	// get height and add to window size
-	RECT r, wr;
+	RECT r{}, wr{};
 	GetWindowRect(g_hwndDlg, &wr);
 	SendMessage(hwndStatus, SB_GETRECT, (WPARAM)0, (LPARAM)&r);
 	wr.bottom += r.bottom - r.top;
@@ -652,7 +652,7 @@ void CreateStatusBar()
 // in development
 void UpdateStatusBar()
 {
-	RECT r;
+	RECT r{};
 	SendMessage(g_hwndStatusBar, SB_GETRECT, (WPARAM)0, (LPARAM)&r);
 	int xPos[] = {150, r.right - 40, r.right - 20, r.right};
 	SendMessage(g_hwndStatusBar, SB_SETPARTS, (WPARAM)4, (LPARAM)&xPos);

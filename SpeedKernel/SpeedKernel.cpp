@@ -17,7 +17,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#pragma warning(disable: 4251)
 #include "SpeedKernel.h"
 
 
@@ -97,6 +96,9 @@ CSpeedKernel::CSpeedKernel()
 	m_IniFleetNames[T_ZER] = _T("DEST");
 	m_IniFleetNames[T_TS] = _T("RIP");
 	m_IniFleetNames[T_IC] = _T("IC");
+	m_IniFleetNames[T_CRA] = _T("CRA");
+	m_IniFleetNames[T_REAP] = _T("REAP");
+	m_IniFleetNames[T_PF] = _T("PF");
 	m_IniFleetNames[T_RAK] = _T("MISS");
 	m_IniFleetNames[T_LL] = _T("S_LAS");
 	m_IniFleetNames[T_SL] = _T("H_LAS");

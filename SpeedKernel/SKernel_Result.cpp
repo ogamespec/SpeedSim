@@ -788,19 +788,6 @@ void CSpeedKernel::ComputeLosses()
 
 		m_Result.WertAtt += Kosten[Type] * anf[i].Num;
 	}
-#ifdef CREATE_ADV_STATS
-	for (i = 0; i < m_CombatResultsAtt.size(); i++)
-	{
-		// losses information
-		Res losses = Res();
-		for (j = 0; j < T_END; j++)
-		{
-			losses += Kosten[j] * (anf[j].Num - m_CombatResultsAtt[i][j]);
-		}
-		m_LossAtt[i] = losses;
-		m_DebrisFields[i] = losses * m_LossesToDF / 100;
-	}
-#endif
 
 	// count all ships - defender
 	anf.resize(T_END); uebrig.resize(T_END);
@@ -850,19 +837,6 @@ void CSpeedKernel::ComputeLosses()
 
 		m_Result.WertDef += Kosten[i] * anf[i].Num;
 	}
-#ifdef CREATE_ADV_STATS
-	for (i = 0; i < m_CombatResultsDef.size(); i++)
-	{
-		// losses information
-		Res losses = Res();
-		for (j = 0; j < T_END; j++)
-		{
-			losses += Kosten[j] * (anf[j].Num - m_CombatResultsDef[i][j]);
-		}
-		m_LossDef[i] = losses;
-		m_DebrisFields[i] += losses * m_LossesToDF / 100;
-	}
-#endif
 
 	m_Result.NumRecs = ceil((m_Result.TF.met + m_Result.TF.kris) / 20000.0f);
 	m_Result.MaxNumRecs = ceil((m_Result.MaxTF.met + m_Result.MaxTF.kris) / 20000.0f);
@@ -1103,99 +1077,3 @@ string CSpeedKernel::GenerateBWC()
 #endif
 	return utf8_str;
 }
-
-#ifdef CREATE_ADV_STATS
-void CSpeedKernel::CreateAdvShipStats()
-{
-	CPngGraph graph(500, 500);
-	int i;
-	// ship graph
-	for(i = 0; i < T_END; i++)
-	{
-		float xMin = 99999999, xMax = 0;
-		size_t j;
-		bool shipAvail = false;
-		for(j = 0; j < m_NumSetShipsAtt.size(); j++)
-		{
-			if(m_NumSetShipsAtt[j].Type == i && m_NumSetShipsAtt[j].Num > 0) {
-				shipAvail = true;
-				break;
-			}
-		}
-		if(!shipAvail)
-			continue;
-		// fill data
-		float yMin = 99999999, yMax = 0;
-		vector<sPoint> datapts;
-		map<int, int> numships;
-		map<int, int>::iterator it;
-		size_t numcases = 0;
-		for (j = 0; j < m_CombatResultsAtt.size(); j++)
-		{
-			int res = m_CombatResultsAtt[j][i];
-			it = numships.find(res);
-			if(it != numships.end())
-				it->second++;
-			else
-				numships[res] = 1;
-			numcases++;
-			if(res > xMax) xMax = res;
-			if(res < xMin) xMin = res;
-		}
-		if (numships.size() > 100)
-		{
-			int fac = (xMax - xMin) / 50;
-			map<int, int> newships;
-			// calculate down to 100
-			it = numships.begin();
-			for (; it != numships.end(); it++)
-			{
-				size_t n = it->first - it->first % fac;
-				newships[n] += it->second;
-			}
-			numships = newships;
-		}
-		it = numships.begin();
-		for(j = 0; j < numships.size(); j++)
-		{
-			if(!it->second)
-				continue;
-			sPoint pt;
-			pt.x = it->first;
-			if(pt.x > xMax) xMax = pt.x;
-			if(pt.x < xMin) xMin = pt.x;
-
-			pt.y = it->second * 100.f / numcases;
-			if(pt.y > yMax) yMax = pt.y;
-			if(pt.y < yMin) yMin = pt.y;
-
-			datapts.push_back(pt);
-			it++;
-		}
-		if(xMin == xMax)
-		{
-			xMin -= 5;
-			xMax += 5;
-		}
-		if(yMin == yMax)
-		{
-			yMin -= 5;
-			yMax += 5;
-		}
-		if(yMin < 0)
-			yMin = 0;
-		if(xMin < 0)
-			xMin = 0;
-
-		if(xMin == 99999999 && xMax == 0 || datapts.size() == 0)
-			continue;
-		graph.CreateAxes(xMin, xMax, yMin, yMax, int(abs(xMax - xMin) / 10.f), abs(yMax - yMin) / 10.f);
-		graph.PlotData(datapts, PLOT_CIRCLE|PLOT_CONNECT_POINTS);
-		char fname[50];
-		sprintf(fname, "%s.png", m_IniFleetNames[i].c_str());
-		graph.WriteToFile(fname);
-	}
-
-	// generate losses graph
-}
-#endif
