@@ -53,8 +53,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "SkinClass.h"
 
 #define SCAN_MSG_TXT _T("SPEEDSIM")
-#define SPEEDSIM_VERSION _T("0.9.8.1b")
-#define SPEEDSIM_NEEDED_LANG_VERSION _T("0.9.8.1b")
+#define SPEEDSIM_VERSION _T("1.0")
+#define SPEEDSIM_NEEDED_LANG_VERSION _T("1.0")
 #define SPEEDSIM_SERVER _T("speedsim.net")
 #define SPEEDSIM_UPDATE_FILE _T("Changelog.txt")
 #define SPEEDSIM_UPDATE_FILE_ENG _T("Changelog_eng.txt")

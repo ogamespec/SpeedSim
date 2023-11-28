@@ -31,8 +31,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define ATTER 0
 #define DEFFER 1
 
-// version of kernel
-#define KERNEL_VERSION _T("0.9.8.1b")
+// version of kernel. Corresponds to the current version of the game on live servers
+#define KERNEL_VERSION _T("11.3.6")
 
 //! default defense rebuild factor
 #define DEF_AUFBAU_FAKTOR 0.80f
