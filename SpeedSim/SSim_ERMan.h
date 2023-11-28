@@ -17,8 +17,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#ifndef SPEEDSIM_ERMAN_H
-#define SPEEDSIM_ERMAN_H
+#pragma once
 
 void ShowEspioManager();
 
@@ -35,5 +34,3 @@ INT_PTR ERManPage3Proc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 bool InitListView(HWND hwndParent, int ctrlID);
 bool MoveSelItems(int ctrlStart, int ctrlTarget);
-
-#endif

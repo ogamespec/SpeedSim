@@ -25,7 +25,7 @@ vector<TargetInfo> vBestTargets;
 // in development
 void ShowEspioManager()
 {
-    HPROPSHEETPAGE hPages[3];
+    HPROPSHEETPAGE hPages[3]{};
     PROPSHEETPAGE psp;
     psp.dwSize = sizeof(PROPSHEETPAGE);
     psp.dwFlags = PSP_DEFAULT;
@@ -98,7 +98,7 @@ void AddERToManager(TargetInfo *tis, int nTI, HWND hwndLV /*= NULL*/)
     HWND hLV2 = GetDlgItem(hWndERManPages[0], IDC_ESPIONEXT);
     for(int i = 0; i < nTI; i++)
     {
-        LVITEM lvi;
+        LVITEM lvi{};
         TCHAR szPos[64];
         szPos[63] = '\0';
         TargetInfo *ti = new TargetInfo;
@@ -149,7 +149,7 @@ void GetBestReports()
     int nAvailTargets = ListView_GetItemCount(hLV);
     for(i = 0; i < nAvailTargets; i++)
     {
-        LVITEM lvi;
+        LVITEM lvi{};
         lvi.iItem = i;
         lvi.iSubItem = 0;
         lvi.mask = LVIF_PARAM;
@@ -182,7 +182,7 @@ bool InitListView(HWND hwndParent, int ctrlID)
     if(!hwndLV)
         return false;
     
-    LVCOLUMN lvc;
+    LVCOLUMN lvc{};
     lvc.mask = LVCF_TEXT | LVCF_FMT | LVCF_WIDTH;
     lvc.fmt = LVCFMT_LEFT;
     
@@ -223,7 +223,7 @@ bool MoveSelItems(int ctrlStart, int ctrlTarget)
     // get selected items and move to second list view
     for(int i = nItems - 1; i >= 0; i--)
     {
-        LVITEM lvi;
+        LVITEM lvi{};
         lvi.iItem = i;
         lvi.iSubItem = 0;
         lvi.mask = LVIF_STATE|LVIF_PARAM;

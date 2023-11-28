@@ -92,7 +92,7 @@ void InitMainDialog()
         sim.GetVersion(tmp);
         _stprintf(c, _T("SpeedSim - GUI v%s | Kernel v%s  ||  by RainOfPain & TheButcher"), SPEEDSIM_VERSION, tmp);
 #ifdef _DEBUG
-        _stprintf(c, _T("%s - DEBUG Version -"), c);
+        _stprintf(c, _T("%s - DEBUG Version"), c);
 #endif
 #ifdef UNICODE
         _stprintf(c, _T("%s - Unicode Version"), c);
@@ -280,7 +280,7 @@ void InitTabpages(HWND hwndDlg)
 
 
     // init Trackbar
-    HWND hTB[2];
+    HWND hTB[2]{};
     hTB[0] = GetDlgItem(hwndDlg, IDC_PERC_TRACKBAR);
     hTB[1] = GetDlgItem(hwndDlg, IDC_PERC_TRACKBAR2);
     if(hTB[0]) {

@@ -17,12 +17,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#ifndef SKINCLASS_INC
-#define SKINCLASS_INC
+#pragma once
 
-#pragma warning(disable: 4786)
 #define _CRT_SECURE_NO_DEPRECATE
-//#define UNICODE
 
 #ifdef UNICODE
     #ifndef _UNICODE
@@ -167,5 +164,3 @@ private:
 
     genstring m_DataFile;
 };
-
-#endif

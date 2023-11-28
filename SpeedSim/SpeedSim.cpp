@@ -127,7 +127,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     }
     
     // common controls
-    INITCOMMONCONTROLSEX icc;
+    INITCOMMONCONTROLSEX icc{};
     icc.dwSize = sizeof(INITCOMMONCONTROLSEX);
     icc.dwICC = ICC_BAR_CLASSES|ICC_WIN95_CLASSES|ICC_LISTVIEW_CLASSES;
     InitCommonControlsEx(&icc);
@@ -143,7 +143,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     HACCEL hAcc = LoadAccelerators(g_hInst, MAKEINTRESOURCE(IDR_ACCEL));
     // register window class
     MSG msg;
-    WNDCLASS wc;
+    WNDCLASS wc{};
     wc.style = CS_GLOBALCLASS;
     wc.lpszClassName = SPEEDSIM_CLASSNAME;
     wc.hIcon = LoadIcon(g_hInst, MAKEINTRESOURCE(IDI_ICON));
@@ -183,7 +183,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,
     }
     DestroyWindow(g_hwndEspHist);
     DestroyWindow(g_hwndDlg);
-    FreeLibrary(g_hUser32DLL);
+    if (g_hUser32DLL)
+        FreeLibrary(g_hUser32DLL);
     if(g_hUXThemeDLL)
         FreeLibrary(g_hUXThemeDLL);
 
@@ -753,9 +754,12 @@ bool GetUpdateFile(genstring &out, TCHAR *UpdFileName, TCHAR* UpdServer) {
     }
     
     // close all handles
-    InternetCloseHandle(hINetReq);
-    InternetCloseHandle(hINetConn);
-    InternetCloseHandle(hINet);
+    if (hINetReq)
+        InternetCloseHandle(hINetReq);
+    if (hINetConn)
+        InternetCloseHandle(hINetConn);
+    if (hINet)
+        InternetCloseHandle(hINet);
     if(!bSendReq)
         return false;
     
@@ -775,7 +779,7 @@ void ReadSkinIni(TCHAR* inifile) {
     TCHAR path[MAX_PATH];
     _tcscpy(path, g_CurrDir);
     _tcscat(path, inifile);
-    LOGBRUSH br;
+    LOGBRUSH br{};
     br.lbStyle = BS_SOLID;
     br.lbHatch = 0;
 
@@ -1195,7 +1199,7 @@ void LoadLang(char* langfile) {
         fclose(f);
     }
     sim.LoadLangFile(langfile);
-    TCHAR FleetItems[T_END][128];
+    TCHAR FleetItems[T_END][128]{};
     
     for(int i = 0; i < T_END; i++)
         sim.ItemName((ITEM_TYPE)i, FleetItems[i]);

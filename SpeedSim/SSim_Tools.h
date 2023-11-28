@@ -17,8 +17,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-#ifndef SPEEDSIM_TOOLS_H
-#define SPEEDSIM_TOOLS_H
+#pragma once
 
 #define MAX_RAIDLIST_FLEETS 20
 // ctrl ids
@@ -132,5 +131,3 @@ struct EspHistItem
 };
 extern vector<EspHistItem> g_vRaidHistory;
 extern WNDPROC OldLVProc;
-
-#endif
