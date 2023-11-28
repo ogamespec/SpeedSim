@@ -29,6 +29,7 @@
     <ResourceCompile Include="..\SpeedSim\res.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\SpeedSim\afxres.h" />
     <ClInclude Include="..\SpeedSim\resource.h" />
     <ClInclude Include="..\SpeedSim\SkinClass.h" />
     <ClInclude Include="..\SpeedSim\SpeedSim.h" />

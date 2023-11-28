@@ -52,6 +52,9 @@
     <ClInclude Include="..\SpeedSim\SSim_Tools.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\SpeedSim\afxres.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\SpeedSim\SimFuncs.cpp">
