@@ -98,10 +98,7 @@ bool CSpeedKernel::SetFleet(vector<SItem>* Attacker, vector<SItem>* Defender)
 	int OwnersToSet[MAX_PLAYERS_PER_TEAM], tmp = 0;
 	unsigned int NumOwnersToSet = 0;
 	size_t i = 0, j = 0;
-	if(Attacker) {
-//	    CheckVector(m_NumSetShipsAtt);
-//	    CheckVector(*Attacker);
-	}
+
 	if(Attacker && Attacker->size())
 	{
 		// check, which OwnerIDs should be set new
@@ -143,11 +140,10 @@ bool CSpeedKernel::SetFleet(vector<SItem>* Attacker, vector<SItem>* Defender)
 				i--;
 			}
 		}
-//		CheckVector(m_NumSetShipsAtt);
+
 		// Insert new fleets into fleet vector
 		m_NumSetShipsAtt.insert(m_NumSetShipsAtt.end(), Attacker->begin(), Attacker->end());
 		sort(m_NumSetShipsAtt.begin(), m_NumSetShipsAtt.end(), ItemCompare);
-//      CheckVector(m_NumSetShipsAtt);
 	}
 
 	// repeat algorithm for defender

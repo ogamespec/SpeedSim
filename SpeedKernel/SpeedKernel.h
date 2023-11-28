@@ -574,9 +574,6 @@ private:
 	int BaseSpeed[T_END];
 };
 
-void CheckVector(const vector<SItem>& v);
-void CheckVector(const vector<Obj>& v);
-
 string wchar_to_utf8(wstring str);
 
 #undef _stprintf

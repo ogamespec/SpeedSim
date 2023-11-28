@@ -1,4 +1,4 @@
-; shipdata for SpeedSim
+; shipdata for SpeedSim (base values)
 [Shield]
 S_CAR=10
 L_CAR=25

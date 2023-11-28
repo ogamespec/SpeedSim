@@ -164,26 +164,6 @@ void CSpeedKernel::Reset()
 	InitRand();
 }
 
-void CheckVector(const vector<SItem>& v)
-{
-	SItem items[8*128];
-	size_t s = v.size();
-	for(size_t i = 0; i < v.size(); i++)
-		items[i] = v[i];
-
-	return;
-}
-
-void CheckVector(const vector<Obj>& v)
-{
-	Obj items[8*128];
-	size_t s = v.size();
-	for(size_t i = 0; i < v.size(); i++)
-		items[i] = v[i];
-
-	return;
-}
-
 size_t GetNextNumber(genstring str, int& num, size_t pos)
 {
 	size_t i;

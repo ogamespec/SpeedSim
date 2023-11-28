@@ -40,7 +40,8 @@ enum RFTYPE {
 	RF_062,         /*!< for OGame >= v0.62 */
 	RF_065,         /*!< for OGame >= v0.65 */
 	RF_075,         /*!< for OGame >= v0.75 */
-	RF_USER,        /*!< user set RapidFire */
+	RF_1140,		/*!< for OGame >= 11.4.0: Unfortunately previous versions are left out, as the actualization started around 11.4.0. The rapidfire does not change that often. */
+	RF_USER,        /*!< user set RapidFire (see e.g. Standard.rf) */
 };
 
 /*!
