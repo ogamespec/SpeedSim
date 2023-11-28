@@ -798,7 +798,7 @@ bool CSkinClass::LoadDataFile(TCHAR* name)
 
 	m_OldBGWndSyle = GetWindowLongPtr(m_BGWnd, GWL_STYLE);
 
-	// Soll caption angezeigt werden?
+	// Should caption be displayed?
 	num = GetPrivateProfileString(_T("General"), _T("showTitleBar"), _T("1"), buffer, MAX_PATH, path);
 	buffer[num] = 0;
 	if(!_ttoi(buffer))
