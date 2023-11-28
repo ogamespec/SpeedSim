@@ -622,7 +622,7 @@ bool NewGetSaveData(TCHAR* file, int num, SaveData &data)
 }
 
 bool SetOptSaveName(TCHAR *file, int num, const TCHAR *Name) {
-    TCHAR CFGFile[MAX_PATH];
+    TCHAR CFGFile[MAX_PATH]{};
     TCHAR section[256];
     genstr nfile = GetSaveFolder() + file;
     _tcsncpy(CFGFile, nfile.c_str(), MAX_PATH);
@@ -638,7 +638,7 @@ bool SetOptSaveName(TCHAR *file, int num, const TCHAR *Name) {
 }
 
 TCHAR* GetOptSaveName(TCHAR* file, int num, TCHAR *out) {
-    TCHAR CFGFile[MAX_PATH];
+    TCHAR CFGFile[MAX_PATH]{};
     TCHAR section[256];
 
     genstr nfile = GetSaveFolder() + file;
@@ -655,7 +655,7 @@ TCHAR* GetOptSaveName(TCHAR* file, int num, TCHAR *out) {
 }
 
 bool DeleteSaveData(TCHAR* file, int num) {
-    TCHAR CFGFile[MAX_PATH];
+    TCHAR CFGFile[MAX_PATH]{};
     TCHAR section[256];
     TCHAR sectionData[65766];
     TCHAR tmp[64];
@@ -698,7 +698,7 @@ bool DeleteSaveData(TCHAR* file, int num) {
 int NewSetFleetData(TCHAR* file, int num, const vector<SItem> &Fleet, ShipTechs Techs) {
     TCHAR section[256];
     TCHAR key[256];
-    TCHAR CFGFile[MAX_PATH];
+    TCHAR CFGFile[MAX_PATH]{};
     size_t i;
 
     genstr nfile = GetSaveFolder() + file;
@@ -739,7 +739,7 @@ int NewSetFleetData(TCHAR* file, int num, const vector<SItem> &Fleet, ShipTechs 
 
 bool NewGetFleetData(TCHAR* file, int num, vector<SItem> &Fleet, ShipTechs &Techs) {
     TCHAR section[256];
-    TCHAR CFGFile[MAX_PATH];
+    TCHAR CFGFile[MAX_PATH]{};
     genstr nfile = GetSaveFolder() + file;
     _tcsncpy(CFGFile, nfile.c_str(), MAX_PATH);
     /*_tcscpy(CFGFile, g_CurrDir);
@@ -782,7 +782,7 @@ bool SetFleetSaveName(TCHAR *file, int num, const TCHAR *Name) {
 }
 
 TCHAR* GetFleetSaveName(TCHAR* file, int num, TCHAR *out) {
-    TCHAR CFGFile[MAX_PATH];
+    TCHAR CFGFile[MAX_PATH]{};
     TCHAR section[256];
 
     genstr nfile = GetSaveFolder() + file;
@@ -799,7 +799,7 @@ TCHAR* GetFleetSaveName(TCHAR* file, int num, TCHAR *out) {
 }
 
 bool DeleteFleetData(TCHAR* file, int num) {
-    TCHAR CFGFile[MAX_PATH];
+    TCHAR CFGFile[MAX_PATH]{};
     TCHAR section[256];
     TCHAR sectionData[65766];
     TCHAR tmp[64];
