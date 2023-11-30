@@ -310,7 +310,7 @@ struct SaveData {
 	{
 		bUseOldBS = false;
 		bCheckTechs = false;
-		RFType = RF_075;
+		RFType = RF_1140;
 		bDelDefOnSwitch = false;
 		DefTF = false;
 		BWCase = false;

@@ -483,7 +483,6 @@ void CSpeedKernel::ShipShoots(Obj& o, int Team, DWORD AtterID)
 		Dam2 = Dam;
 		DefferID = 0;
 		{
-			//PR_PROF_FUNC(F_RANDNR);
 			// get random target from enemy
 			Ziel = RandomNumber(ListSize);
 			DefferID = (*treffer)[Ziel].PlayerID;

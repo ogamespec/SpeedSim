@@ -59,8 +59,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #ifndef WIN32
 #undef ASMRAND
 unsigned int _lrotl( unsigned int num, int shift ) {
-	register unsigned int value = num;
-	register unsigned int bit;
+	unsigned int value = num;
+	unsigned int bit;
 
 #if UINT_MAX == 0xFFFFFFFF
 	// 32bit machine
@@ -633,9 +633,9 @@ bool CSpeedKernel::LoadLangFile(const char *langfile) {
 		m_KBNames[T_ZER] = _T("Zerst.");
 		m_KBNames[T_TS] = _T("Rip");
 		m_KBNames[T_IC] = _T("Schlachtkr.");
-		m_KBNames[T_CRA] = _T("Crawler");   // TODO: Check
-		m_KBNames[T_REAP] = _T("Reaper");   // TODO: Check
-		m_KBNames[T_PF] = _T("Pathfinder");     // TODO: Check
+		m_KBNames[T_CRA] = _T("Crawler");
+		m_KBNames[T_REAP] = _T("Reaper");
+		m_KBNames[T_PF] = _T("Pathfinder");
 		m_KBNames[T_RAK] = _T("Rak.");
 		m_KBNames[T_LL] = _T("L.Laser");
 		m_KBNames[T_SL] = _T("S.Laser");
@@ -1015,13 +1015,15 @@ Res CSpeedKernel::StringToRes(const genstring &val) {
 	return res;
 }
 
+#define RF_TO_SIM(rf) (10000 / rf)
+
 void CSpeedKernel::FillRFTable(RFTYPE rfType)
 {
 	int i;
 	for(i = 0; i < T_END; i++)
 	{
 		for(int j = 0; j < T_END; j++)
-			m_RF[i][j] = 10000;
+			m_RF[i][j] = RF_TO_SIM(1);
 	}
 
 	switch(rfType)
@@ -1030,40 +1032,37 @@ void CSpeedKernel::FillRFTable(RFTYPE rfType)
 		{
 			for(i = 0; i < T_SHIPEND; i++)
 			{
-				m_RF[i][T_SPIO] = 2000;
-				m_RF[i][T_SAT] = 2000;
+				m_RF[i][T_SPIO] = RF_TO_SIM(5);
+				m_RF[i][T_SAT] = RF_TO_SIM(5);
 			}
-			m_RF[T_SPIO][T_SPIO] = 10000;
-			m_RF[T_SPIO][T_SAT] = 10000;
-			m_RF[T_SAT][T_SAT] = 10000;
 
-			m_RF[T_KREUZER][T_LJ] = 3333;
-			m_RF[T_KREUZER][T_RAK] = 1000;
+			m_RF[T_KREUZER][T_LJ] = RF_TO_SIM(3);
+			m_RF[T_KREUZER][T_RAK] = RF_TO_SIM(10);
 
-			m_RF[T_ZER][T_LL] = 1000;
+			m_RF[T_ZER][T_LL] = RF_TO_SIM(10);
 
-			m_RF[T_BOMBER][T_LL] = 500;
-			m_RF[T_BOMBER][T_RAK] = 500;
-			m_RF[T_BOMBER][T_SL] = 1000;
-			m_RF[T_BOMBER][T_IONEN] = 1000;
+			m_RF[T_BOMBER][T_RAK] = RF_TO_SIM(20);
+			m_RF[T_BOMBER][T_LL] = RF_TO_SIM(20);
+			m_RF[T_BOMBER][T_SL] = RF_TO_SIM(10);
+			m_RF[T_BOMBER][T_IONEN] = RF_TO_SIM(10);
 
-			m_RF[T_TS][T_SPIO] = 8;
-			m_RF[T_TS][T_SAT] = 8;
-			m_RF[T_TS][T_RAK] = 50;
-			m_RF[T_TS][T_LL] = 50;
-			m_RF[T_TS][T_LJ] = 50;
-			m_RF[T_TS][T_SS] = 333;
-			m_RF[T_TS][T_SL] = 100;
-			m_RF[T_TS][T_IONEN] = 100;
-			m_RF[T_TS][T_SJ] = 100;
-			m_RF[T_TS][T_GAUSS] = 200;
-			m_RF[T_TS][T_KREUZER] = 303;
-			m_RF[T_TS][T_BOMBER] = 400;
-			m_RF[T_TS][T_ZER] = 2000;
-			m_RF[T_TS][T_KT] = 40;
-			m_RF[T_TS][T_GT] = 40;
-			m_RF[T_TS][T_REC] = 40;
-			m_RF[T_TS][T_KOLO] = 40;
+			m_RF[T_TS][T_SPIO] = RF_TO_SIM(1250);
+			m_RF[T_TS][T_SAT] = RF_TO_SIM(1250);
+			m_RF[T_TS][T_RAK] = RF_TO_SIM(200);
+			m_RF[T_TS][T_LL] = RF_TO_SIM(200);
+			m_RF[T_TS][T_LJ] = RF_TO_SIM(200);
+			m_RF[T_TS][T_SS] = RF_TO_SIM(30);
+			m_RF[T_TS][T_SL] = RF_TO_SIM(100);
+			m_RF[T_TS][T_IONEN] = RF_TO_SIM(100);
+			m_RF[T_TS][T_SJ] = RF_TO_SIM(100);
+			m_RF[T_TS][T_GAUSS] = RF_TO_SIM(50);
+			m_RF[T_TS][T_KREUZER] = RF_TO_SIM(33);
+			m_RF[T_TS][T_BOMBER] = RF_TO_SIM(25);
+			m_RF[T_TS][T_ZER] = RF_TO_SIM(5);
+			m_RF[T_TS][T_KT] = RF_TO_SIM(250);
+			m_RF[T_TS][T_GT] = RF_TO_SIM(250);
+			m_RF[T_TS][T_REC] = RF_TO_SIM(250);
+			m_RF[T_TS][T_KOLO] = RF_TO_SIM(250);
 
 		}
 		break;
@@ -1071,51 +1070,131 @@ void CSpeedKernel::FillRFTable(RFTYPE rfType)
 		{
 			for(i = 0; i < T_SHIPEND; i++)
 			{
-				m_RF[i][T_SPIO] = 2000;
-				m_RF[i][T_SAT] = 2000;
+				m_RF[i][T_SPIO] = RF_TO_SIM(5);
+				m_RF[i][T_SAT] = RF_TO_SIM(5);
 			}
-			m_RF[T_SPIO][T_SPIO] = 10000;
-			m_RF[T_SPIO][T_SAT] = 10000;
-			m_RF[T_SAT][T_SAT] = 10000;
-			m_RF[T_SAT][T_SPIO] = 10000;
+			m_RF[T_SPIO][T_SPIO] = RF_TO_SIM(1);
+			m_RF[T_SPIO][T_SAT] = RF_TO_SIM(1);
+			m_RF[T_SAT][T_SAT] = RF_TO_SIM(1);
+			m_RF[T_SAT][T_SPIO] = RF_TO_SIM(1);
 
-			m_RF[T_SJ][T_KT] = 3333;
+			m_RF[T_SJ][T_KT] = RF_TO_SIM(3);
 
-			m_RF[T_KREUZER][T_LJ] = 1667;
-			m_RF[T_KREUZER][T_RAK] = 1000;
+			m_RF[T_KREUZER][T_LJ] = RF_TO_SIM(6);
+			m_RF[T_KREUZER][T_RAK] = RF_TO_SIM(10);
 
-			m_RF[T_ZER][T_LL] = 1000;
-			m_RF[T_ZER][T_IC] = 5000;
+			m_RF[T_ZER][T_LL] = RF_TO_SIM(10);
+			m_RF[T_ZER][T_IC] = RF_TO_SIM(2);
 
-			m_RF[T_BOMBER][T_LL] = 500;
-			m_RF[T_BOMBER][T_RAK] = 500;
-			m_RF[T_BOMBER][T_SL] = 1000;
-			m_RF[T_BOMBER][T_IONEN] = 1000;
+			m_RF[T_BOMBER][T_RAK] = RF_TO_SIM(20);
+			m_RF[T_BOMBER][T_LL] = RF_TO_SIM(20);
+			m_RF[T_BOMBER][T_SL] = RF_TO_SIM(10);
+			m_RF[T_BOMBER][T_IONEN] = RF_TO_SIM(10);
 
-			m_RF[T_TS][T_SPIO] = 8;
-			m_RF[T_TS][T_SAT] = 8;
-			m_RF[T_TS][T_RAK] = 50;
-			m_RF[T_TS][T_LL] = 50;
-			m_RF[T_TS][T_LJ] = 50;
-			m_RF[T_TS][T_SS] = 333;
-			m_RF[T_TS][T_SL] = 100;
-			m_RF[T_TS][T_IONEN] = 100;
-			m_RF[T_TS][T_SJ] = 100;
-			m_RF[T_TS][T_GAUSS] = 200;
-			m_RF[T_TS][T_KREUZER] = 303;
-			m_RF[T_TS][T_BOMBER] = 400;
-			m_RF[T_TS][T_ZER] = 2000;
-			m_RF[T_TS][T_KT] = 40;
-			m_RF[T_TS][T_GT] = 40;
-			m_RF[T_TS][T_REC] = 40;
-			m_RF[T_TS][T_KOLO] = 40;
-			m_RF[T_TS][T_IC] = 667;
+			m_RF[T_TS][T_SPIO] = RF_TO_SIM(1250);
+			m_RF[T_TS][T_SAT] = RF_TO_SIM(1250);
+			m_RF[T_TS][T_RAK] = RF_TO_SIM(200);
+			m_RF[T_TS][T_LL] = RF_TO_SIM(200);
+			m_RF[T_TS][T_LJ] = RF_TO_SIM(200);
+			m_RF[T_TS][T_SS] = RF_TO_SIM(30);
+			m_RF[T_TS][T_SL] = RF_TO_SIM(100);
+			m_RF[T_TS][T_IONEN] = RF_TO_SIM(100);
+			m_RF[T_TS][T_SJ] = RF_TO_SIM(100);
+			m_RF[T_TS][T_GAUSS] = RF_TO_SIM(50);
+			m_RF[T_TS][T_KREUZER] = RF_TO_SIM(33);
+			m_RF[T_TS][T_BOMBER] = RF_TO_SIM(25);
+			m_RF[T_TS][T_ZER] = RF_TO_SIM(5);
+			m_RF[T_TS][T_KT] = RF_TO_SIM(250);
+			m_RF[T_TS][T_GT] = RF_TO_SIM(250);
+			m_RF[T_TS][T_REC] = RF_TO_SIM(250);
+			m_RF[T_TS][T_KOLO] = RF_TO_SIM(250);
+			m_RF[T_TS][T_IC] = RF_TO_SIM(15);
 
-			m_RF[T_IC][T_KT] = 3333;
-			m_RF[T_IC][T_GT] = 3333;
-			m_RF[T_IC][T_SJ] = 2500;
-			m_RF[T_IC][T_KREUZER] = 2500;
-			m_RF[T_IC][T_SS] = 1429;
+			m_RF[T_IC][T_KT] = RF_TO_SIM(3);
+			m_RF[T_IC][T_GT] = RF_TO_SIM(3);
+			m_RF[T_IC][T_SJ] = RF_TO_SIM(4);
+			m_RF[T_IC][T_KREUZER] = RF_TO_SIM(4);
+			m_RF[T_IC][T_SS] = RF_TO_SIM(7);
+		}
+		break;
+	// Current version from which SpeedSim update was started
+	case RF_1140:
+		{
+			// All ships have the same rapidfire against probes, lamps, and crawlers
+			for (i = 0; i < T_SHIPEND; i++)
+			{
+				m_RF[i][T_SPIO] = RF_TO_SIM(5);
+				m_RF[i][T_SAT] = RF_TO_SIM(5);
+				m_RF[i][T_CRA] = RF_TO_SIM(5);		// [new] Crawler
+			}
+			// Restore defaults for mentioned above
+			m_RF[T_SPIO][T_SPIO] = RF_TO_SIM(1);
+			m_RF[T_SPIO][T_SAT] = RF_TO_SIM(1);
+			m_RF[T_SPIO][T_CRA] = RF_TO_SIM(1);
+			m_RF[T_SAT][T_SAT] = RF_TO_SIM(1);
+			m_RF[T_SAT][T_SPIO] = RF_TO_SIM(1);
+			m_RF[T_SAT][T_CRA] = RF_TO_SIM(1);
+			m_RF[T_CRA][T_SPIO] = RF_TO_SIM(1);
+			m_RF[T_CRA][T_SAT] = RF_TO_SIM(1);
+			m_RF[T_CRA][T_CRA] = RF_TO_SIM(1);
+
+			m_RF[T_SJ][T_KT] = RF_TO_SIM(3);
+
+			m_RF[T_KREUZER][T_LJ] = RF_TO_SIM(6);
+			m_RF[T_KREUZER][T_RAK] = RF_TO_SIM(10);
+
+			m_RF[T_SS][T_PF] = RF_TO_SIM(5);		// [new] Battleship vs Pathfinder
+
+			m_RF[T_ZER][T_LL] = RF_TO_SIM(10);
+			m_RF[T_ZER][T_IC] = RF_TO_SIM(2);
+
+			m_RF[T_BOMBER][T_RAK] = RF_TO_SIM(20);
+			m_RF[T_BOMBER][T_LL] = RF_TO_SIM(20);
+			m_RF[T_BOMBER][T_SL] = RF_TO_SIM(10);
+			m_RF[T_BOMBER][T_GAUSS] = RF_TO_SIM(5);		// [new] Bomber vs Gauss
+			m_RF[T_BOMBER][T_IONEN] = RF_TO_SIM(10);
+			m_RF[T_BOMBER][T_PLASMA] = RF_TO_SIM(5);		// [new] Bomber vs Plasma
+
+			m_RF[T_TS][T_SPIO] = RF_TO_SIM(250);		// [new] (lower)
+			m_RF[T_TS][T_SAT] = RF_TO_SIM(250);			// [new] (lower)
+			m_RF[T_TS][T_KT] = RF_TO_SIM(250);
+			m_RF[T_TS][T_GT] = RF_TO_SIM(250);
+			m_RF[T_TS][T_LJ] = RF_TO_SIM(200);
+			m_RF[T_TS][T_SJ] = RF_TO_SIM(100);
+			m_RF[T_TS][T_KREUZER] = RF_TO_SIM(33);
+			m_RF[T_TS][T_SS] = RF_TO_SIM(30);
+			m_RF[T_TS][T_KOLO] = RF_TO_SIM(250);
+			m_RF[T_TS][T_REC] = RF_TO_SIM(250);
+			m_RF[T_TS][T_BOMBER] = RF_TO_SIM(25);
+			m_RF[T_TS][T_ZER] = RF_TO_SIM(5);
+			m_RF[T_TS][T_IC] = RF_TO_SIM(15);
+			m_RF[T_TS][T_CRA] = RF_TO_SIM(250);		// [new] Crawler
+			m_RF[T_TS][T_REAP] = RF_TO_SIM(10);		// [new] Reaper
+			m_RF[T_TS][T_PF] = RF_TO_SIM(30);		// [new] Pathfinder
+			m_RF[T_TS][T_RAK] = RF_TO_SIM(200);
+			m_RF[T_TS][T_LL] = RF_TO_SIM(200);
+			m_RF[T_TS][T_SL] = RF_TO_SIM(100);
+			m_RF[T_TS][T_GAUSS] = RF_TO_SIM(50);
+			m_RF[T_TS][T_IONEN] = RF_TO_SIM(100);
+
+			m_RF[T_IC][T_KT] = RF_TO_SIM(3);
+			m_RF[T_IC][T_GT] = RF_TO_SIM(3);
+			m_RF[T_IC][T_SJ] = RF_TO_SIM(4);
+			m_RF[T_IC][T_KREUZER] = RF_TO_SIM(4);
+			m_RF[T_IC][T_SS] = RF_TO_SIM(7);
+
+			// [new] Reaper
+			m_RF[T_REAP][T_SS] = RF_TO_SIM(7);
+			m_RF[T_REAP][T_BOMBER] = RF_TO_SIM(4);
+			m_RF[T_REAP][T_ZER] = RF_TO_SIM(3);
+
+			// [new] Pathfinder
+			m_RF[T_PF][T_KREUZER] = RF_TO_SIM(3);
+			m_RF[T_PF][T_LJ] = RF_TO_SIM(3);
+			m_RF[T_PF][T_SJ] = RF_TO_SIM(2);
+
+			// [new] Ion Cannon vs. Reaper. Doesn't help much, no matter how hard the developers try - ion is still just as useless
+			m_RF[T_IONEN][T_REAP] = RF_TO_SIM(2);
 		}
 		break;
 	}

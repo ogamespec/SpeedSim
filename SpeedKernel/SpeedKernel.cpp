@@ -61,7 +61,7 @@ CSpeedKernel::CSpeedKernel()
 	m_SimulateFreedItsData = true;
 	LoadLangFile(NULL);
 	// set to newest version
-	FillRFTable(RF_075);
+	FillRFTable(RF_1140);
 	m_DefRebuildFac = DEF_AUFBAU_FAKTOR;
 	m_LastScanHadTechs = false;
 	m_ShipDataFromFile = false;
@@ -155,7 +155,7 @@ void CSpeedKernel::Reset()
 	memset(m_TechsAtt, 0, MAX_PLAYERS_PER_TEAM * sizeof(ShipTechs));
 	memset(m_TechsDef, 0, MAX_PLAYERS_PER_TEAM * sizeof(ShipTechs));
 	memset(&m_Result, 0, sizeof(BattleResult));
-	FillRFTable(RF_075);
+	FillRFTable(RF_1140);
 	m_NumPlayersPerTeam[ATTER] = 0;
 	m_NumPlayersPerTeam[DEFFER] = 0;
 	m_LossesToDF = 30;

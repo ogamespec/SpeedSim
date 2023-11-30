@@ -40,15 +40,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define WARTEN_PRO_100K 1000
 
 
-// names for RF versions
-#define NAME_RF_NONE _T("RF_NONE")
-#define NAME_RF_058 _T("RF_058")
-#define NAME_RF_059 _T("RF_059")
-#define NAME_RF_062 _T("RF_062")
-#define NAME_RF_065 _T("RF_065")
-#define NAME_RF_1140 _T("RF_1140")
-#define NAME_RF_USER _T("RF_USER")
-
 /*!
 	\def RFPERC(x)
 	\brief RF(x) converts RF(x) into RF x%

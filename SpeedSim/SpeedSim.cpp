@@ -242,7 +242,7 @@ void UpdateKernel(int FleetID)
 	// get RF
 	if(IsDlgButtonChecked(g_hwndDlg, IDC_RAPID) == BST_CHECKED)
 	{
-		sim.SetRF(RF_075);
+		sim.SetRF(RF_1140);
 		if(strlen(g_Options.RFFileName))
 		{
 			sim.LoadRFFile(g_Options.RFFileName);

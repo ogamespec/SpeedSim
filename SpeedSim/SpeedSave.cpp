@@ -138,7 +138,7 @@ int SaveOpts(int num)
 	g_CurSaveData = num;
 	
 	if(SendDlgItemMessage(g_hwndDlg, IDC_RAPID, BM_GETCHECK, 0, 0) == BST_CHECKED)
-		g_Options.RFType = RF_075;
+		g_Options.RFType = RF_1140;
 	else
 		g_Options.RFType = RF_NONE;
 	
@@ -571,7 +571,7 @@ bool NewGetSaveData(TCHAR* file, int num, SaveData &data)
 	data.Techs.Combust = GetPrivateProfileInt(section, _T("CombustEngine"), 0, CFGFile);
 	data.iSpeedFactor = GetPrivateProfileInt(section, _T("SpeedFactor"), 1, CFGFile);
 	data.NumSims = GetPrivateProfileInt(section, _T("NumSim"), 100, CFGFile);
-	data.RFType = GetPrivateProfileInt(section, _T("RFType"), (int)RF_075, CFGFile);
+	data.RFType = GetPrivateProfileInt(section, _T("RFType"), (int)RF_1140, CFGFile);
 	data.Techs.STechs.Weapon = GetPrivateProfileInt(section, _T("WeapTech"), 0, CFGFile);
 	data.Techs.STechs.Shield = GetPrivateProfileInt(section, _T("ShieldTech"), 0, CFGFile);
 	data.Techs.STechs.Armour = GetPrivateProfileInt(section, _T("HullTech"), 0, CFGFile);
